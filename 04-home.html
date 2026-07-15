@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Você Seguradora — Seguros digitais para quem está em movimento</title>
+<meta name="description" content="Você Seguradora: 13 seguros digitais para você e para sua empresa. Cote e contrate online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   V4 — HOME INSTITUCIONAL (catálogo completo)
+   Modelo: estrutura da TOKIO (que só se justifica com catálogo
+   cheio: toggle Para Você/Empresa 10x3, mega-menu por família)
+   + peso institucional da AZOS (faixa de confiança logo abaixo
+   do hero, "quem está por trás") + transparência da PIER.
+   Hero NÃO é funil de um produto — é "o que você quer proteger?".
+   Essa é a diferença entre home e landing page.
+   Fonte: Outfit (substituta livre da Cera Pro).
+   ============================================================ */
+:root{
+  --navy:#002430; --neon:#46EF80; --teal:#279989; --teal-text:#1B7568; /* variante AA do verde p/ texto pequeno em fundo claro (4.69:1 no pior caso) */ --blue:#000060; --surf:#EAF4F7;
+  --ink:#0D1B21; --ink2:#4A6572; --line:#DCE6EA;
+  --font:"Outfit",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --sh:0 8px 26px rgba(0,36,48,.09);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{font-family:var(--font);color:var(--ink);background:#fff;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit} img{max-width:100%;display:block}
+:focus-visible{outline:3px solid var(--neon);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1220px;margin:0 auto;padding:0 22px}
+.skip{position:absolute;left:-9999px;background:var(--neon);color:var(--navy);padding:12px 18px;z-index:99;font-weight:700}
+.skip:focus{left:0;top:0}
+.logo{display:flex;align-items:center;text-decoration:none;color:#fff;flex:none}
+.lockup{height:42px;width:calc(42px * 2.732);display:block;fill:currentColor}
+footer .lockup{height:46px;width:calc(46px * 2.732)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:15px;
+  border-radius:8px;padding:13px 22px;border:2px solid transparent;cursor:pointer;text-decoration:none;
+  font-family:inherit;transition:transform .14s}
+.btn:hover{transform:translateY(-1px)}
+.btn-neon{background:var(--neon);color:var(--navy);box-shadow:0 5px 16px rgba(70,239,128,.3)}
+.btn-out-d{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+.btn-out{background:#fff;color:var(--navy);border-color:var(--line)}
+.btn-sm{padding:9px 16px;font-size:13.5px;border-radius:6px}
+
+/* ---------- controle de DEMO (não faz parte do design) ---------- */
+.demo{background:#111;color:#fff;font-size:12px;position:relative;z-index:80}
+.demo-in{display:flex;align-items:center;gap:14px;height:38px;flex-wrap:wrap}
+.demo b{font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:10.5px;color:#FFB020}
+.demo span{color:#999}
+.demo-sw{margin-left:auto;display:flex;gap:3px;background:#222;border-radius:6px;padding:3px}
+.demo-sw button{background:none;border:0;color:#aaa;font-family:inherit;font-size:11.5px;font-weight:700;
+  padding:5px 11px;border-radius:4px;cursor:pointer}
+.demo-sw button[aria-pressed="true"]{background:var(--neon);color:#111}
+
+/* ---------- barra de acessibilidade (TOKIO) ---------- */
+.a11y{background:#001A24;color:#9FBCC6;font-size:11.5px}
+.a11y-in{display:flex;align-items:center;gap:18px;height:34px}
+.a11y a{text-decoration:none;display:flex;align-items:center;gap:5px}
+.a11y a:hover{color:var(--neon)}
+.a11y .r{margin-left:auto;display:flex;gap:16px}
+
+.top{background:var(--navy);border-bottom:1px solid rgba(255,255,255,.1)}
+.top-in{display:flex;align-items:center;gap:20px;height:74px}
+.acc{margin-left:auto;display:flex;gap:7px}
+.acc a{display:flex;align-items:center;gap:6px;color:#CFE0E6;text-decoration:none;font-size:12.5px;font-weight:600;
+  padding:7px 12px;border:1px solid rgba(255,255,255,.2);border-radius:6px}
+.acc a:hover{border-color:var(--neon);color:#fff}
+.acc svg{color:var(--neon);flex:none}
+
+/* nav + mega-menu por família (TOKIO) */
+.nav2{background:#00303F;position:sticky;top:0;z-index:60}
+.nav2-in{display:flex;align-items:center;gap:2px;height:50px}
+.nav2 > .wrap > a,.mi > button{background:none;border:0;font-family:inherit;color:#DCE9ED;font-size:14.5px;
+  font-weight:600;padding:0 16px;height:50px;cursor:pointer;display:flex;align-items:center;gap:6px;text-decoration:none}
+.mi{position:relative}
+.mi > button:hover,.mi.open > button{background:rgba(255,255,255,.08);color:#fff}
+.mi > button svg{transition:transform .18s}
+.mi.open > button svg{transform:rotate(180deg)}
+.mega{position:absolute;top:50px;left:0;background:#fff;border-radius:0 0 12px 12px;box-shadow:0 20px 50px rgba(0,0,0,.24);
+  padding:24px;display:none;grid-template-columns:repeat(3,190px);gap:20px;z-index:70}
+.mi.open .mega{display:grid}
+.mega h4{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-text);
+  margin-bottom:9px;padding-bottom:7px;border-bottom:1px solid var(--line)}
+.mega ul{list-style:none;display:flex;flex-direction:column;gap:1px}
+.mega a{display:flex;justify-content:space-between;align-items:center;gap:6px;font-size:13.5px;color:var(--ink);
+  text-decoration:none;padding:6px 8px;border-radius:6px}
+.mega a:hover{background:var(--surf);color:var(--teal-text)}
+.nav2 .verbs{margin-left:auto;display:flex;gap:8px;align-items:center}
+/* selo "em breve" — só aparece no estado de lançamento */
+.soon{font-size:9.5px;font-weight:800;letter-spacing:.06em;color:#8FAABB;background:var(--surf);
+  padding:2px 6px;border-radius:99px;display:none;flex:none}
+body.launch .soon{display:inline-block}
+
+/* ---------- HERO institucional ---------- */
+.hero{position:relative;background:var(--navy);color:#fff;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:70% 42%}
+.hero-bg::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(98deg,#002430 0%,rgba(0,36,48,.96) 38%,rgba(10,75,70,.82) 64%,rgba(0,0,96,.66) 100%)}
+.hero::after{content:"";position:absolute;right:-16%;top:-40%;width:56%;height:190%;
+  background:linear-gradient(160deg,rgba(70,239,128,.14),rgba(0,0,96,.42));transform:skewX(-14deg)}
+.hero-in{position:relative;z-index:2;padding:56px 0 60px;max-width:1020px}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:800;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--neon);margin-bottom:16px}
+.eyebrow::before{content:"";width:20px;height:2px;background:var(--neon)}
+.hero h1{font-size:54px;line-height:1.04;font-weight:800;letter-spacing:-.035em;margin-bottom:16px;max-width:17ch}
+.hero h1 em{font-style:normal;color:var(--neon)}
+.hero .sub{font-size:18.5px;color:#B9D0D8;max-width:52ch;margin-bottom:30px}
+
+/* o hero da HOME não é funil de um produto — é um seletor de catálogo */
+.picker{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:20px;
+  backdrop-filter:blur(6px);max-width:760px}
+.picker .pt{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:14px;flex-wrap:wrap}
+.picker h2{font-size:17px;font-weight:700}
+.tog{display:inline-flex;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:3px}
+.tog button{background:none;border:0;font-family:inherit;color:#B9D0D8;font-size:12.5px;font-weight:700;
+  padding:7px 16px;border-radius:999px;cursor:pointer}
+.tog button[aria-pressed="true"]{background:var(--neon);color:var(--navy)}
+.pgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.pk{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:13px 8px;
+  text-align:center;text-decoration:none;color:#fff;display:block;position:relative;transition:border-color .14s,background .14s}
+.pk:hover{border-color:var(--neon);background:rgba(70,239,128,.1)}
+.pk svg{margin:0 auto 7px;display:block;color:var(--neon)}
+.pk b{font-size:12.5px;font-weight:700;display:block;line-height:1.25}
+body.launch .pk.s{opacity:.42;pointer-events:none}
+body.launch .pk.s::after{content:"EM BREVE";position:absolute;top:5px;right:5px;font-size:7.5px;font-weight:800;
+  background:rgba(255,255,255,.2);padding:1px 4px;border-radius:99px;letter-spacing:.04em}
+.hide-full{display:none} body.launch .hide-full{display:block}
+body.launch .hide-launch{display:none}
+
+/* ---------- faixa de confiança (AZOS) ---------- */
+.trustband{background:var(--surf);padding:28px 0;border-bottom:1px solid var(--line)}
+.tb-in{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.tb{display:flex;gap:11px;align-items:flex-start}
+.tb svg{color:var(--teal-text);flex:none;margin-top:2px}
+.tb b{display:block;font-size:14.5px;font-weight:800;margin-bottom:1px}
+.tb span{font-size:12.5px;color:var(--ink2);line-height:1.4}
+
+section{padding:70px 0}
+.sh{max-width:58ch;margin-bottom:32px}
+.sh .eyebrow{color:var(--teal-text)}
+.sh .eyebrow::before{background:var(--teal)}
+h2.t{font-size:35px;font-weight:800;letter-spacing:-.028em;line-height:1.13;margin-bottom:10px}
+.sh p{font-size:16.5px;color:var(--ink2)}
+.grid{display:grid;gap:16px}
+
+/* ---------- catálogo por família ---------- */
+.fams{display:flex;flex-direction:column;gap:34px}
+.fam-h{display:flex;align-items:baseline;gap:12px;margin-bottom:14px;border-bottom:1px solid var(--line);padding-bottom:9px}
+.fam-h h3{font-size:19px;font-weight:800;letter-spacing:-.01em}
+.fam-h span{font-size:12.5px;color:var(--ink2);font-weight:600}
+.fam-h a{margin-left:auto;font-size:13px;font-weight:800;color:var(--teal-text);text-decoration:none;display:flex;align-items:center;gap:5px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.pc{border:1.5px solid var(--line);border-radius:12px;padding:18px;text-decoration:none;display:block;background:#fff;position:relative}
+.pc:hover{border-color:var(--teal-text);box-shadow:var(--sh)}
+.pc .ico{width:36px;height:36px;border-radius:9px;background:var(--surf);color:var(--teal-text);display:grid;place-items:center;margin-bottom:11px}
+.pc.hi{border-color:var(--navy);background:var(--navy);color:#fff}
+.pc.hi .ico{background:rgba(70,239,128,.16);color:var(--neon)}
+.pc.hi p{color:#9FBCC6}
+.pc.hi .go{color:var(--neon)}
+.pc h4{font-size:15.5px;font-weight:800;margin-bottom:3px}
+.pc p{font-size:12.5px;color:var(--ink2);line-height:1.45;margin-bottom:9px}
+.pc .go{font-size:12px;font-weight:800;color:var(--teal-text);display:flex;align-items:center;gap:4px}
+.pc .flag{position:absolute;top:12px;right:12px;font-size:9px;font-weight:800;letter-spacing:.06em;padding:3px 7px;border-radius:99px;
+  background:var(--neon);color:var(--navy)}
+body.launch .pc.s{opacity:.55}
+body.launch .pc.s .go{display:none}
+body.launch .pc.s::after{content:"EM BREVE";position:absolute;top:12px;right:12px;font-size:9px;font-weight:800;
+  letter-spacing:.06em;background:var(--surf);color:var(--ink2);padding:3px 7px;border-radius:99px}
+
+/* ---------- 3 públicos ---------- */
+.pubs{background:var(--surf)}
+.pub3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pub{background:#fff;border-radius:14px;padding:26px;text-decoration:none;display:block;border:1.5px solid transparent}
+.pub:hover{border-color:var(--teal-text);transform:translateY(-3px);transition:transform .15s}
+.pub .ico{width:44px;height:44px;border-radius:11px;background:var(--navy);color:var(--neon);display:grid;place-items:center;margin-bottom:14px}
+.pub h3{font-size:19px;font-weight:800;margin-bottom:5px}
+.pub p{font-size:14px;color:var(--ink2);margin-bottom:12px}
+.pub .go{font-size:13px;font-weight:800;color:var(--teal-text);display:flex;align-items:center;gap:5px}
+
+/* ---------- institucional / quem está por trás ---------- */
+.inst{background:#fff}
+.inst-in{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+/* o .eyebrow e neon por padrao (feito p/ fundo escuro). Fora de .sh ele
+   nao herdava a regra de fundo claro e caia em 1.5:1 sobre branco. */
+.inst-txt .eyebrow{color:var(--teal-text)}
+.inst-txt .eyebrow::before{background:var(--teal-text)}
+.inst-txt p.big{font-size:19px;color:var(--ink2);margin-bottom:16px;line-height:1.6}
+.inst-txt p.big b{color:var(--ink)}
+.backers{background:var(--surf);border-radius:14px;padding:26px}
+.backers h3{font-size:16px;font-weight:800;margin-bottom:16px}
+.bk{display:flex;gap:12px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--line)}
+.bk:last-child{border-bottom:0}
+.bk svg{color:var(--teal-text);flex:none;margin-top:2px}
+.bk b{display:block;font-size:14px;font-weight:700}
+.bk span{font-size:12.5px;color:var(--ink2)}
+/* SLOT: os ativos de credibilidade que ainda não temos.
+   Visivelmente um pedido, não um texto inventado. */
+.slot{border:2px dashed rgba(39,153,137,.5);border-radius:10px;padding:14px;background:rgba(39,153,137,.05);margin-top:14px}
+/* ">" e essencial: sem ele a regra pega tambem os <b> inline do <p>,
+   e cada termo vira um bloco maiusculo com as virgulas orfas. */
+.slot > b{display:block;font-size:12.5px;font-weight:800;color:var(--teal-text);letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px}
+.slot p{font-size:12.5px;color:var(--ink2);line-height:1.5}
+.slot p b{color:var(--teal-text);font-weight:800}
+
+.band{background:linear-gradient(118deg,#0a4b46 0%,#002430 44%,#001238 76%,#000060 100%);color:#fff;text-align:center;padding:62px 0}
+.band p{font-size:40px;font-weight:300;letter-spacing:-.025em}
+.band p b{font-weight:800;color:var(--neon)}
+.band .btn{margin-top:26px}
+
+.fraud{background:var(--navy);color:#fff;padding:22px 0}
+.fraud-in{display:flex;gap:13px;align-items:flex-start;max-width:920px}
+.fraud svg{color:var(--neon);flex:none;margin-top:2px}
+.fraud p{font-size:14.5px;color:#B9D0D8}
+.fraud b{color:#fff}
+
+footer{background:#001A24;color:#9FBCC6;padding:52px 0 26px;font-size:13.5px}
+.f-util{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding-bottom:30px;margin-bottom:30px;border-bottom:1px solid rgba(255,255,255,.1)}
+.f-util a{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  border-radius:9px;padding:14px;text-decoration:none;font-weight:700;color:#fff;font-size:14px}
+.f-util a:hover{border-color:var(--neon)}
+.f-util svg{color:var(--neon);flex:none}
+.f-grid{display:grid;grid-template-columns:1.3fr repeat(3,1fr);gap:28px;margin-bottom:28px}
+footer h4{color:#fff;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+footer a{text-decoration:none}
+footer a:hover{color:var(--neon)}
+.f-bot{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;font-size:11.5px;line-height:1.7}
+
+@media (max-width:1000px){
+  .a11y,.nav2-in > .mi{display:none}
+  .hero-in{padding:40px 0 46px} .hero h1{font-size:34px}
+  h2.t{font-size:27px}
+  .pgrid{grid-template-columns:repeat(3,1fr)}
+  .tb-in{grid-template-columns:1fr 1fr}
+  .cards,.pub3,.inst-in,.f-grid,.f-util{grid-template-columns:1fr}
+  .band p{font-size:26px} section{padding:48px 0}
+  .acc a span{display:none}
+  .inst-in{gap:30px}
+}
+@media (max-width:560px){
+  .hero h1{font-size:28px} .pgrid{grid-template-columns:repeat(2,1fr)} .tb-in{grid-template-columns:1fr}
+  .demo-in{height:auto;padding:8px 0} .demo-sw{margin-left:0}
+}
+</style>
+</head>
+<body class="full">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="lk" viewBox="0 0 1046.67 383.05" fill="currentColor"><g><path  d="M131.79,23.94H20.19l169.1,335.17s31.78-20.43,42.75-54.85c10.97-34.43,10.21-60.53-8.7-97.98-18.91-37.45-91.55-182.34-91.55-182.34Z"/><circle  cx="299.57" cy="79.74" r="55.61"/></g><g><polygon  points="412.26 74.44 482.1 241.84 500.36 241.84 569.84 74.44 532.79 74.44 491.05 175.1 449.7 74.44 412.26 74.44"/><path  d="M654.41,71.79c-47.64,0-86.25,38.62-86.25,86.25s38.62,86.25,86.25,86.25,86.25-38.62,86.25-86.25-38.62-86.25-86.25-86.25ZM654.41,210.82c-29.14,0-52.77-23.63-52.77-52.77s23.63-52.77,52.77-52.77,52.77,23.63,52.77,52.77-23.63,52.77-52.77,52.77Z"/><path  d="M867.02,288.94c-19.33,0-34.99,15.67-34.99,34.99s15.67,34.99,34.99,34.99,34.99-15.67,34.99-34.99-15.67-34.99-34.99-34.99ZM867.02,345.34c-11.82,0-21.41-9.59-21.41-21.41s9.59-21.41,21.41-21.41,21.41,9.59,21.41,21.41-9.59,21.41-21.41,21.41Z"/><path  d="M887.05,188.95c-9.48,13.13-24.92,21.68-42.35,21.68-28.83,0-52.21-23.38-52.21-52.21s23.38-52.21,52.21-52.21c17.52,0,33.03,8.63,42.5,21.88l24.26-23.4c-15.69-20.04-40.02-32.9-67.33-32.9-47.32,0-85.68,38.62-85.68,86.25s38.36,86.25,85.68,86.25c27.35,0,51.71-12.9,67.39-32.98l-24.48-22.36Z"/><polygon  points="931.75 74.44 1025.9 74.44 1025.9 105.08 965 105.08 965 144.43 1019.01 144.43 1019.01 172.04 965 172.04 965 211.39 1025.9 211.39 1025.9 242.03 931.75 242.03 931.75 74.44"/><polygon  points="465.68 289.69 504.23 289.69 504.23 302.24 479.3 302.24 479.3 318.34 501.41 318.34 501.41 329.65 479.3 329.65 479.3 345.76 504.23 345.76 504.23 358.3 465.68 358.3 465.68 289.69"/><polygon  points="966.51 60.44 937.76 60.44 968.8 23.94 991.48 23.94 1022.29 60.44 993.59 60.44 980.02 47.51 966.51 60.44"/><path  d="M737.45,289.88h-6.81l-28.56,68.28h14.28l5.39-13.24h24.4l5.4,13.24h14.27l-28.37-68.28ZM725.91,334.14l8.04-18.29,7.66,18.29h-15.7Z"/><path  d="M998.1,289.88h-6.81l-28.56,68.28h14.28l5.39-13.24h24.4l5.4,13.24h14.27l-28.37-68.28ZM986.56,334.14l8.04-18.29,7.66,18.29h-15.7Z"/><path  d="M687.52,328.47s9.08-5.3,9.08-17.78c0-19.48-18.81-20.81-18.81-20.81h-26.02v68.28h13.12l-.06-26.67h9.08l12.48,26.48h14.75l-13.62-29.51ZM677.91,318.28h-13.09v-15.15h13.05s5.63,1.13,5.63,7.58-5.59,7.58-5.59,7.58Z"/><path  d="M948.16,328.47s9.08-5.3,9.08-17.78c0-19.48-18.81-20.81-18.81-20.81h-26.02v68.28h13.12l-.06-26.67h9.08l12.48,26.48h14.75l-13.62-29.51ZM938.56,318.28h-13.09v-15.15h13.05s5.63,1.13,5.63,7.58-5.59,7.58-5.59,7.58Z"/><path  d="M791.84,289.88h-18.8v68.28h18.8s31.55-1.65,31.55-33.17-25.78-35.11-31.55-35.11ZM791.9,346.25h-5.27v-44.64h5.27s18.06.38,18.06,22.41-18.06,22.23-18.06,22.23Z"/><path  d="M599.01,336.6s1.68,9.08,13.41,9.08,13.62-9.08,13.62-9.08v-46.72h13.55v46.72s-2.2,22.28-27.17,22.28-27.28-22.28-27.28-22.28v-46.72h13.87v46.72"/><path  d="M542.82,318.44h30.47v39.53h-12.46l-.8-3.78s-4.54,4.73-17.21,4.73-32.32-11.39-32.32-34.54,19.27-35.26,35.16-35.26,24.97,11.35,24.97,11.35l-9.08,10.21s-3.78-7.57-16.27-7.57-20.91,10.78-20.91,20.9,8.43,21.09,20.53,21.09,14.75-4.54,14.75-4.54v-10.97h-16.83v-11.16Z"/><path  d="M412.3,341.52l12.11-5.67s1.7,9.27,9.27,9.27c4.29,0,6.64-2.31,7.86-4.32s.92-4.64-.79-6.27c-1.36-1.3-3.63-2.79-7.45-4.17-9.46-3.4-17.4-9.84-17.4-20.05s7.57-21.18,20.43-21.18,17.59,10.4,18.91,14l-12.11,6.05s-.54-1.36-.58-1.44c-.92-1.93-2.28-3.77-4.37-4.53-3.03-1.09-6.16.36-7.71,3.08-1.21,2.13-1.54,5.18.31,7.06.66.67,1.59,1.34,2.89,1.88,4.54,1.89,21.94,6.81,21.94,22.32s-13.05,21.35-21.66,21.35-18.44-4.7-21.66-17.37Z"/></g></symbol></svg>
+<a class="skip" href="#main">Pular para o conteúdo</a>
+
+<!-- CONTROLE DE DEMONSTRAÇÃO — não faz parte do design do site -->
+<div class="demo">
+  <div class="wrap demo-in">
+    <b>Mockup</b>
+    <span>Alterne entre o catálogo do lançamento e o catálogo completo dos 13 produtos</span>
+    <div class="demo-sw" role="group" aria-label="Estado do catálogo">
+      <button id="d-launch" aria-pressed="false">Lançamento (1 produto)</button>
+      <button id="d-full" aria-pressed="true">Catálogo completo (13)</button>
+    </div>
+  </div>
+</div>
+
+<div class="a11y">
+  <div class="wrap a11y-in">
+    <a href="#main">Ir para o conteúdo</a>
+    <a href="#catalogo">Ir para o menu</a>
+    <div class="r">
+      <a href="#"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 013 3v6a3 3 0 01-6 0V5a3 3 0 013-3z"/><path d="M19 10v1a7 7 0 01-14 0v-1M12 18v4"/></svg> Libras</a>
+      <a href="#">Alto contraste</a>
+      <a href="#">Acessibilidade</a>
+    </div>
+  </div>
+</div>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="logo" href="#" aria-label="Você Seguradora, página inicial"><svg class="lockup" role="img" aria-label="Você Seguradora"><use href="#lk"/></svg></a>
+    <nav class="acc" aria-label="Acesso por público">
+      <a href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Área do</span> Cliente</a>
+      <a href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg><span>Área do</span> Corretor</a>
+      <a href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg><span>Acesso</span> Parceiros</a>
+    </nav>
+  </div>
+</header>
+
+<nav class="nav2" aria-label="Principal">
+  <div class="wrap nav2-in">
+    <div class="mi">
+      <button aria-expanded="false">Para Você <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="mega">
+        <div><h4>Vida e Acidentes</h4><ul>
+          <li><a href="#">Vida <span class="soon">EM BREVE</span></a></li>
+          <li><a href="#">Acidentes Pessoais <span class="soon">EM BREVE</span></a></li>
+        </ul></div>
+        <div><h4>Moradia</h4><ul>
+          <li><a href="#">Residencial</a></li>
+        </ul></div>
+        <div><h4>Mobilidade</h4><ul>
+          <li><a href="#">Franquia Auto <span class="soon">EM BREVE</span></a></li>
+        </ul></div>
+        <div><h4>RD Financeiro</h4><ul>
+          <li><a href="#">Pix Protegido <span class="soon">EM BREVE</span></a></li>
+          <li><a href="#">Cartão Protegido <span class="soon">EM BREVE</span></a></li>
+          <li><a href="#">Bolsa Protegida <span class="soon">EM BREVE</span></a></li>
+        </ul></div>
+        <div><h4>RD Equipamentos</h4><ul>
+          <li><a href="#">Celular <span class="soon">EM BREVE</span></a></li>
+          <li><a href="#">Notebook <span class="soon">EM BREVE</span></a></li>
+          <li><a href="#">Tablet <span class="soon">EM BREVE</span></a></li>
+        </ul></div>
+        <div><h4>Ajuda</h4><ul>
+          <li><a href="#">Dúvidas frequentes</a></li>
+          <li><a href="#">Condições gerais</a></li>
+          <li><a href="#">Avisar um sinistro</a></li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="mi">
+      <button aria-expanded="false">Para sua Empresa <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="mega">
+        <div><h4>Vida e Benefícios</h4><ul>
+          <li><a href="#">Vida em Grupo <span class="soon">EM BREVE</span></a></li>
+          <li><a href="#">Acidentes Pessoais Coletivo <span class="soon">EM BREVE</span></a></li>
+        </ul></div>
+        <div><h4>Crédito</h4><ul>
+          <li><a href="#">Prestamista <span class="soon">EM BREVE</span></a></li>
+        </ul></div>
+        <div><h4>Parcerias</h4><ul>
+          <li><a href="#">Seja um parceiro</a></li>
+          <li><a href="#">Canais digitais</a></li>
+        </ul></div>
+      </div>
+    </div>
+    <a href="#institucional">A Você Seguradora</a>
+    <div class="verbs">
+      <a class="btn btn-out-d btn-sm" href="#">Avisar sinistro</a>
+      <a class="btn btn-neon btn-sm" href="#catalogo">Cotar agora</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+  <!-- HERO: institucional. Não é funil de um produto — é "o que você quer proteger?" -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <img src="https://images.unsplash.com/photo-1506836467174-27f1042aa48c?w=1600&q=70&auto=format&fit=crop" alt="" fetchpriority="high">
+    </div>
+    <div class="wrap hero-in">
+      <span class="eyebrow">Você Seguradora</span>
+      <h1>Uma seguradora para quem <em>não para</em>.</h1>
+      <p class="sub">Seguros digitais para você e para a sua empresa. Cotação na hora, contratação pelo celular e atendimento que resolve — sem burocracia e sem letra miúda.</p>
+
+      <div class="picker">
+        <div class="pt">
+          <h2>O que você quer proteger?</h2>
+          <div class="tog" role="group" aria-label="Escolha o público">
+            <button id="t-voce" aria-pressed="true">Para Você</button>
+            <button id="t-emp" aria-pressed="false">Para sua Empresa</button>
+          </div>
+        </div>
+
+        <!-- Para Você: 10 produtos -->
+        <div class="pgrid" id="g-voce">
+          <a class="pk" href="#residencial"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10l9-7 9 7v10a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg><b>Residencial</b></a>
+          <a class="pk s" href="#"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 00-7.8 7.8l8.8 8.8 8.8-8.8a5.5 5.5 0 000-7.8z"/></svg><b>Vida</b></a>
+          <a class="pk s" href="#"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><b>Acidentes Pessoais</b></a>
+          <a class="pk s" href="#"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17h14M6 17l-2-6 2-4h12l2 4-2 6"/><circle cx="7.5" cy="18.5" r="1.5"/><circle cx="16.5" cy="18.5" r="1.5"/></svg><b>Franquia Auto</b></a>
+          <a class="pk s" href="#"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg><b>Celular</b></a>
+          <a class="pk s" href="#"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/></svg><b>Notebook</b></a>
+          <a class="pk s" href="#"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M12 18h.01"/></svg><b>Tablet</b></a>
+          <a class="pk s" href="#"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg><b>Pix Protegido</b></a>
+          <a class="pk s" href="#"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><b>Cartão Protegido</b></a>
+          <a class="pk s" href="#"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 01-8 0"/></svg><b>Bolsa Protegida</b></a>
+        </div>
+
+        <!-- Para sua Empresa: 3 produtos -->
+        <div class="pgrid" id="g-emp" hidden>
+          <a class="pk s" href="#"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg><b>Vida em Grupo</b></a>
+          <a class="pk s" href="#"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><b>AP Coletivo</b></a>
+          <a class="pk s" href="#"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg><b>Prestamista</b></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAIXA DE CONFIANÇA — o padrão da Azos, logo abaixo do hero -->
+  <div class="trustband">
+    <div class="wrap tb-in">
+      <div class="tb"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg><div><b>Regulada pela SUSEP</b><span>Produto em processo de registro</span></div></div>
+      <div class="tb"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><div><b>Assistência 24h</b><span>Todos os dias, inclusive feriado</span></div></div>
+      <div class="tb"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 15h6"/></svg><div><b>Sem letra miúda</b><span>Publicamos o que não cobrimos</span></div></div>
+      <div class="tb"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg><div><b>Sem fidelidade</b><span>Cancele quando quiser, sem multa</span></div></div>
+    </div>
+  </div>
+
+  <!-- CATÁLOGO POR FAMÍLIA — corrige a falha da Tokio (categorias sem página) -->
+  <section id="catalogo">
+    <div class="wrap">
+      <div class="sh">
+        <span class="eyebrow">Nossos seguros</span>
+        <h2 class="t">Treze seguros, organizados por como você vive</h2>
+        <p>Cada família tem a sua página, com comparação e explicação em português — não em jargão de apólice.</p>
+      </div>
+
+      <div class="fams">
+        <div>
+          <div class="fam-h"><h3>Moradia</h3><span>1 produto</span><a href="#">Ver a família <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+          <div class="cards">
+            <a class="pc hi" href="#" id="residencial">
+              <span class="flag">MAIS PROCURADO</span>
+              <div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10l9-7 9 7v10a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+              <h4>Residencial</h4><p>Incêndio, roubo, danos elétricos, vendaval e assistência 24h.</p>
+              <span class="go">Cotar em 2 min <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <div class="fam-h"><h3>Vida e Acidentes</h3><span>2 produtos</span><a href="#">Ver a família <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+          <div class="cards">
+            <a class="pc s" href="#"><div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 00-7.8 7.8l8.8 8.8 8.8-8.8a5.5 5.5 0 000-7.8z"/></svg></div><h4>Vida</h4><p>Proteção para quem você ama, sem exame médico.</p><span class="go">Simular <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+            <a class="pc s" href="#"><div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h4>Acidentes Pessoais</h4><p>Cobertura para imprevistos no dia a dia e no esporte.</p><span class="go">Simular <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+          </div>
+        </div>
+
+        <div>
+          <div class="fam-h"><h3>RD Equipamentos</h3><span>3 produtos</span><a href="#">Ver a família <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+          <div class="cards">
+            <a class="pc s" href="#"><div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div><h4>Celular</h4><p>Roubo e furto qualificado, com reembolso em dinheiro.</p><span class="go">Cotar <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+            <a class="pc s" href="#"><div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/></svg></div><h4>Notebook</h4><p>Seu trabalho protegido onde você estiver.</p><span class="go">Cotar <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+            <a class="pc s" href="#"><div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M12 18h.01"/></svg></div><h4>Tablet</h4><p>Proteção contra roubo e furto qualificado.</p><span class="go">Cotar <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+          </div>
+        </div>
+
+        <div>
+          <div class="fam-h"><h3>RD Financeiro</h3><span>3 produtos</span><a href="#">Ver a família <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+          <div class="cards">
+            <a class="pc s" href="#"><div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><h4>Pix Protegido</h4><p>Cobertura contra transferências sob coação.</p><span class="go">Cotar <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+            <a class="pc s" href="#"><div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div><h4>Cartão Protegido</h4><p>Compras indevidas após perda ou roubo.</p><span class="go">Cotar <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+            <a class="pc s" href="#"><div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 01-8 0"/></svg></div><h4>Bolsa Protegida</h4><p>Seus pertences cobertos em caso de roubo.</p><span class="go">Cotar <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+          </div>
+        </div>
+
+        <div>
+          <div class="fam-h"><h3>Mobilidade</h3><span>1 produto</span><a href="#">Ver a família <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+          <div class="cards">
+            <a class="pc s" href="#"><div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17h14M6 17l-2-6 2-4h12l2 4-2 6"/><circle cx="7.5" cy="18.5" r="1.5"/><circle cx="16.5" cy="18.5" r="1.5"/></svg></div><h4>Franquia Auto</h4><p>A gente paga a franquia do seu seguro de carro.</p><span class="go">Cotar <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+          </div>
+        </div>
+
+        <div>
+          <div class="fam-h"><h3>Para sua Empresa</h3><span>3 produtos</span><a href="#">Ver a família <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+          <div class="cards">
+            <a class="pc s" href="#"><div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/></svg></div><h4>Vida em Grupo</h4><p>Proteção coletiva para o seu time.</p><span class="go">Falar com a gente <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+            <a class="pc s" href="#"><div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h4>Acidentes Pessoais Coletivo</h4><p>Cobertura para os colaboradores da empresa.</p><span class="go">Falar com a gente <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+            <a class="pc s" href="#"><div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg></div><h4>Prestamista</h4><p>Quitação do crédito em caso de imprevisto.</p><span class="go">Falar com a gente <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 PÚBLICOS -->
+  <section class="pubs">
+    <div class="wrap">
+      <div class="sh">
+        <span class="eyebrow">Por onde você entra</span>
+        <h2 class="t">Cliente, corretor ou parceiro</h2>
+        <p>Três públicos, três caminhos — e nenhum deles passa por fila.</p>
+      </div>
+      <div class="pub3">
+        <a class="pub" href="#">
+          <div class="ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+          <h3>Sou cliente</h3><p>Apólices, segunda via, assistências e abertura de sinistro.</p>
+          <span class="go">Acessar minha área <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </a>
+        <a class="pub" href="#">
+          <div class="ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg></div>
+          <h3>Sou corretor</h3><p>Cote, emita e acompanhe a sua carteira e as suas comissões.</p>
+          <span class="go">Portal do Corretor <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </a>
+        <a class="pub" href="#">
+          <div class="ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg></div>
+          <h3>Sou parceiro</h3><p>Estipulantes, representantes, cooperativas e canais digitais.</p>
+          <span class="go">Quero ser parceiro <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTITUCIONAL: o objetivo nº1 do briefing -->
+  <section class="inst" id="institucional">
+    <div class="wrap inst-in">
+      <div class="inst-txt">
+        <span class="eyebrow">A Você Seguradora</span>
+        <h2 class="t">Solidez de seguradora. Jeito de insurtech.</h2>
+        <p class="big">Nascemos digitais, mas seguro é coisa séria: <b>por trás de cada apólice existe estrutura, capital e regulação</b>. A gente junta as duas coisas — a solidez que o mercado exige e a simplicidade que você espera.</p>
+        <p class="big">Sem corretor obrigatório, sem vistoria para começar e sem contrato que só se entende depois do sinistro.</p>
+        <a class="btn btn-out" href="#" style="margin-top:8px">Conheça a companhia</a>
+      </div>
+      <div class="backers">
+        <h3>Quem está por trás</h3>
+        <div class="bk"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg><div><b>SUSEP</b><span>Produto em processo de registro na Superintendência de Seguros Privados</span></div></div>
+        <div class="bk"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg><div><b>Estrutura própria</b><span>Motores de cálculo, emissão e sinistro em plataforma dedicada</span></div></div>
+        <div class="bk"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg><div><b>Transparência</b><span>Condições gerais e exclusões publicadas antes da contratação</span></div></div>
+        <div class="slot">
+          <b>◆ Slot a preencher</b>
+          <p>Aqui entram os ativos de credibilidade que a Azos usa e que ainda precisamos do cliente: <b>resseguradora</b>, <b>grupo controlador / investidores</b>, <b>seguradora emissora</b> e o <b>nº do processo SUSEP</b>. É o que faz uma marca nova ser levada a sério.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="band">
+    <div class="wrap">
+      <p>você em <b>movimento</b></p>
+      <a class="btn btn-neon" href="#catalogo">Escolher o meu seguro</a>
+    </div>
+  </div>
+
+  <div class="fraud">
+    <div class="wrap fraud-in">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4M12 16h.01"/></svg>
+      <p><b>A Você Seguradora nunca pede dados ou pagamento por WhatsApp.</b> Toda cobrança sai dos nossos canais oficiais. Recebeu algo estranho? Fale com o nosso atendimento antes de pagar.</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-util">
+      <a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012 4.2 2 2 0 014 2h3a2 2 0 012 1.7c.1.9.3 1.8.7 2.6a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.5-1.1a2 2 0 012.1-.5c.8.4 1.7.6 2.6.7a2 2 0 011.7 2z"/></svg> Central 24 horas</a>
+      <a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg> Segunda via da apólice</a>
+      <a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg> Avisar um sinistro</a>
+      <a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> Fale com a gente</a>
+    </div>
+    <div class="f-grid">
+      <div>
+        <a class="logo" href="#" style="margin-bottom:14px" aria-label="Você Seguradora"><svg class="lockup" role="img" aria-label="Você Seguradora"><use href="#lk"/></svg></a>
+        <p style="max-width:32ch">Uma seguradora digital para quem não para.<br><strong style="color:var(--neon)">você em movimento</strong></p>
+      </div>
+      <div><h4>Para Você</h4><ul><li><a href="#">Residencial</a></li><li><a href="#">Vida</a></li><li><a href="#">Acidentes Pessoais</a></li><li><a href="#">Franquia Auto</a></li><li><a href="#">RD Equipamentos</a></li><li><a href="#">RD Financeiro</a></li></ul></div>
+      <div><h4>Para sua Empresa</h4><ul><li><a href="#">Vida em Grupo</a></li><li><a href="#">AP Coletivo</a></li><li><a href="#">Prestamista</a></li><li><a href="#">Seja um parceiro</a></li></ul></div>
+      <div><h4>Institucional</h4><ul><li><a href="#">Quem somos</a></li><li><a href="#">Governança</a></li><li><a href="#">Condições gerais</a></li><li><a href="#">Privacidade e LGPD</a></li><li><a href="#">Ouvidoria</a></li><li><a href="#">Trabalhe conosco</a></li></ul></div>
+    </div>
+    <div class="f-bot">
+      <p>Você Seguradora S.A. · CNPJ 00.000.000/0001-00 · O registro do produto na SUSEP não implica incentivo ou recomendação à sua comercialização. Consulte as condições gerais antes de contratar.</p>
+      <p style="margin-top:8px">© 2026 Você Seguradora. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Toggle de DEMONSTRAÇÃO: alterna lançamento (1 produto) x catálogo completo (13)
+  var dl = document.getElementById('d-launch'), df = document.getElementById('d-full');
+  function setState(launch){
+    document.body.classList.toggle('launch', launch);
+    dl.setAttribute('aria-pressed', String(launch));
+    df.setAttribute('aria-pressed', String(!launch));
+  }
+  dl.addEventListener('click', function(){ setState(true); });
+  df.addEventListener('click', function(){ setState(false); });
+
+  // Toggle Para Você / Para sua Empresa no hero
+  var tv = document.getElementById('t-voce'), te = document.getElementById('t-emp'),
+      gv = document.getElementById('g-voce'), ge = document.getElementById('g-emp');
+  function seg(voce){
+    tv.setAttribute('aria-pressed', String(voce));
+    te.setAttribute('aria-pressed', String(!voce));
+    gv.hidden = !voce; ge.hidden = voce;
+  }
+  tv.addEventListener('click', function(){ seg(true); });
+  te.addEventListener('click', function(){ seg(false); });
+
+  // mega-menu por clique + teclado + Esc (a Tokio usa hover, ruim para toque e teclado)
+  document.querySelectorAll('.mi').forEach(function(mi){
+    var btn = mi.querySelector('button');
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var open = mi.classList.contains('open');
+      document.querySelectorAll('.mi').forEach(function(o){ o.classList.remove('open'); o.querySelector('button').setAttribute('aria-expanded','false'); });
+      if(!open){ mi.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+    });
+  });
+  document.addEventListener('click', function(){
+    document.querySelectorAll('.mi').forEach(function(o){ o.classList.remove('open'); o.querySelector('button').setAttribute('aria-expanded','false'); });
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') document.querySelectorAll('.mi').forEach(function(o){ o.classList.remove('open'); o.querySelector('button').setAttribute('aria-expanded','false'); });
+  });
+})();
+</script>
+</body>
+</html>

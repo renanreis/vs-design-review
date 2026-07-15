@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Você Seguradora — Sua casa protegida. Você livre pra ir.</title>
+<meta name="description" content="Seguro Residencial da Você Seguradora. Proteja sua casa e siga em movimento.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   V3 — MOVIMENTO  (aposta autoral)
+   TESE: todo seguro vende a casa parada — a foto de família, o
+   sossego. A Você é a única marca do setor cuja identidade é
+   MOVIMENTO (motocross no ar, ciclista, corrida, escalada — tudo
+   no manual, com a tagline "você em movimento").
+   O Residencial resolve essa tensão com uma frase do próprio deck
+   deles: "Segurança é liberdade para conquistar seus sonhos".
+   Ou seja: a casa protegida não é onde você para — é o que te
+   deixa ir.
+   SIGNATURE: a diagonal do "V" como estrutura + o eixo azul
+   #000060 (declarado no manual, usado zero vezes nos protótipos).
+   TIPOGRAFIA: Outfit (geométrica, substituta da Cera Pro) +
+   JetBrains Mono para dados — a marca patrocina automobilismo,
+   então número tem cara de telemetria, não de planilha.
+   ============================================================ */
+:root{
+  --navy:#002430; --neon:#46EF80; --teal:#279989; --teal-text:#1B7568; /* variante AA do verde p/ texto pequeno em fundo claro (4.69:1 no pior caso) */ --blue:#000060; --surf:#EAF4F7;
+  --ink:#0D1B21; --ink2:#4A6572; --line:#DCE6EA;
+  --font:"Outfit",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--ink);background:#fff;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit} img{max-width:100%;display:block}
+:focus-visible{outline:3px solid var(--neon);outline-offset:3px;border-radius:3px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-9999px;background:var(--neon);color:var(--navy);padding:12px 18px;z-index:99;font-weight:700}
+.skip:focus{left:0;top:0}
+.logo{display:flex;align-items:center;text-decoration:none;color:#fff;flex:none}
+.lockup{height:42px;width:calc(42px * 2.732);display:block;fill:currentColor}
+footer .lockup{height:46px;width:calc(46px * 2.732)}
+
+/* ---------- a diagonal: o motivo estrutural da marca ----------
+   O "V" tem um corte diagonal e o gradiente do manual tem estrias
+   de motion blur. Aqui a diagonal separa seções, corta imagens e
+   marca listas. Não é ornamento — é o desenho da marca. */
+.dg{transform:skewX(-11deg)}
+.dg > *{transform:skewX(11deg)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:700;font-size:15px;
+  padding:14px 26px;border:2px solid transparent;cursor:pointer;text-decoration:none;font-family:inherit;
+  transform:skewX(-11deg);transition:transform .16s,box-shadow .16s}
+.btn span{display:block;transform:skewX(11deg)}
+.btn:hover{transform:skewX(-11deg) translateX(4px)}
+.btn-neon{background:var(--neon);color:var(--navy);box-shadow:0 6px 20px rgba(70,239,128,.32)}
+.btn-out-d{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+.btn-out{background:transparent;color:var(--navy);border-color:rgba(0,36,48,.28)}
+.btn-sm{padding:10px 18px;font-size:13.5px}
+
+.mono{font-family:var(--mono);font-weight:500;letter-spacing:.02em}
+
+/* ---------- topo ---------- */
+.top{position:sticky;top:0;z-index:60;background:rgba(0,36,48,.94);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,.1)}
+.top-in{display:flex;align-items:center;gap:26px;height:76px}
+.nav{display:flex;gap:26px;margin-left:14px}
+.nav a{color:#CFE0E6;text-decoration:none;font-size:14px;font-weight:600;position:relative;padding:4px 0}
+.nav a::after{content:"";position:absolute;left:0;right:100%;bottom:0;height:2px;background:var(--neon);transition:right .22s}
+.nav a:hover::after{right:0}
+.top-r{margin-left:auto;display:flex;align-items:center;gap:8px}
+.seg{display:flex;gap:14px;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase}
+.seg a{color:#8FAABB;text-decoration:none}
+.seg a:hover{color:var(--neon)}
+.burger{display:none;background:none;border:0;color:#fff;padding:8px;cursor:pointer}
+
+/* ---------- HERO: o movimento é a tese ---------- */
+.hero{position:relative;background:var(--navy);color:#fff;overflow:hidden;min-height:640px;display:flex;align-items:center}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:70% 50%;
+  animation:drift 26s ease-in-out infinite alternate}
+@keyframes drift{from{transform:scale(1.06) translateX(0)}to{transform:scale(1.14) translateX(-24px)}}
+/* estrias de motion blur — o gradiente do manual */
+.hero-bg::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(104deg,#002430 0%,rgba(0,36,48,.95) 40%,rgba(10,75,70,.72) 66%,rgba(0,0,96,.6) 100%)}
+.streak{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.streak i{position:absolute;top:-30%;height:170%;width:2px;background:linear-gradient(180deg,transparent,rgba(70,239,128,.5),transparent);
+  transform:skewX(-11deg);animation:rush 3.4s linear infinite}
+.streak i:nth-child(1){left:18%;animation-delay:0s;opacity:.5}
+.streak i:nth-child(2){left:34%;animation-delay:.7s;opacity:.32;width:3px}
+.streak i:nth-child(3){left:57%;animation-delay:1.4s;opacity:.22}
+.streak i:nth-child(4){left:73%;animation-delay:2.1s;opacity:.4;width:1px}
+.streak i:nth-child(5){left:88%;animation-delay:2.8s;opacity:.28}
+@keyframes rush{0%{transform:skewX(-11deg) translateY(-40%)}100%{transform:skewX(-11deg) translateY(40%)}}
+.hero-in{position:relative;z-index:2;padding:80px 0}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:11.5px;font-weight:500;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--neon);margin-bottom:22px}
+.kicker::before{content:"";width:26px;height:2px;background:var(--neon);transform:skewX(-11deg)}
+.hero h1{font-size:74px;line-height:.98;font-weight:800;letter-spacing:-.042em;max-width:14ch;margin-bottom:22px}
+.hero h1 .go{color:var(--neon);display:inline-block}
+.hero .sub{font-size:19px;color:#B9D0D8;max-width:44ch;margin-bottom:32px;line-height:1.55}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.hero-note{font-family:var(--mono);font-size:11.5px;color:#7FA0AC;letter-spacing:.04em;margin-top:26px}
+
+/* ---------- a tese, dita ---------- */
+.thesis{background:#fff;padding:96px 0;position:relative}
+.thesis-in{max-width:900px;margin:0 auto;text-align:center}
+.thesis .lead{font-size:16px;color:var(--ink2);font-family:var(--mono);letter-spacing:.14em;text-transform:uppercase;
+  font-size:11.5px;font-weight:500;margin-bottom:26px}
+/* z-index:0 + position cria o contexto de empilhamento: sem isso o
+   grifo com z-index:-1 cai atrás do fundo branco da seção e some. */
+.thesis h2{font-size:46px;line-height:1.14;font-weight:300;letter-spacing:-.03em;color:var(--ink);
+  position:relative;z-index:0}
+.thesis h2 b{font-weight:800}
+.thesis h2 .hl{position:relative;font-weight:800;white-space:nowrap;display:inline-block}
+.thesis h2 .hl::after{content:"";position:absolute;left:-6px;right:-6px;bottom:6px;height:14px;background:var(--neon);
+  z-index:-1;transform:skewX(-11deg)}
+.thesis .sig{margin-top:30px;font-size:14px;color:var(--ink2);font-style:italic}
+
+/* ---------- telemetria: coberturas como dados ---------- */
+.tel{background:var(--navy);color:#fff;padding:88px 0;position:relative;overflow:hidden}
+.tel::after{content:"";position:absolute;right:-14%;top:-30%;width:52%;height:170%;
+  background:linear-gradient(160deg,rgba(70,239,128,.1),rgba(0,0,96,.6));transform:skewX(-11deg)}
+.tel-in{position:relative;z-index:1}
+.tel .kicker{color:var(--neon)}
+.tel h2{font-size:40px;font-weight:800;letter-spacing:-.03em;margin-bottom:12px;line-height:1.1}
+.tel .sub{font-size:17px;color:#9FBCC6;max-width:52ch;margin-bottom:40px}
+.rows{border-top:1px solid rgba(255,255,255,.14)}
+.row{display:grid;grid-template-columns:44px 1fr 148px 90px;gap:20px;align-items:center;
+  padding:19px 0;border-bottom:1px solid rgba(255,255,255,.1);transition:background .16s}
+.row:hover{background:rgba(70,239,128,.05)}
+.row .n{font-family:var(--mono);font-size:11.5px;color:#5E8494;letter-spacing:.06em}
+.row .nm{font-size:17px;font-weight:700}
+.row .nm em{font-style:normal;display:block;font-size:13px;font-weight:400;color:#8FAABB;margin-top:2px}
+.row .lim{font-family:var(--mono);font-size:14px;color:var(--neon);text-align:right;font-weight:500}
+.row .st{text-align:right}
+.pill{display:inline-block;font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.1em;
+  padding:4px 9px;transform:skewX(-11deg)}
+.pill span{display:block;transform:skewX(11deg)}
+.p-on{background:var(--neon);color:var(--navy)}
+.p-opt{background:rgba(255,255,255,.14);color:#CFE0E6}
+
+/* ---------- cotador diagonal ---------- */
+.calc{background:var(--surf);padding:88px 0}
+.calc-in{display:grid;grid-template-columns:1fr 460px;gap:56px;align-items:center}
+.calc .kicker{color:var(--teal-text)}
+.calc h2{font-size:40px;font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:14px}
+.calc .sub{font-size:17px;color:var(--ink2);max-width:44ch;margin-bottom:26px}
+.facts{display:flex;flex-direction:column;gap:14px}
+.fact{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;color:var(--ink2)}
+.fact::before{content:"";width:9px;height:9px;background:var(--teal);flex:none;margin-top:7px;transform:skewX(-11deg)}
+.fact b{color:var(--ink)}
+.card{background:#fff;padding:30px;box-shadow:0 24px 60px rgba(0,36,48,.14);position:relative}
+.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--neon)}
+.card h3{font-size:19px;font-weight:800;letter-spacing:-.01em;margin-bottom:3px}
+.card .cs{font-family:var(--mono);font-size:11px;color:var(--ink2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:22px}
+.fld{margin-bottom:18px}
+.fld label{display:block;font-family:var(--mono);font-size:10.5px;font-weight:700;color:var(--ink2);
+  margin-bottom:7px;letter-spacing:.1em;text-transform:uppercase}
+.fld input[type=text]{width:100%;border:0;border-bottom:2px solid var(--line);padding:9px 2px;font-size:19px;
+  font-family:var(--mono);font-weight:500;color:var(--navy);background:none}
+.fld input[type=text]:focus{border-bottom-color:var(--teal-text);outline:none}
+.lmiv{font-family:var(--mono);font-size:27px;font-weight:700;color:var(--navy);letter-spacing:-.02em;margin-bottom:6px}
+.rng{width:100%;accent-color:var(--teal-text)}
+.rr{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10.5px;color:var(--ink2);margin-top:5px}
+.out{background:var(--navy);padding:20px;margin:22px 0;position:relative;overflow:hidden}
+.out::after{content:"";position:absolute;right:-30%;top:-50%;width:60%;height:200%;
+  background:linear-gradient(160deg,rgba(70,239,128,.12),rgba(0,0,96,.5));transform:skewX(-11deg)}
+.out-in{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:flex-end}
+.out .l{font-family:var(--mono);font-size:10px;color:#8FAABB;letter-spacing:.1em;text-transform:uppercase}
+.out .d{font-family:var(--mono);font-size:10.5px;color:#7FA0AC;margin-top:4px}
+.out .v{font-family:var(--mono);font-size:32px;font-weight:700;color:var(--neon);letter-spacing:-.03em;line-height:1}
+.out .v small{font-size:13px;color:#B9D0D8}
+.card .btn{width:100%}
+.card .note{font-family:var(--mono);font-size:9.5px;color:var(--ink2);text-align:center;margin-top:12px;letter-spacing:.04em}
+
+/* ---------- 3 públicos, na diagonal ---------- */
+.pubs{padding:88px 0}
+.pubs .kicker{color:var(--teal-text)}
+.pubs h2{font-size:40px;font-weight:800;letter-spacing:-.03em;margin-bottom:36px;line-height:1.1}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pub{position:relative;overflow:hidden;background:var(--navy);color:#fff;padding:34px 28px;text-decoration:none;
+  display:block;min-height:210px;transition:transform .18s}
+.pub:hover{transform:translateY(-5px)}
+.pub::after{content:"";position:absolute;right:-40%;top:-40%;width:80%;height:180%;transform:skewX(-11deg);transition:right .28s}
+.pub:hover::after{right:-24%}
+.pub.a::after{background:linear-gradient(160deg,rgba(70,239,128,.22),rgba(70,239,128,.03))}
+.pub.b::after{background:linear-gradient(160deg,rgba(39,153,137,.4),rgba(39,153,137,.05))}
+.pub.c::after{background:linear-gradient(160deg,rgba(0,0,96,.85),rgba(0,0,96,.2))}
+.pub-in{position:relative;z-index:1}
+.pub .n{font-family:var(--mono);font-size:10.5px;color:var(--neon);letter-spacing:.14em;margin-bottom:14px}
+.pub h3{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.pub p{font-size:14px;color:#9FBCC6;margin-bottom:18px;max-width:26ch}
+.pub .go{font-family:var(--mono);font-size:11.5px;font-weight:700;color:var(--neon);letter-spacing:.06em;
+  display:flex;align-items:center;gap:7px}
+
+/* ---------- faixa final ---------- */
+.band{background:linear-gradient(112deg,#0a4b46 0%,#002430 42%,#001238 74%,#000060 100%);
+  color:#fff;padding:96px 0;text-align:center;position:relative;overflow:hidden}
+.band .streak i{animation-duration:5s}
+.band-in{position:relative;z-index:2}
+.band p{font-size:56px;font-weight:300;letter-spacing:-.035em;line-height:1.1}
+.band p b{font-weight:800;color:var(--neon)}
+.band .btn{margin-top:34px}
+
+/* ---------- confiança ---------- */
+.trust{padding:76px 0;background:#fff}
+.trust .kicker{color:var(--teal-text)}
+.trust h2{font-size:34px;font-weight:800;letter-spacing:-.03em;margin-bottom:30px}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.t{border-left:4px solid var(--teal);padding:4px 0 4px 18px}
+.t b{display:block;font-size:16px;font-weight:800;margin-bottom:5px}
+.t p{font-size:13.5px;color:var(--ink2)}
+.fraud{margin-top:26px;border-left:4px solid var(--neon);background:var(--surf);padding:18px 20px;
+  display:flex;gap:12px;align-items:flex-start}
+.fraud svg{color:var(--teal-text);flex:none;margin-top:2px}
+.fraud p{font-size:14px;color:var(--ink2)}
+.fraud b{color:var(--ink)}
+
+/* ---------- rodapé ---------- */
+footer{background:#001A24;color:#8FAABB;padding:56px 0 26px;font-size:13.5px}
+.f-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:32px;margin-bottom:32px}
+footer h4{color:#fff;font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;margin-bottom:14px}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+footer a{text-decoration:none}
+footer a:hover{color:var(--neon)}
+.f-bot{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;font-family:var(--mono);font-size:10.5px;line-height:1.8}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,.hero-bg img,.streak i{animation:none!important;transition:none!important}
+}
+@media (max-width:1000px){
+  .nav,.seg{display:none} .burger{display:block}
+  .hero{min-height:auto} .hero-in{padding:52px 0}
+  .hero h1{font-size:42px;max-width:none}
+  .thesis{padding:56px 0} .thesis h2{font-size:27px}
+  .tel,.calc,.pubs{padding:52px 0}
+  .tel h2,.calc h2,.pubs h2{font-size:28px}
+  .calc-in{grid-template-columns:1fr;gap:32px}
+  .row{grid-template-columns:32px 1fr 96px;gap:12px}
+  .row .st{display:none}
+  .pgrid,.tgrid,.f-grid{grid-template-columns:1fr}
+  .band{padding:56px 0} .band p{font-size:32px}
+}
+@media (max-width:560px){ .hero h1{font-size:33px} .band p{font-size:26px} .thesis h2{font-size:23px} }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="lk" viewBox="0 0 1046.67 383.05" fill="currentColor"><g><path  d="M131.79,23.94H20.19l169.1,335.17s31.78-20.43,42.75-54.85c10.97-34.43,10.21-60.53-8.7-97.98-18.91-37.45-91.55-182.34-91.55-182.34Z"/><circle  cx="299.57" cy="79.74" r="55.61"/></g><g><polygon  points="412.26 74.44 482.1 241.84 500.36 241.84 569.84 74.44 532.79 74.44 491.05 175.1 449.7 74.44 412.26 74.44"/><path  d="M654.41,71.79c-47.64,0-86.25,38.62-86.25,86.25s38.62,86.25,86.25,86.25,86.25-38.62,86.25-86.25-38.62-86.25-86.25-86.25ZM654.41,210.82c-29.14,0-52.77-23.63-52.77-52.77s23.63-52.77,52.77-52.77,52.77,23.63,52.77,52.77-23.63,52.77-52.77,52.77Z"/><path  d="M867.02,288.94c-19.33,0-34.99,15.67-34.99,34.99s15.67,34.99,34.99,34.99,34.99-15.67,34.99-34.99-15.67-34.99-34.99-34.99ZM867.02,345.34c-11.82,0-21.41-9.59-21.41-21.41s9.59-21.41,21.41-21.41,21.41,9.59,21.41,21.41-9.59,21.41-21.41,21.41Z"/><path  d="M887.05,188.95c-9.48,13.13-24.92,21.68-42.35,21.68-28.83,0-52.21-23.38-52.21-52.21s23.38-52.21,52.21-52.21c17.52,0,33.03,8.63,42.5,21.88l24.26-23.4c-15.69-20.04-40.02-32.9-67.33-32.9-47.32,0-85.68,38.62-85.68,86.25s38.36,86.25,85.68,86.25c27.35,0,51.71-12.9,67.39-32.98l-24.48-22.36Z"/><polygon  points="931.75 74.44 1025.9 74.44 1025.9 105.08 965 105.08 965 144.43 1019.01 144.43 1019.01 172.04 965 172.04 965 211.39 1025.9 211.39 1025.9 242.03 931.75 242.03 931.75 74.44"/><polygon  points="465.68 289.69 504.23 289.69 504.23 302.24 479.3 302.24 479.3 318.34 501.41 318.34 501.41 329.65 479.3 329.65 479.3 345.76 504.23 345.76 504.23 358.3 465.68 358.3 465.68 289.69"/><polygon  points="966.51 60.44 937.76 60.44 968.8 23.94 991.48 23.94 1022.29 60.44 993.59 60.44 980.02 47.51 966.51 60.44"/><path  d="M737.45,289.88h-6.81l-28.56,68.28h14.28l5.39-13.24h24.4l5.4,13.24h14.27l-28.37-68.28ZM725.91,334.14l8.04-18.29,7.66,18.29h-15.7Z"/><path  d="M998.1,289.88h-6.81l-28.56,68.28h14.28l5.39-13.24h24.4l5.4,13.24h14.27l-28.37-68.28ZM986.56,334.14l8.04-18.29,7.66,18.29h-15.7Z"/><path  d="M687.52,328.47s9.08-5.3,9.08-17.78c0-19.48-18.81-20.81-18.81-20.81h-26.02v68.28h13.12l-.06-26.67h9.08l12.48,26.48h14.75l-13.62-29.51ZM677.91,318.28h-13.09v-15.15h13.05s5.63,1.13,5.63,7.58-5.59,7.58-5.59,7.58Z"/><path  d="M948.16,328.47s9.08-5.3,9.08-17.78c0-19.48-18.81-20.81-18.81-20.81h-26.02v68.28h13.12l-.06-26.67h9.08l12.48,26.48h14.75l-13.62-29.51ZM938.56,318.28h-13.09v-15.15h13.05s5.63,1.13,5.63,7.58-5.59,7.58-5.59,7.58Z"/><path  d="M791.84,289.88h-18.8v68.28h18.8s31.55-1.65,31.55-33.17-25.78-35.11-31.55-35.11ZM791.9,346.25h-5.27v-44.64h5.27s18.06.38,18.06,22.41-18.06,22.23-18.06,22.23Z"/><path  d="M599.01,336.6s1.68,9.08,13.41,9.08,13.62-9.08,13.62-9.08v-46.72h13.55v46.72s-2.2,22.28-27.17,22.28-27.28-22.28-27.28-22.28v-46.72h13.87v46.72"/><path  d="M542.82,318.44h30.47v39.53h-12.46l-.8-3.78s-4.54,4.73-17.21,4.73-32.32-11.39-32.32-34.54,19.27-35.26,35.16-35.26,24.97,11.35,24.97,11.35l-9.08,10.21s-3.78-7.57-16.27-7.57-20.91,10.78-20.91,20.9,8.43,21.09,20.53,21.09,14.75-4.54,14.75-4.54v-10.97h-16.83v-11.16Z"/><path  d="M412.3,341.52l12.11-5.67s1.7,9.27,9.27,9.27c4.29,0,6.64-2.31,7.86-4.32s.92-4.64-.79-6.27c-1.36-1.3-3.63-2.79-7.45-4.17-9.46-3.4-17.4-9.84-17.4-20.05s7.57-21.18,20.43-21.18,17.59,10.4,18.91,14l-12.11,6.05s-.54-1.36-.58-1.44c-.92-1.93-2.28-3.77-4.37-4.53-3.03-1.09-6.16.36-7.71,3.08-1.21,2.13-1.54,5.18.31,7.06.66.67,1.59,1.34,2.89,1.88,4.54,1.89,21.94,6.81,21.94,22.32s-13.05,21.35-21.66,21.35-18.44-4.7-21.66-17.37Z"/></g></symbol></svg>
+<a class="skip" href="#main">Pular para o conteúdo</a>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="logo" href="#" aria-label="Você Seguradora, página inicial"><svg class="lockup" role="img" aria-label="Você Seguradora"><use href="#lk"/></svg></a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#tese">Por que a Você</a>
+      <a href="#coberturas">Coberturas</a>
+      <a href="#cotar">Cotar</a>
+      <a href="#publicos">Corretores</a>
+    </nav>
+    <div class="top-r">
+      <nav class="seg" aria-label="Acesso por público">
+        <a href="#">Cliente</a><a href="#">Corretor</a><a href="#">Parceiro</a>
+      </nav>
+      <a class="btn btn-neon btn-sm" href="#cotar"><span>Cotar agora</span></a>
+      <button class="burger" aria-label="Abrir menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <!-- HERO — a tese: movimento -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <img src="https://images.unsplash.com/photo-1588979355313-6711a095465f?w=1600&q=70&auto=format&fit=crop" alt="" fetchpriority="high">
+    </div>
+    <div class="streak" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="wrap hero-in">
+      <span class="kicker">Seguro Residencial</span>
+      <h1>Sua casa protegida. <span class="go">Você livre pra ir.</span></h1>
+      <p class="sub">Todo seguro vende o sossego de ficar. A gente protege o seu lar justamente para você não precisar pensar nele.</p>
+      <div class="hero-cta">
+        <a class="btn btn-neon" href="#cotar"><span>Cotar em 2 minutos</span></a>
+        <a class="btn btn-out-d" href="#tese"><span>Por que a Você</span></a>
+      </div>
+      <p class="hero-note mono">SEM VISTORIA · SEM FIDELIDADE · SEM CORRETOR</p>
+    </div>
+  </section>
+
+  <!-- A TESE, DITA EM VOZ ALTA -->
+  <section class="thesis" id="tese">
+    <div class="wrap thesis-in">
+      <p class="lead mono">A nossa ideia de seguro</p>
+      <h2>Seguro não devia ser sobre <b>medo</b>.<br>Devia ser sobre <span class="hl">liberdade</span>.</h2>
+      <p class="sig">— é o que está escrito na nossa marca: <strong>você em movimento</strong></p>
+    </div>
+  </section>
+
+  <!-- COBERTURAS COMO TELEMETRIA -->
+  <section class="tel" id="coberturas">
+    <div class="wrap tel-in">
+      <span class="kicker">Coberturas</span>
+      <h2>Você monta. A gente cobre.</h2>
+      <p class="sub">Ligue só o que faz sentido pra sua casa. O preço se move junto — sem pacote fechado, sem pagar pelo que você não usa.</p>
+      <div class="rows">
+        <div class="row"><span class="n mono">01</span><div class="nm">Incêndio, raio e explosão<em>A base de toda apólice</em></div><span class="lim mono">R$ 300.000</span><span class="st"><span class="pill p-on"><span>BÁSICA</span></span></span></div>
+        <div class="row"><span class="n mono">02</span><div class="nm">Danos elétricos<em>Geladeira, TV e ar queimados na oscilação</em></div><span class="lim mono">R$ 15.000</span><span class="st"><span class="pill p-on"><span>INCLUSA</span></span></span></div>
+        <div class="row"><span class="n mono">03</span><div class="nm">Roubo e furto qualificado<em>Com vestígio de arrombamento</em></div><span class="lim mono">R$ 30.000</span><span class="st"><span class="pill p-on"><span>INCLUSA</span></span></span></div>
+        <div class="row"><span class="n mono">04</span><div class="nm">Vendaval e granizo<em>Inclusive o telhado</em></div><span class="lim mono">R$ 60.000</span><span class="st"><span class="pill p-opt"><span>OPCIONAL</span></span></span></div>
+        <div class="row"><span class="n mono">05</span><div class="nm">Responsabilidade civil familiar<em>Se algo seu atingir o vizinho</em></div><span class="lim mono">R$ 50.000</span><span class="st"><span class="pill p-opt"><span>OPCIONAL</span></span></span></div>
+        <div class="row"><span class="n mono">06</span><div class="nm">Assistência 24h<em>Chaveiro, encanador, eletricista, vidraceiro</em></div><span class="lim mono">ilimitada</span><span class="st"><span class="pill p-on"><span>INCLUSA</span></span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COTADOR -->
+  <section class="calc" id="cotar">
+    <div class="wrap calc-in">
+      <div>
+        <span class="kicker">Simulação</span>
+        <h2>O preço primeiro. Seus dados depois.</h2>
+        <p class="sub">A gente não pede CPF pra te mostrar um número. Você vê quanto custa, decide, e só então a gente se apresenta.</p>
+        <div class="facts">
+          <div class="fact"><div><b>Sem vistoria.</b> Nenhuma visita técnica pra começar.</div></div>
+          <div class="fact"><div><b>Sem fidelidade.</b> Cancele quando quiser, sem multa.</div></div>
+          <div class="fact"><div><b>IOF na conta.</b> O valor que aparece é o que você paga.</div></div>
+          <div class="fact"><div><b>Apólice na hora.</b> Chega por e-mail assim que o pagamento cai.</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Quanto custa proteger sua casa?</h3>
+        <p class="cs mono">Passo 2 de 5 · sem cadastro</p>
+        <div class="fld">
+          <label for="cep">CEP do imóvel</label>
+          <input type="text" id="cep" inputmode="numeric" placeholder="00000-000" maxlength="9">
+        </div>
+        <div class="fld">
+          <label for="lmi">Quanto vale proteger</label>
+          <div class="lmiv" id="lmiv">R$ 300.000</div>
+          <input class="rng" id="lmi" type="range" min="50000" max="1000000" step="10000" value="300000" aria-describedby="rr">
+          <div class="rr" id="rr"><span>R$ 50 MIL</span><span>R$ 1 MILHÃO</span></div>
+        </div>
+        <div class="out">
+          <div class="out-in">
+            <div><div class="l">Sua mensalidade</div><div class="d">IOF 7,38% incluso</div></div>
+            <div class="v" id="pv">R$ 131<small>/mês</small></div>
+          </div>
+        </div>
+        <a class="btn btn-neon" href="#"><span>Continuar</span></a>
+        <p class="note mono">VALOR ESTIMADO · O PREÇO FINAL SAI NA COTAÇÃO</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 PÚBLICOS -->
+  <section class="pubs" id="publicos">
+    <div class="wrap">
+      <span class="kicker">Por onde você entra</span>
+      <h2>Três portas. Nenhuma fila.</h2>
+      <div class="pgrid">
+        <a class="pub a" href="#"><div class="pub-in">
+          <div class="n mono">01 / CLIENTE</div>
+          <h3>Já sou segurado</h3>
+          <p>Apólices, segunda via, assistências e sinistro.</p>
+          <span class="go">ACESSAR MINHA ÁREA <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div></a>
+        <a class="pub b" href="#"><div class="pub-in">
+          <div class="n mono">02 / CORRETOR</div>
+          <h3>Quero vender Você</h3>
+          <p>Cote, emita e acompanhe carteira e comissão.</p>
+          <span class="go">PORTAL DO CORRETOR <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div></a>
+        <a class="pub c" href="#"><div class="pub-in">
+          <div class="n mono">03 / PARCEIRO</div>
+          <h3>Quero distribuir</h3>
+          <p>Estipulantes, cooperativas e canais digitais.</p>
+          <span class="go">SER PARCEIRO <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAIXA FINAL -->
+  <div class="band">
+    <div class="streak" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="wrap band-in">
+      <p>você em <b>movimento</b></p>
+      <a class="btn btn-neon" href="#cotar"><span>Começar minha cotação</span></a>
+    </div>
+  </div>
+
+  <!-- CONFIANÇA -->
+  <section class="trust">
+    <div class="wrap">
+      <span class="kicker">Confiança</span>
+      <h2>Seguro é promessa. A nossa é por escrito.</h2>
+      <div class="tgrid">
+        <div class="t"><b>Registro SUSEP</b><p>Produto em processo de registro na Superintendência de Seguros Privados.</p></div>
+        <div class="t"><b>O que não cobrimos</b><p>As exclusões ficam junto das coberturas, antes de você pagar.</p></div>
+        <div class="t"><b>Condições gerais</b><p>O contrato completo disponível desde a cotação.</p></div>
+      </div>
+      <div class="fraud">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4M12 16h.01"/></svg>
+        <p><b>A Você Seguradora nunca pede dados ou pagamento por WhatsApp.</b> Toda cobrança sai dos canais oficiais.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <a class="logo" href="#" style="margin-bottom:16px" aria-label="Você Seguradora"><svg class="lockup" role="img" aria-label="Você Seguradora"><use href="#lk"/></svg></a>
+        <p style="max-width:30ch">Uma seguradora digital para quem não para.<br><strong style="color:var(--neon)">você em movimento</strong></p>
+      </div>
+      <div><h4>Seguros</h4><ul><li><a href="#coberturas">Residencial</a></li><li><a href="#">Vida</a></li><li><a href="#">RD Equipamentos</a></li><li><a href="#">RD Financeiro</a></li></ul></div>
+      <div><h4>Canais</h4><ul><li><a href="#">Área do Cliente</a></li><li><a href="#">Portal do Corretor</a></li><li><a href="#">Área do Parceiro</a></li><li><a href="#">Seja um corretor</a></li></ul></div>
+      <div><h4>Ajuda</h4><ul><li><a href="#">Central 24h</a></li><li><a href="#">Avisar sinistro</a></li><li><a href="#">Condições gerais</a></li><li><a href="#">Privacidade e LGPD</a></li></ul></div>
+    </div>
+    <div class="f-bot">
+      <p>VOCÊ SEGURADORA S.A. · CNPJ 00.000.000/0001-00 · PRODUTO EM PROCESSO DE REGISTRO NA SUSEP · © 2026</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Preço simulado só para o protótipo. Em produção vem do POST /quote da Safe2Go.
+   Coeficiente do plano base derivado do protótipo do cliente. */
+(function(){
+  var IOF = 1.0738, TX = 0.00487;
+  var lmi = document.getElementById('lmi'), lmiv = document.getElementById('lmiv'), pv = document.getElementById('pv');
+  var brl = function(n){ return n.toLocaleString('pt-BR',{maximumFractionDigits:0}); };
+  function upd(){
+    lmiv.textContent = 'R$ ' + brl(+lmi.value);
+    pv.innerHTML = 'R$ ' + brl(+lmi.value * TX / 12 * IOF) + '<small>/mês</small>';
+  }
+  lmi.addEventListener('input', upd); upd();
+  var cep = document.getElementById('cep');
+  cep.addEventListener('input', function(){
+    var d = cep.value.replace(/\D/g,'').slice(0,8);
+    cep.value = d.length > 5 ? d.slice(0,5) + '-' + d.slice(5) : d;
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Você Seguradora — Seguro Residencial 100% digital</title>
+<meta name="description" content="Seguro Residencial da Você Seguradora. Cote em 2 minutos e contrate online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   V2 — TOKIO × PIER  (direção pedida pelo CEO)
+   DA TOKIO MARINE: barra de acessibilidade, 3 acessos persistentes,
+     mega-menu por família de produto, toggle Para Você / Para Empresa,
+     selos de desconto, banner antifraude, rodapé utilitário denso.
+   DA PIER: menu de 3 verbos (Cotar/Acionar/Minha Conta), preço antes
+     do dado de contato, "O QUE NÃO COBRIMOS" explícito, números de
+     impacto, tom coloquial, FAQ.
+   NA PALETA DA VOCÊ — sem verde Tokio, sem magenta Pier.
+   Fonte: Outfit (substituta livre da Cera Pro).
+   ============================================================ */
+:root{
+  --navy:#002430; --neon:#46EF80; --teal:#279989; --teal-text:#1B7568; /* variante AA do verde p/ texto pequeno em fundo claro (4.69:1 no pior caso) */ --blue:#000060; --surf:#EAF4F7;
+  --ink:#0D1B21; --ink2:#4A6572; --line:#DCE6EA;
+  --font:"Outfit",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --sh:0 8px 26px rgba(0,36,48,.09);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{font-family:var(--font);color:var(--ink);background:#fff;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{max-width:100%;display:block}
+:focus-visible{outline:3px solid var(--neon);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1220px;margin:0 auto;padding:0 22px}
+.skip{position:absolute;left:-9999px;background:var(--neon);color:var(--navy);padding:12px 18px;z-index:99;font-weight:700}
+.skip:focus{left:0;top:0}
+.logo{display:flex;align-items:center;text-decoration:none;color:#fff;flex:none}
+.lockup{height:42px;width:calc(42px * 2.732);display:block;fill:currentColor}
+footer .lockup{height:46px;width:calc(46px * 2.732)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:15px;
+  border-radius:8px;padding:13px 22px;border:2px solid transparent;cursor:pointer;text-decoration:none;
+  font-family:inherit;transition:transform .14s,box-shadow .14s}
+.btn:hover{transform:translateY(-1px)}
+/* CTA canônico: neon + navy = 10.75:1 */
+.btn-neon{background:var(--neon);color:var(--navy);box-shadow:0 5px 16px rgba(70,239,128,.3)}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-out{background:#fff;color:var(--navy);border-color:var(--line)}
+.btn-out-d{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+.btn-sm{padding:9px 16px;font-size:13.5px;border-radius:6px}
+
+/* ---------- barra de acessibilidade (TOKIO) ---------- */
+.a11y{background:#001A24;color:#9FBCC6;font-size:11.5px}
+.a11y-in{display:flex;align-items:center;gap:18px;height:34px}
+.a11y a{text-decoration:none;display:flex;align-items:center;gap:5px}
+.a11y a:hover{color:var(--neon)}
+.a11y .r{margin-left:auto;display:flex;gap:16px}
+
+/* ---------- topo ---------- */
+.top{position:sticky;top:0;z-index:60;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.1)}
+.top-in{display:flex;align-items:center;gap:20px;height:74px}
+/* 3 acessos persistentes (TOKIO) */
+.acc{margin-left:auto;display:flex;gap:7px}
+.acc a{display:flex;align-items:center;gap:6px;color:#CFE0E6;text-decoration:none;font-size:12.5px;font-weight:600;
+  padding:7px 12px;border:1px solid rgba(255,255,255,.2);border-radius:6px}
+.acc a:hover{border-color:var(--neon);color:#fff}
+.acc svg{color:var(--neon);flex:none}
+
+/* nav + mega-menu (TOKIO) / verbos (PIER) */
+.nav2{background:#00303F}
+.nav2-in{display:flex;align-items:center;gap:2px;height:50px}
+.nav2 > .wrap > a, .mi > button{background:none;border:0;font-family:inherit;color:#DCE9ED;font-size:14.5px;
+  font-weight:600;padding:0 16px;height:50px;cursor:pointer;display:flex;align-items:center;gap:6px;text-decoration:none}
+.mi{position:relative}
+.mi > button:hover,.mi.open > button{background:rgba(255,255,255,.08);color:#fff}
+.mi > button svg{transition:transform .18s}
+.mi.open > button svg{transform:rotate(180deg)}
+.mega{position:absolute;top:50px;left:0;background:#fff;border-radius:0 0 12px 12px;box-shadow:0 20px 50px rgba(0,0,0,.24);
+  padding:24px;display:none;grid-template-columns:repeat(3,200px);gap:22px;z-index:70}
+.mi.open .mega{display:grid}
+.mega h4{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-text);
+  margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.mega ul{list-style:none;display:flex;flex-direction:column;gap:2px}
+.mega a{display:block;font-size:14px;color:var(--ink);text-decoration:none;padding:6px 8px;border-radius:6px}
+.mega a:hover{background:var(--surf);color:var(--teal-text)}
+.mega .soon{color:#8FAABB;font-size:11px;font-weight:700;margin-left:5px}
+.nav2 .verbs{margin-left:auto;display:flex;gap:8px;align-items:center}
+
+/* ---------- hero + toggle (TOKIO) ---------- */
+.hero{position:relative;background:var(--navy);color:#fff;overflow:hidden}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:65% 45%}
+.hero-bg::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(96deg,#002430 0%,rgba(0,36,48,.97) 36%,rgba(10,75,70,.84) 62%,rgba(0,0,96,.68) 100%)}
+.hero::after{content:"";position:absolute;right:-16%;top:-40%;width:56%;height:190%;
+  background:linear-gradient(160deg,rgba(70,239,128,.15),rgba(0,0,96,.4));transform:skewX(-14deg)}
+.hero-in{position:relative;z-index:2;padding:34px 0 64px;display:grid;grid-template-columns:1.06fr .94fr;gap:50px;align-items:center}
+.tog{display:inline-flex;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:4px;margin-bottom:22px}
+.tog button{background:none;border:0;font-family:inherit;color:#B9D0D8;font-size:13.5px;font-weight:700;
+  padding:8px 20px;border-radius:999px;cursor:pointer}
+.tog button[aria-pressed="true"]{background:var(--neon);color:var(--navy)}
+.hero h1{font-size:47px;line-height:1.07;font-weight:800;letter-spacing:-.03em;margin-bottom:14px}
+.hero h1 em{font-style:normal;color:var(--neon)}
+.hero .sub{font-size:17.5px;color:#B9D0D8;max-width:45ch;margin-bottom:24px}
+.hero-cta{display:flex;gap:11px;flex-wrap:wrap;margin-bottom:24px}
+.selo{display:inline-flex;align-items:center;gap:7px;background:var(--neon);color:var(--navy);font-size:12px;
+  font-weight:800;padding:5px 12px;border-radius:999px;letter-spacing:.02em;margin-bottom:14px}
+.hchips{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:#9FBCC6}
+.hchips span{display:flex;align-items:center;gap:6px}
+.hchips svg{color:var(--neon);flex:none}
+
+/* cotador — preço antes do contato (PIER) */
+.q{background:#fff;border-radius:14px;padding:24px;color:var(--ink);box-shadow:0 26px 60px rgba(0,0,0,.32)}
+.q-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.q-top h2{font-size:18px;font-weight:800;letter-spacing:-.01em}
+.q-step{font-size:11px;font-weight:800;color:var(--teal-text);letter-spacing:.08em}
+.bar{height:5px;background:var(--line);border-radius:99px;overflow:hidden;margin-bottom:18px}
+.bar i{display:block;height:100%;width:40%;background:var(--neon);border-radius:99px}
+.fld{margin-bottom:14px}
+.fld label{display:block;font-size:12px;font-weight:800;color:var(--ink2);margin-bottom:6px;letter-spacing:.04em;text-transform:uppercase}
+.fld input{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:12px 13px;font-size:15px;font-family:inherit}
+.fld input:focus{border-color:var(--teal-text);outline:none;box-shadow:0 0 0 3px rgba(39,153,137,.15)}
+.lmiv{font-size:23px;font-weight:800;color:var(--navy);letter-spacing:-.02em}
+.rng{width:100%;accent-color:var(--teal-text)}
+.rr{display:flex;justify-content:space-between;font-size:11.5px;color:var(--ink2);margin-top:4px}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:14px 0}
+.plan{border:1.5px solid var(--line);border-radius:9px;padding:10px 8px;text-align:center;cursor:pointer;background:#fff}
+.plan[aria-pressed="true"]{border-color:var(--navy);background:var(--surf)}
+.plan b{display:block;font-size:12.5px;font-weight:800}
+.plan span{font-size:11px;color:var(--ink2)}
+.pbox{background:var(--navy);border-radius:11px;padding:15px 16px;display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}
+.pbox .l{font-size:11.5px;color:#9FBCC6;font-weight:600}
+.pbox .d{font-size:11px;color:#7FA0AC;margin-top:2px}
+.pbox .v{font-size:29px;font-weight:800;color:var(--neon);letter-spacing:-.03em;line-height:1}
+.pbox .v small{font-size:13px;color:#B9D0D8;font-weight:600}
+.q .btn{width:100%}
+.q-note{font-size:11px;color:var(--ink2);text-align:center;margin-top:10px}
+
+/* ---------- números de impacto (PIER) ---------- */
+.nums{background:var(--surf);padding:34px 0}
+.nums-in{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+.nums b{display:block;font-size:32px;font-weight:800;color:var(--navy);letter-spacing:-.03em;line-height:1.1}
+.nums span{font-size:12.5px;color:var(--ink2);font-weight:600}
+
+section{padding:70px 0}
+.sh{max-width:58ch;margin-bottom:32px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--teal-text);margin-bottom:12px}
+.eyebrow::before{content:"";width:18px;height:2px;background:var(--teal)}
+h2.t{font-size:35px;font-weight:800;letter-spacing:-.028em;line-height:1.13;margin-bottom:10px}
+.sh p{font-size:16.5px;color:var(--ink2)}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:1fr 1fr}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+
+/* famílias de produto — a Tokio não tem página de família; nós temos */
+.fam{border:1.5px solid var(--line);border-radius:12px;padding:20px;text-decoration:none;display:block;background:#fff;position:relative}
+.fam:hover{border-color:var(--teal-text);box-shadow:var(--sh)}
+.fam .ico{width:40px;height:40px;border-radius:9px;background:var(--surf);color:var(--teal-text);display:grid;place-items:center;margin-bottom:12px}
+.fam.on .ico{background:var(--navy);color:var(--neon)}
+.fam h3{font-size:17px;font-weight:800;margin-bottom:4px}
+.fam p{font-size:13.5px;color:var(--ink2);margin-bottom:10px}
+.fam .lk{font-size:13px;font-weight:800;color:var(--teal-text);display:flex;align-items:center;gap:5px}
+.badge{position:absolute;top:14px;right:14px;font-size:10px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:3px 8px;border-radius:99px}
+.b-on{background:var(--neon);color:var(--navy)}
+.b-off{background:var(--surf);color:var(--ink2)}
+
+/* cobre / não cobre (PIER) */
+.dual{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.box{border-radius:14px;padding:26px}
+.box-y{background:var(--surf);border:1.5px solid rgba(39,153,137,.3)}
+.box-n{background:#fff;border:1.5px solid var(--line)}
+.box h3{font-size:19px;font-weight:800;margin-bottom:16px;display:flex;align-items:center;gap:9px}
+.box-y h3 svg{color:var(--teal-text)}
+.box-n h3 svg{color:#B44C3C}
+.box ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.box li{font-size:14.5px;display:flex;gap:9px;align-items:flex-start;line-height:1.45}
+.box li svg{flex:none;margin-top:3px}
+.box-y li svg{color:var(--teal-text)}
+.box-n li svg{color:#B44C3C}
+.box li b{font-weight:700}
+.box li span{color:var(--ink2)}
+
+/* faixa tagline */
+.band{background:linear-gradient(118deg,#0a4b46 0%,#002430 44%,#001238 76%,#000060 100%);color:#fff;text-align:center;padding:58px 0}
+.band p{font-size:38px;font-weight:300;letter-spacing:-.02em}
+.band p b{font-weight:800;color:var(--neon)}
+
+/* FAQ (PIER) */
+.faq{border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{padding:19px 0;font-size:16.5px;font-weight:700;cursor:pointer;list-style:none;display:flex;
+  justify-content:space-between;gap:16px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:22px;font-weight:400;color:var(--teal-text);flex:none}
+.faq details[open] summary::after{content:"−"}
+.faq p{padding:0 0 19px;font-size:15px;color:var(--ink2);max-width:78ch}
+
+/* antifraude (TOKIO) */
+.fraud{background:var(--navy);color:#fff;padding:22px 0}
+.fraud-in{display:flex;gap:13px;align-items:flex-start;max-width:900px}
+.fraud svg{color:var(--neon);flex:none;margin-top:2px}
+.fraud p{font-size:14.5px;color:#B9D0D8}
+.fraud b{color:#fff}
+
+/* rodapé utilitário denso (TOKIO) */
+footer{background:#001A24;color:#9FBCC6;padding:52px 0 26px;font-size:13.5px}
+.f-util{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding-bottom:32px;margin-bottom:32px;
+  border-bottom:1px solid rgba(255,255,255,.1)}
+.f-util a{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  border-radius:9px;padding:14px;text-decoration:none;font-weight:700;color:#fff;font-size:14px}
+.f-util a:hover{border-color:var(--neon)}
+.f-util svg{color:var(--neon);flex:none}
+.f-grid{display:grid;grid-template-columns:1.3fr repeat(3,1fr);gap:30px;margin-bottom:30px}
+footer h4{color:#fff;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:13px}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+footer a{text-decoration:none}
+footer a:hover{color:var(--neon)}
+.f-bot{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;font-size:11.5px;line-height:1.7}
+
+@media (max-width:1000px){
+  .a11y,.nav2-in > .mi{display:none}
+  .hero-in{grid-template-columns:1fr;gap:32px;padding:26px 0 48px}
+  .hero h1{font-size:34px}
+  h2.t{font-size:27px}
+  .g3,.g4,.dual,.f-grid,.f-util{grid-template-columns:1fr}
+  .nums-in{grid-template-columns:1fr 1fr;gap:24px}
+  .band p{font-size:25px}
+  section{padding:48px 0}
+  .acc a span{display:none}
+}
+@media (max-width:560px){ .hero h1{font-size:29px} .plans{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="lk" viewBox="0 0 1046.67 383.05" fill="currentColor"><g><path  d="M131.79,23.94H20.19l169.1,335.17s31.78-20.43,42.75-54.85c10.97-34.43,10.21-60.53-8.7-97.98-18.91-37.45-91.55-182.34-91.55-182.34Z"/><circle  cx="299.57" cy="79.74" r="55.61"/></g><g><polygon  points="412.26 74.44 482.1 241.84 500.36 241.84 569.84 74.44 532.79 74.44 491.05 175.1 449.7 74.44 412.26 74.44"/><path  d="M654.41,71.79c-47.64,0-86.25,38.62-86.25,86.25s38.62,86.25,86.25,86.25,86.25-38.62,86.25-86.25-38.62-86.25-86.25-86.25ZM654.41,210.82c-29.14,0-52.77-23.63-52.77-52.77s23.63-52.77,52.77-52.77,52.77,23.63,52.77,52.77-23.63,52.77-52.77,52.77Z"/><path  d="M867.02,288.94c-19.33,0-34.99,15.67-34.99,34.99s15.67,34.99,34.99,34.99,34.99-15.67,34.99-34.99-15.67-34.99-34.99-34.99ZM867.02,345.34c-11.82,0-21.41-9.59-21.41-21.41s9.59-21.41,21.41-21.41,21.41,9.59,21.41,21.41-9.59,21.41-21.41,21.41Z"/><path  d="M887.05,188.95c-9.48,13.13-24.92,21.68-42.35,21.68-28.83,0-52.21-23.38-52.21-52.21s23.38-52.21,52.21-52.21c17.52,0,33.03,8.63,42.5,21.88l24.26-23.4c-15.69-20.04-40.02-32.9-67.33-32.9-47.32,0-85.68,38.62-85.68,86.25s38.36,86.25,85.68,86.25c27.35,0,51.71-12.9,67.39-32.98l-24.48-22.36Z"/><polygon  points="931.75 74.44 1025.9 74.44 1025.9 105.08 965 105.08 965 144.43 1019.01 144.43 1019.01 172.04 965 172.04 965 211.39 1025.9 211.39 1025.9 242.03 931.75 242.03 931.75 74.44"/><polygon  points="465.68 289.69 504.23 289.69 504.23 302.24 479.3 302.24 479.3 318.34 501.41 318.34 501.41 329.65 479.3 329.65 479.3 345.76 504.23 345.76 504.23 358.3 465.68 358.3 465.68 289.69"/><polygon  points="966.51 60.44 937.76 60.44 968.8 23.94 991.48 23.94 1022.29 60.44 993.59 60.44 980.02 47.51 966.51 60.44"/><path  d="M737.45,289.88h-6.81l-28.56,68.28h14.28l5.39-13.24h24.4l5.4,13.24h14.27l-28.37-68.28ZM725.91,334.14l8.04-18.29,7.66,18.29h-15.7Z"/><path  d="M998.1,289.88h-6.81l-28.56,68.28h14.28l5.39-13.24h24.4l5.4,13.24h14.27l-28.37-68.28ZM986.56,334.14l8.04-18.29,7.66,18.29h-15.7Z"/><path  d="M687.52,328.47s9.08-5.3,9.08-17.78c0-19.48-18.81-20.81-18.81-20.81h-26.02v68.28h13.12l-.06-26.67h9.08l12.48,26.48h14.75l-13.62-29.51ZM677.91,318.28h-13.09v-15.15h13.05s5.63,1.13,5.63,7.58-5.59,7.58-5.59,7.58Z"/><path  d="M948.16,328.47s9.08-5.3,9.08-17.78c0-19.48-18.81-20.81-18.81-20.81h-26.02v68.28h13.12l-.06-26.67h9.08l12.48,26.48h14.75l-13.62-29.51ZM938.56,318.28h-13.09v-15.15h13.05s5.63,1.13,5.63,7.58-5.59,7.58-5.59,7.58Z"/><path  d="M791.84,289.88h-18.8v68.28h18.8s31.55-1.65,31.55-33.17-25.78-35.11-31.55-35.11ZM791.9,346.25h-5.27v-44.64h5.27s18.06.38,18.06,22.41-18.06,22.23-18.06,22.23Z"/><path  d="M599.01,336.6s1.68,9.08,13.41,9.08,13.62-9.08,13.62-9.08v-46.72h13.55v46.72s-2.2,22.28-27.17,22.28-27.28-22.28-27.28-22.28v-46.72h13.87v46.72"/><path  d="M542.82,318.44h30.47v39.53h-12.46l-.8-3.78s-4.54,4.73-17.21,4.73-32.32-11.39-32.32-34.54,19.27-35.26,35.16-35.26,24.97,11.35,24.97,11.35l-9.08,10.21s-3.78-7.57-16.27-7.57-20.91,10.78-20.91,20.9,8.43,21.09,20.53,21.09,14.75-4.54,14.75-4.54v-10.97h-16.83v-11.16Z"/><path  d="M412.3,341.52l12.11-5.67s1.7,9.27,9.27,9.27c4.29,0,6.64-2.31,7.86-4.32s.92-4.64-.79-6.27c-1.36-1.3-3.63-2.79-7.45-4.17-9.46-3.4-17.4-9.84-17.4-20.05s7.57-21.18,20.43-21.18,17.59,10.4,18.91,14l-12.11,6.05s-.54-1.36-.58-1.44c-.92-1.93-2.28-3.77-4.37-4.53-3.03-1.09-6.16.36-7.71,3.08-1.21,2.13-1.54,5.18.31,7.06.66.67,1.59,1.34,2.89,1.88,4.54,1.89,21.94,6.81,21.94,22.32s-13.05,21.35-21.66,21.35-18.44-4.7-21.66-17.37Z"/></g></symbol></svg>
+<a class="skip" href="#main">Pular para o conteúdo</a>
+
+<!-- BARRA DE ACESSIBILIDADE — prática forte da Tokio Marine -->
+<div class="a11y">
+  <div class="wrap a11y-in">
+    <a href="#main">Ir para o conteúdo</a>
+    <a href="#produtos">Ir para o menu</a>
+    <div class="r">
+      <a href="#"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 013 3v6a3 3 0 01-6 0V5a3 3 0 013-3z"/><path d="M19 10v1a7 7 0 01-14 0v-1M12 18v4"/></svg> Libras</a>
+      <a href="#">Alto contraste</a>
+      <a href="#">Acessibilidade</a>
+    </div>
+  </div>
+</div>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="logo" href="#" aria-label="Você Seguradora, página inicial"><svg class="lockup" role="img" aria-label="Você Seguradora"><use href="#lk"/></svg></a>
+    <!-- 3 acessos persistentes — padrão Tokio Marine -->
+    <nav class="acc" aria-label="Acesso por público">
+      <a href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Área do</span> Cliente</a>
+      <a href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M20 8v6M23 11h-6"/></svg><span>Área do</span> Corretor</a>
+      <a href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg><span>Acesso</span> Parceiros</a>
+    </nav>
+  </div>
+</header>
+
+<!-- NAV COM MEGA-MENU (Tokio) + VERBOS (Pier) -->
+<nav class="nav2" aria-label="Principal">
+  <div class="wrap nav2-in">
+    <div class="mi" id="mi1">
+      <button aria-expanded="false" aria-controls="mega1">Para Você <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="mega" id="mega1">
+        <div><h4>Moradia</h4><ul>
+          <li><a href="#residencial">Residencial</a></li>
+          <li><a href="#">Aluguel Garantido<span class="soon">EM BREVE</span></a></li>
+        </ul></div>
+        <div><h4>Pessoas</h4><ul>
+          <li><a href="#">Vida<span class="soon">EM BREVE</span></a></li>
+          <li><a href="#">Acidentes Pessoais<span class="soon">EM BREVE</span></a></li>
+        </ul></div>
+        <div><h4>RD Equipamentos</h4><ul>
+          <li><a href="#">Celular<span class="soon">EM BREVE</span></a></li>
+          <li><a href="#">Notebook<span class="soon">EM BREVE</span></a></li>
+          <li><a href="#">Tablet<span class="soon">EM BREVE</span></a></li>
+        </ul></div>
+        <div><h4>RD Financeiro</h4><ul>
+          <li><a href="#">Pix Protegido<span class="soon">EM BREVE</span></a></li>
+          <li><a href="#">Cartão Protegido<span class="soon">EM BREVE</span></a></li>
+          <li><a href="#">Bolsa Protegida<span class="soon">EM BREVE</span></a></li>
+        </ul></div>
+        <div><h4>Mobilidade</h4><ul>
+          <li><a href="#">Franquia Auto<span class="soon">EM BREVE</span></a></li>
+        </ul></div>
+        <div><h4>Ajuda</h4><ul>
+          <li><a href="#faq">Dúvidas frequentes</a></li>
+          <li><a href="#">Condições gerais</a></li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="mi" id="mi2">
+      <button aria-expanded="false" aria-controls="mega2">Para sua Empresa <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="mega" id="mega2">
+        <div><h4>Vida e Benefícios</h4><ul>
+          <li><a href="#">Vida em Grupo<span class="soon">EM BREVE</span></a></li>
+          <li><a href="#">AP Coletivo<span class="soon">EM BREVE</span></a></li>
+        </ul></div>
+        <div><h4>Crédito</h4><ul>
+          <li><a href="#">Prestamista<span class="soon">EM BREVE</span></a></li>
+        </ul></div>
+        <div><h4>Parcerias</h4><ul>
+          <li><a href="#">Seja um parceiro</a></li>
+          <li><a href="#">Canais digitais</a></li>
+        </ul></div>
+      </div>
+    </div>
+    <a href="#">A Você Seguradora</a>
+    <!-- 3 verbos sempre visíveis — padrão Pier -->
+    <div class="verbs">
+      <a class="btn btn-out-d btn-sm" href="#">Acionar seguro</a>
+      <a class="btn btn-neon btn-sm" href="#cotar">Cotar agora</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+  <section class="hero" id="cotar">
+    <div class="hero-bg" aria-hidden="true">
+      <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=1600&q=70&auto=format&fit=crop" alt="">
+    </div>
+    <div class="wrap hero-in">
+      <div>
+        <!-- toggle Para Você / Para Empresa — padrão Tokio -->
+        <div class="tog" role="group" aria-label="Escolha o público">
+          <button aria-pressed="true">Para Você</button>
+          <button aria-pressed="false">Para sua Empresa</button>
+        </div>
+        <span class="selo">🎉 20% OFF no primeiro ano</span>
+        <h1>Seu lar protegido em <em>2 minutos</em>. Sem burocracia.</h1>
+        <p class="sub">Cotação na hora, sem corretor e sem vistoria. Você escolhe as coberturas, vê o preço mudar e contrata pelo celular.</p>
+        <div class="hero-cta">
+          <a class="btn btn-neon" href="#cotar">Cotar meu Residencial</a>
+          <a class="btn btn-out-d" href="#cobre">O que está coberto</a>
+        </div>
+        <div class="hchips">
+          <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Sem vistoria</span>
+          <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Sem fidelidade</span>
+          <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Assistência 24h</span>
+        </div>
+      </div>
+
+      <!-- COTADOR: preço antes do CPF — a lição central da Pier -->
+      <div class="q">
+        <div class="q-top"><h2>Simule agora</h2><span class="q-step">PASSO 2 DE 5</span></div>
+        <div class="bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" aria-label="Progresso da cotação"><i></i></div>
+        <div class="fld">
+          <label for="cep">CEP do imóvel</label>
+          <input id="cep" inputmode="numeric" placeholder="00000-000" maxlength="9">
+        </div>
+        <div class="fld">
+          <label for="lmi">Quanto vale proteger</label>
+          <div class="lmiv" id="lmiv">R$ 300.000</div>
+          <input class="rng" id="lmi" type="range" min="50000" max="1000000" step="10000" value="300000" aria-describedby="rr">
+          <div class="rr" id="rr"><span>R$ 50 mil</span><span>R$ 1 milhão</span></div>
+        </div>
+        <div class="plans" role="group" aria-label="Escolha o plano">
+          <button class="plan" data-tx="0.00487" aria-pressed="true"><b>Essence</b><span>o básico</span></button>
+          <button class="plan" data-tx="0.00586" aria-pressed="false"><b>Gold</b><span>o completo</span></button>
+          <button class="plan" data-tx="0.00832" aria-pressed="false"><b>Prime</b><span>tudo</span></button>
+        </div>
+        <div class="pbox">
+          <div><div class="l">Sua mensalidade</div><div class="d">Já com IOF de 7,38%</div></div>
+          <div class="v" id="pv">R$ 131<small>/mês</small></div>
+        </div>
+        <a class="btn btn-neon" href="#">Continuar</a>
+        <p class="q-note">Só pedimos seu CPF na hora de emitir. Aqui, só o preço.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NÚMEROS DE IMPACTO — padrão Pier (aqui, honestos para uma seguradora nova) -->
+  <div class="nums">
+    <div class="wrap nums-in">
+      <div><b>2 min</b><span>para cotar e contratar</span></div>
+      <div><b>24h</b><span>assistência todos os dias</span></div>
+      <div><b>0</b><span>vistorias para começar</span></div>
+      <div><b>13</b><span>produtos ao longo do ano</span></div>
+    </div>
+  </div>
+
+  <!-- FAMÍLIAS DE PRODUTO — corrige a falha da Tokio (categorias em "#") -->
+  <section id="produtos">
+    <div class="wrap">
+      <div class="sh">
+        <span class="eyebrow">Nossos seguros</span>
+        <h2 class="t">Organizados por como você vive</h2>
+        <p>Cada família tem a sua página, com comparação e explicação. Nada de menu que não leva a lugar nenhum.</p>
+      </div>
+      <div class="grid g4">
+        <a class="fam on" href="#residencial">
+          <span class="badge b-on">Disponível</span>
+          <div class="ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10l9-7 9 7v10a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <h3>Moradia</h3><p>Residencial e Aluguel Garantido.</p>
+          <span class="lk">Ver a família <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </a>
+        <a class="fam" href="#">
+          <span class="badge b-off">Em breve</span>
+          <div class="ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 00-7.8 7.8l8.8 8.8 8.8-8.8a5.5 5.5 0 000-7.8z"/></svg></div>
+          <h3>Pessoas</h3><p>Vida e Acidentes Pessoais.</p>
+          <span class="lk">Ver a família <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </a>
+        <a class="fam" href="#">
+          <span class="badge b-off">Em breve</span>
+          <div class="ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
+          <h3>Equipamentos</h3><p>Celular, notebook e tablet.</p>
+          <span class="lk">Ver a família <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </a>
+        <a class="fam" href="#">
+          <span class="badge b-off">Em breve</span>
+          <div class="ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
+          <h3>Financeiro</h3><p>Pix, Cartão e Bolsa Protegida.</p>
+          <span class="lk">Ver a família <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COBRE / NÃO COBRE — a prática mais forte da Pier -->
+  <section id="cobre" style="background:var(--surf)">
+    <div class="wrap">
+      <div class="sh">
+        <span class="eyebrow">Sem letra miúda</span>
+        <h2 class="t">O que a gente cobre — e o que não cobre</h2>
+        <p>Dizer o que não está coberto antes de você pagar é o mínimo. A gente prefere te contar agora do que no sinistro.</p>
+      </div>
+      <div class="dual">
+        <div class="box box-y">
+          <h3><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg> Está coberto</h3>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg><div><b>Incêndio, raio e explosão</b> <span>— a cobertura básica de toda apólice.</span></div></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg><div><b>Danos elétricos</b> <span>— geladeira, TV e ar queimados por oscilação.</span></div></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg><div><b>Roubo e furto qualificado</b> <span>— quando há vestígio de arrombamento.</span></div></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg><div><b>Vendaval, granizo e queda de árvore</b> <span>— inclusive o telhado.</span></div></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg><div><b>Responsabilidade civil familiar</b> <span>— se algo seu causar dano a um vizinho.</span></div></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg><div><b>Assistência 24h</b> <span>— chaveiro, encanador, eletricista e vidraceiro.</span></div></li>
+          </ul>
+        </div>
+        <div class="box box-n">
+          <h3><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg> Não está coberto</h3>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg><div><b>Furto simples</b> <span>— sem vestígio de arrombamento.</span></div></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg><div><b>Desgaste natural</b> <span>— infiltração antiga, mofo e falta de manutenção.</span></div></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg><div><b>Joias e dinheiro em espécie</b> <span>— salvo cobertura contratada à parte.</span></div></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg><div><b>Imóvel desocupado</b> <span>— acima de 90 dias seguidos.</span></div></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg><div><b>Obras e reformas estruturais</b> <span>— durante a execução.</span></div></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg><div><b>Dolo</b> <span>— dano causado de propósito pelo segurado.</span></div></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="band"><div class="wrap"><p>você em <b>movimento</b></p></div></div>
+
+  <!-- FAQ — padrão Pier -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="sh">
+        <span class="eyebrow">Dúvidas</span>
+        <h2 class="t">O que todo mundo pergunta</h2>
+      </div>
+      <div class="faq">
+        <details open><summary>Preciso de vistoria para contratar?</summary><p>Não. Você cota e contrata pelo site, sem visita técnica. Em imóveis de valor muito alto podemos pedir uma vistoria depois — e avisamos antes de você pagar.</p></details>
+        <details><summary>Qual a diferença entre roubo e furto qualificado?</summary><p>Roubo é quando há violência ou ameaça a alguém. Furto qualificado é sem violência a pessoas, mas com vestígio de arrombamento — porta forçada, janela quebrada. Já o furto simples, sem nenhum vestígio, não é coberto.</p></details>
+        <details><summary>Como funciona o pagamento?</summary><p>Pix, boleto ou cartão em até 12 vezes. A primeira parcela confirma a apólice, que chega por e-mail e fica na sua área do cliente.</p></details>
+        <details><summary>Posso cancelar quando quiser?</summary><p>Pode. Sem multa e sem fidelidade. Se cancelar nos 7 primeiros dias, devolvemos tudo.</p></details>
+        <details><summary>O que é a importância segurada?</summary><p>É o valor máximo que pagamos num sinistro — o teto da sua proteção. Considere quanto custaria repor o que você tem em casa, não o preço do imóvel.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANTIFRAUDE — prática forte da Tokio -->
+  <div class="fraud">
+    <div class="wrap fraud-in">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4M12 16h.01"/></svg>
+      <p><b>A Você Seguradora nunca pede dados ou pagamento por WhatsApp.</b> Toda cobrança sai dos nossos canais oficiais. Recebeu algo estranho? Fale com o nosso atendimento antes de pagar.</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <!-- rodapé utilitário — padrão Tokio -->
+    <div class="f-util">
+      <a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012 4.2 2 2 0 014 2h3a2 2 0 012 1.7c.1.9.3 1.8.7 2.6a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.5-1.1a2 2 0 012.1-.5c.8.4 1.7.6 2.6.7a2 2 0 011.7 2z"/></svg> Central 24 horas</a>
+      <a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg> Segunda via da apólice</a>
+      <a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg> Avisar um sinistro</a>
+      <a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> Fale com a gente</a>
+    </div>
+    <div class="f-grid">
+      <div>
+        <a class="logo" href="#" style="margin-bottom:14px" aria-label="Você Seguradora"><svg class="lockup" role="img" aria-label="Você Seguradora"><use href="#lk"/></svg></a>
+        <p style="max-width:32ch">Uma seguradora digital para quem não para.<br><strong style="color:var(--neon)">você em movimento</strong></p>
+      </div>
+      <div><h4>Para Você</h4><ul><li><a href="#residencial">Residencial</a></li><li><a href="#">Vida</a></li><li><a href="#">RD Equipamentos</a></li><li><a href="#">RD Financeiro</a></li><li><a href="#">Franquia Auto</a></li></ul></div>
+      <div><h4>Canais</h4><ul><li><a href="#">Área do Cliente</a></li><li><a href="#">Portal do Corretor</a></li><li><a href="#">Área do Parceiro</a></li><li><a href="#">Seja um corretor</a></li><li><a href="#">Seja um parceiro</a></li></ul></div>
+      <div><h4>Institucional</h4><ul><li><a href="#">Quem somos</a></li><li><a href="#">Governança</a></li><li><a href="#">Condições gerais</a></li><li><a href="#">Privacidade e LGPD</a></li><li><a href="#">Ouvidoria</a></li></ul></div>
+    </div>
+    <div class="f-bot">
+      <p>Você Seguradora S.A. · CNPJ 00.000.000/0001-00 · Produto em processo de registro na SUSEP. O registro do produto na SUSEP não implica incentivo ou recomendação à sua comercialização. Consulte as condições gerais antes de contratar.</p>
+      <p style="margin-top:8px">© 2026 Você Seguradora. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Preço simulado só para o protótipo de UI.
+   Em produção vem do POST /quote da Safe2Go — nunca do navegador.
+   Coeficientes derivados do protótipo do cliente (reproduzem 130,63 / 157,32 / 223,44 em LMI 300k). */
+(function(){
+  var IOF = 1.0738, tx = 0.00487;
+  var lmi = document.getElementById('lmi'), lmiv = document.getElementById('lmiv'), pv = document.getElementById('pv');
+  var brl = function(n){ return n.toLocaleString('pt-BR',{maximumFractionDigits:0}); };
+  function upd(){
+    lmiv.textContent = 'R$ ' + brl(+lmi.value);
+    pv.innerHTML = 'R$ ' + brl(+lmi.value * tx / 12 * IOF) + '<small>/mês</small>';
+  }
+  lmi.addEventListener('input', upd);
+  document.querySelectorAll('.plan').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('.plan').forEach(function(o){ o.setAttribute('aria-pressed','false'); });
+      b.setAttribute('aria-pressed','true'); tx = parseFloat(b.dataset.tx); upd();
+    });
+  });
+  upd();
+
+  var cep = document.getElementById('cep');
+  cep.addEventListener('input', function(){
+    var d = cep.value.replace(/\D/g,'').slice(0,8);
+    cep.value = d.length > 5 ? d.slice(0,5) + '-' + d.slice(5) : d;
+  });
+
+  // toggle Para Você / Para Empresa
+  document.querySelectorAll('.tog button').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('.tog button').forEach(function(o){ o.setAttribute('aria-pressed','false'); });
+      b.setAttribute('aria-pressed','true');
+    });
+  });
+
+  // mega-menu: clique + teclado + Esc (a Tokio usa hover, que é ruim para toque e teclado)
+  document.querySelectorAll('.mi').forEach(function(mi){
+    var btn = mi.querySelector('button');
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var open = mi.classList.contains('open');
+      document.querySelectorAll('.mi').forEach(function(o){ o.classList.remove('open'); o.querySelector('button').setAttribute('aria-expanded','false'); });
+      if(!open){ mi.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+    });
+  });
+  document.addEventListener('click', function(){
+    document.querySelectorAll('.mi').forEach(function(o){ o.classList.remove('open'); o.querySelector('button').setAttribute('aria-expanded','false'); });
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') document.querySelectorAll('.mi').forEach(function(o){ o.classList.remove('open'); o.querySelector('button').setAttribute('aria-expanded','false'); });
+  });
+})();
+</script>
+</body>
+</html>

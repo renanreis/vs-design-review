@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Você Seguradora — avaliação de design da home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@800;900&family=Red+Hat+Mono:wght@500&family=Red+Hat+Text:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#002430;--neon:#46EF80;--teal:#279989;--blue:#000060}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Red Hat Text",-apple-system,sans-serif;color:#fff;line-height:1.55;
+  background:linear-gradient(112deg,#0a4f46 0%,#04333a 34%,var(--navy) 62%,#001040 88%,var(--blue) 100%);
+  background-attachment:fixed;min-height:100vh}
+.wrap{max-width:880px;margin:0 auto;padding:72px 24px 96px}
+h1{font-family:"Red Hat Display",sans-serif;font-weight:900;font-size:clamp(2rem,5.5vw,3.2rem);
+  letter-spacing:-.035em;line-height:1.05;margin:0 0 10px}
+h1 b{color:var(--neon)}
+.eyebrow{font-family:"Red Hat Mono",monospace;font-size:.72rem;text-transform:uppercase;
+  letter-spacing:.18em;color:var(--neon);margin:0 0 14px}
+.lead{color:rgba(255,255,255,.78);max-width:56ch;margin:0 0 52px}
+ul{margin:0;padding:0;list-style:none}
+.lane{display:flex;align-items:baseline;gap:18px;padding:22px 12px;color:#fff;text-decoration:none;
+  border-top:1px solid rgba(255,255,255,.16);position:relative;overflow:hidden}
+li:last-child .lane{border-bottom:1px solid rgba(255,255,255,.16)}
+.lane::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(70,239,128,.16) 45%,transparent);
+  transform:translateX(-105%) skewX(-12deg);transition:transform .45s ease}
+.lane:hover::before{transform:translateX(105%) skewX(-12deg)}
+.n{font-family:"Red Hat Mono",monospace;font-size:.72rem;color:var(--teal);min-width:2.2em}
+.lane b{font-family:"Red Hat Display",sans-serif;font-weight:800;font-size:1.15rem;letter-spacing:-.02em}
+.lane .d{color:rgba(255,255,255,.62);font-size:.9rem;max-width:46ch}
+.lane .go{margin-left:auto;color:var(--neon);font-family:"Red Hat Mono",monospace;flex:none}
+.flag{font-family:"Red Hat Mono",monospace;font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;
+  background:var(--neon);color:var(--navy);padding:3px 8px;font-weight:700;flex:none}
+.note{margin-top:44px;color:rgba(255,255,255,.55);font-size:.82rem;font-family:"Red Hat Mono",monospace}
+@media(max-width:640px){.lane{flex-wrap:wrap;gap:8px 14px}.lane .d{max-width:none;width:100%}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <p class="eyebrow">Você Seguradora · avaliação de design</p>
+  <h1>Seis direções para a home.<br>Qual delas é <b>você</b>?</h1>
+  <p class="lead">Protótipos navegáveis da página inicial. Abra cada um, role até o fim
+  e teste o simulador de preço. Todos são um único arquivo HTML, sem framework.</p>
+  <ul>
+    <li><a class="lane" href="00-longa-exposicao.html">
+      <span class="n">00</span><b>Longa Exposição</b><span class="flag">nova proposta</span>
+      <span class="d">Escura, com a textura de movimento do manual da marca viva ao scroll. Tipografia Red Hat, raias no lugar de cards.</span>
+      <span class="go">abrir →</span></a></li>
+    <li><a class="lane" href="01-fiel.html">
+      <span class="n">01</span><b>Fiel</b>
+      <span class="d">Reprodução próxima do protótipo original: clara, cards arredondados, cotador no hero.</span>
+      <span class="go">abrir →</span></a></li>
+    <li><a class="lane" href="02-tokio-pier.html">
+      <span class="n">02</span><b>Tokio × Pier</b>
+      <span class="d">Estrutura corporativa densa (benchmark Tokio Marine) com a transparência da Pier.</span>
+      <span class="go">abrir →</span></a></li>
+    <li><a class="lane" href="03-movimento.html">
+      <span class="n">03</span><b>Movimento</b>
+      <span class="d">Base clara com diagonais e telemetria; a primeira aposta no tema de velocidade.</span>
+      <span class="go">abrir →</span></a></li>
+    <li><a class="lane" href="04-home.html">
+      <span class="n">04</span><b>Home institucional</b>
+      <span class="d">Hero como seletor de catálogo com vidro fosco; foco em arquitetura de informação.</span>
+      <span class="go">abrir →</span></a></li>
+    <li><a class="lane" href="05-glm.html">
+      <span class="n">05</span><b>GLM</b>
+      <span class="d">Versão gerada por outro modelo, publicada como referência de comparação — contém defeitos conhecidos de layout e navegação móvel.</span>
+      <span class="go">abrir →</span></a></li>
+  </ul>
+  <p class="note">Protótipos de avaliação · marca em processo de registro na SUSEP · preços simulados apenas para demonstração</p>
+</main>
+</body>
+</html>

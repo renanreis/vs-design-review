@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Você Seguradora — você em movimento</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@700;800;900&family=Red+Hat+Mono:wght@500;700&family=Red+Hat+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#002430; --blue:#000060; --neon:#46EF80; --teal:#279989;
+  --surf:#EAF4F7; --teal-text:#1B7568; --ink:#0D1B21; --ink2:#4A6572;
+  --display:"Red Hat Display",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  --text:"Red Hat Text",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  --mono:"Red Hat Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--text);color:#fff;background:var(--navy);line-height:1.55;overflow-x:clip}
+h1,h2,h3,h4{font-family:var(--display);font-weight:800;letter-spacing:-.03em;line-height:1.04;margin:0;color:#fff}
+p{margin:0 0 1em} ul{margin:0;padding:0;list-style:none}
+img{max-width:100%;display:block}
+a{color:var(--neon);text-decoration:none} a:hover{text-decoration:underline}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.mono{font-family:var(--mono)}
+.is-hidden{display:none!important}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.eyebrow{font-family:var(--mono);font-weight:500;text-transform:uppercase;letter-spacing:.18em;font-size:.72rem;color:var(--neon)}
+.on-light .eyebrow{color:var(--teal-text)}
+.btn{display:inline-flex;align-items:center;gap:.5em;padding:15px 28px;border-radius:4px;
+  font-family:var(--display);font-weight:800;letter-spacing:-.01em;border:2px solid transparent;
+  transform:skewX(-6deg);transition:transform .15s ease,background .15s ease}
+.btn>span{display:inline-block;transform:skewX(6deg)}
+.btn:hover{text-decoration:none;transform:skewX(-6deg) translateX(3px)}
+.btn-primary{background:var(--neon);color:var(--navy)}
+.btn-ghost{color:#fff;border-color:rgba(255,255,255,.4)} .btn-ghost:hover{border-color:var(--neon)}
+:focus-visible{outline:3px solid var(--neon);outline-offset:2px}
+:focus:not(:focus-visible){outline:none}
+.skip{position:absolute;left:8px;top:-48px;z-index:300;background:var(--neon);color:var(--navy);padding:10px 16px;font-weight:700}
+.skip:focus{top:8px}
+.lockup{height:40px;width:calc(40px * 2.732);display:block;fill:currentColor}
+[id]{scroll-margin-top:130px}
+.section{padding:96px 0}
+.section h2{font-size:clamp(1.9rem,4vw,3rem);max-width:22ch}
+.lead{color:rgba(255,255,255,.75);max-width:58ch;font-size:1.06rem}
+
+/* ---------- Textura longa exposição ---------- */
+.exposure{position:absolute;inset:0;overflow:hidden;background:
+  linear-gradient(112deg,#0a4f46 0%,#04333a 34%,var(--navy) 62%,#001040 88%,var(--blue) 100%)}
+.exposure-field{position:absolute;inset:-25%;transform:rotate(-12deg);filter:url(#dirblur);opacity:.85;
+  background:
+    repeating-linear-gradient(0deg,transparent 0 26px,rgba(70,239,128,.13) 26px 29px,transparent 29px 64px,rgba(39,153,137,.18) 64px 66px,transparent 66px 118px),
+    repeating-linear-gradient(0deg,transparent 0 47px,rgba(0,0,96,.5) 47px 52px,transparent 52px 149px);
+  -webkit-mask-image:repeating-linear-gradient(90deg,transparent 0 30px,#000 60px 340px,transparent 380px 520px);
+  mask-image:repeating-linear-gradient(90deg,transparent 0 30px,#000 60px 340px,transparent 380px 520px)}
+.exposure--deep{background:linear-gradient(112deg,#04333a,#001040 55%,var(--blue))}
+@media (prefers-reduced-motion:no-preference){
+  .hero .exposure-field{animation:settle 1.2s cubic-bezier(.16,1,.3,1) both}
+  @keyframes settle{from{transform:rotate(-12deg) translateX(-4.5%);opacity:0}to{transform:rotate(-12deg) translateX(0);opacity:.85}}
+}
+
+/* ---------- Header ---------- */
+.topbar{position:sticky;top:0;z-index:100;background:rgba(0,26,36,.94);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,255,255,.08)}
+.topbar-inner{display:flex;align-items:center;gap:16px;height:70px;max-width:1200px;margin:0 auto;padding:0 24px}
+.logo{color:#fff;display:flex}
+.topbar-spacer{flex:1}
+.access{display:flex;gap:2px}
+.access a{color:rgba(255,255,255,.85);font-size:.85rem;font-weight:500;padding:9px 12px}
+.access a:hover{color:var(--neon);text-decoration:none}
+.access a::before{content:"●";color:var(--neon);font-size:.5rem;vertical-align:2px;margin-right:.5em}
+.btn-sm{padding:11px 20px;font-size:.88rem}
+.hamburger{display:none;width:44px;height:44px;flex:none}
+.hamburger span{display:block;width:22px;height:2px;background:#fff;margin:4px auto}
+.mainnav-inner{display:flex;align-items:center;gap:4px;max-width:1200px;margin:0 auto;padding:0 24px;border-top:1px solid rgba(255,255,255,.06)}
+.nav-link{color:#fff;padding:13px 14px;font-weight:500;font-size:.94rem;display:inline-flex;align-items:center;gap:.45em}
+.nav-link:hover{color:var(--neon);text-decoration:none}
+.nav-link[aria-expanded="true"]{color:var(--neon)}
+.caret{font-size:.6em;transition:transform .2s}
+.nav-link[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.nav-spacer{flex:1}
+.mega{position:absolute;left:0;right:0;top:100%;background:#01212d;border-top:2px solid var(--neon);
+  border-bottom:1px solid rgba(255,255,255,.1);box-shadow:0 30px 60px rgba(0,0,0,.45)}
+.mega-grid{max-width:1200px;margin:0 auto;padding:26px 24px 30px;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:26px}
+.mega h4{font-size:.7rem;font-family:var(--mono);font-weight:500;text-transform:uppercase;letter-spacing:.16em;color:var(--teal);margin:0 0 8px}
+.mega a{display:block;color:#fff;font-weight:500;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.mega a:hover{color:var(--neon);text-decoration:none}
+.mobilepanel{background:#01212d;border-bottom:1px solid rgba(255,255,255,.1);padding:12px 24px 26px}
+.mobilepanel a{display:block;color:#fff;font-weight:500;padding:11px 4px;border-bottom:1px solid rgba(255,255,255,.08)}
+.mobilepanel a:hover{color:var(--neon);text-decoration:none}
+.mobilepanel .mp-h{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.16em;color:var(--teal);margin:18px 0 4px}
+.mobilepanel .btn{margin-top:16px;width:100%;justify-content:center}
+.mobilepanel a.btn-primary{color:var(--navy);border-bottom:0}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;padding:104px 0 116px;overflow:hidden}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.08fr .92fr;gap:52px;align-items:center}
+.hero h1{font-size:clamp(3rem,7.2vw,5.6rem);font-weight:900;letter-spacing:-.04em}
+.rush{font-style:normal;color:var(--neon);position:relative;display:inline-block}
+.rush::after{content:"";position:absolute;left:-4%;right:-12%;top:54%;height:.15em;pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(70,239,128,.6) 30%,rgba(70,239,128,.12));
+  transform:skewX(-24deg);filter:url(#dirblur)}
+.hero .sub{margin-top:22px;font-size:1.12rem;color:rgba(255,255,255,.82);max-width:44ch}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+
+/* ---------- Lanes (grid de largada) ---------- */
+.lane{display:flex;align-items:center;gap:14px;padding:12px 10px;color:#fff;font-weight:500;
+  border-bottom:1px solid rgba(255,255,255,.14);position:relative;overflow:hidden}
+.lane:hover{text-decoration:none;color:#fff}
+.lane::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(70,239,128,.16) 45%,transparent);
+  transform:translateX(-105%) skewX(-12deg);transition:transform .45s ease}
+.lane:hover::before{transform:translateX(105%) skewX(-12deg)}
+.lane-n{font-family:var(--mono);font-size:.7rem;color:var(--teal);min-width:2em}
+.lane-go{margin-left:auto;color:var(--neon);font-family:var(--mono)}
+.lane .flag{font-size:.62rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em;
+  background:var(--neon);color:var(--navy);padding:3px 8px;font-weight:700}
+
+/* ---------- Seletor do hero ---------- */
+.selector{position:relative;border:1px solid rgba(255,255,255,.16);padding:28px;
+  background:rgba(0,18,26,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.selector h2{font-size:1.3rem;margin-bottom:16px}
+.toggle{display:inline-flex;border:1px solid rgba(255,255,255,.22);margin-bottom:14px}
+.toggle button{padding:10px 16px;font-weight:600;font-size:.86rem;color:rgba(255,255,255,.8)}
+.toggle button .mono{font-size:.72rem;color:var(--teal);margin-left:.5em}
+.toggle button[aria-pressed="true"]{background:var(--neon);color:var(--navy)}
+.toggle button[aria-pressed="true"] .mono{color:var(--navy)}
+.selector .lane{padding:10px 8px;font-size:.95rem}
+
+/* ---------- Linha de confiança ---------- */
+.startline{background:#001A24;border-top:3px solid var(--neon)}
+.startline-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;padding:30px 0}
+.startline b{display:block;font-family:var(--display);font-size:.98rem;letter-spacing:-.01em}
+.startline span{display:block;font-family:var(--mono);font-size:.72rem;color:rgba(255,255,255,.62);margin-top:5px;line-height:1.5}
+
+/* ---------- Banda fotográfica ---------- */
+.photoband{position:relative;min-height:340px;height:46vh;background-size:cover;background-position:center}
+.photoband::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(112deg,rgba(0,36,48,.92),rgba(39,153,137,.45) 60%,rgba(0,0,96,.72))}
+.photoband .tag{position:absolute;z-index:2;right:36px;bottom:28px;font-family:var(--mono);
+  font-size:.8rem;color:#fff;background:rgba(0,26,36,.85);padding:8px 14px}
+.photoband .tag b{color:var(--neon);font-weight:700}
+
+/* ---------- Catálogo ---------- */
+.catalog-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:34px}
+.fam-lane{display:grid;grid-template-columns:280px 1fr;gap:30px;padding:32px 0;border-top:1px solid rgba(255,255,255,.12)}
+.fam-name h3{font-size:1.3rem}
+.fam-name .mono{display:block;font-size:.7rem;color:var(--teal);margin-top:8px;letter-spacing:.1em}
+
+/* ---------- Respiro claro ---------- */
+.daylight{background:var(--surf);color:var(--ink)}
+.daylight h2,.daylight h3{color:var(--navy)}
+.daylight .lead{color:var(--ink2)}
+.cover-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:44px}
+.cover-col h3{font-size:1.15rem;margin-bottom:14px}
+.cover-item{display:flex;gap:16px;padding:14px 4px;border-top:1px solid #cfe2e8}
+.cover-n{font-family:var(--mono);font-size:.72rem;font-weight:700;color:var(--teal-text);min-width:2.4em;padding-top:.35em}
+.cover-col.no .cover-n{color:#A63D2F}
+.cover-item b{display:block;color:var(--navy);font-weight:700}
+.cover-item span{color:var(--ink2);font-size:.92rem}
+
+/* ---------- Simulador ---------- */
+.sim{position:relative;overflow:hidden;margin-top:72px;padding:46px;color:#fff}
+.sim-inner{position:relative;z-index:2}
+.daylight .sim h3{color:#fff}
+.sim h3{font-size:1.5rem}
+.sim .hint{color:rgba(255,255,255,.75);margin:10px 0 26px;font-size:.95rem}
+.sim-fields{display:grid;grid-template-columns:280px 1fr;gap:30px;align-items:end}
+.sim-field label{display:block;font-weight:600;font-size:.82rem;color:#cfe2e8;margin-bottom:8px}
+.sim-field input[type="text"]{width:100%;padding:13px 14px;border:1px solid rgba(255,255,255,.28);
+  background:rgba(255,255,255,.06);color:#fff;font:inherit;font-family:var(--mono)}
+.sim-field input[type="text"]::placeholder{color:#8fa8b0}
+.range-wrap{display:flex;align-items:center;gap:16px}
+input[type="range"]{flex:1 1 140px;min-width:0;accent-color:var(--neon);height:6px}
+#lmi-val{font-weight:700;min-width:7em;text-align:right;color:#fff}
+#lmi-desc{color:rgba(255,255,255,.6);font-size:.76rem;font-family:var(--mono);margin:8px 0 0}
+.planos{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:26px}
+.plano{border:1px solid rgba(255,255,255,.25);padding:14px 16px;text-align:left}
+.plano[aria-pressed="true"]{border-color:var(--neon);background:rgba(70,239,128,.1)}
+.plano b{display:block;font-family:var(--display)}
+.plano span{color:rgba(255,255,255,.65);font-size:.78rem}
+.sim-result{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-top:30px;
+  border-top:1px solid rgba(255,255,255,.18);padding-top:24px}
+#preco{font-family:var(--mono);font-weight:700;font-size:clamp(2.2rem,5vw,3.4rem);color:var(--neon);letter-spacing:-.04em}
+#preco-extra{color:rgba(255,255,255,.72);font-size:.9rem}
+.sim-warn{color:rgba(255,255,255,.6);font-size:.8rem;margin-top:14px}
+.sim .btn{margin-top:20px}
+
+/* ---------- Públicos ---------- */
+.publics{display:grid;grid-template-columns:repeat(3,1fr);gap:34px;margin-top:44px}
+.pub-lane{position:relative;padding:6px 0 6px 30px}
+.pub-lane::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
+  background:var(--accent,var(--neon));transform:skewX(-12deg)}
+.pub-lane h3{font-size:1.35rem;margin-bottom:10px}
+.pub-lane p{color:rgba(255,255,255,.72);font-size:.96rem;min-height:5.6em}
+.pub-lane .mono{display:block;font-size:.68rem;color:var(--teal);letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
+
+/* ---------- Institucional ---------- */
+.instit-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start;margin-top:40px}
+.instit-text p{color:rgba(255,255,255,.8)}
+.behind-slot{border:2px dashed rgba(255,255,255,.35);padding:30px}
+.behind-slot h3{font-size:1.05rem;margin-bottom:16px}
+.behind-slot li{display:flex;gap:12px;align-items:center;padding:9px 0;color:rgba(255,255,255,.82)}
+.behind-slot li::before{content:"";width:9px;height:9px;border:2px dashed rgba(255,255,255,.5);border-radius:50%;flex:none}
+.behind-slot .note{color:rgba(255,255,255,.55);font-size:.82rem;margin-top:16px}
+
+/* ---------- Tagline ---------- */
+.tagstrip{position:relative;overflow:hidden;text-align:center;padding:104px 0}
+.tagstrip span{position:relative;z-index:2;font-family:var(--display);font-weight:300;
+  font-size:clamp(2.4rem,7vw,4.6rem);letter-spacing:-.03em}
+.tagstrip b{font-weight:800;color:var(--neon)}
+
+/* ---------- Antifraude + footer ---------- */
+.antifraud{background:#001A24;border-top:1px solid rgba(255,255,255,.08)}
+.antifraud p{margin:0;padding:22px 0 22px 20px;border-left:4px solid var(--neon);font-weight:600}
+footer{background:#001427;padding:64px 0 30px}
+.footer-top{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr 1fr;gap:28px}
+.footer-brand p{color:rgba(255,255,255,.6);margin-top:16px;max-width:30ch;font-size:.92rem}
+footer .lockup{height:44px;width:calc(44px * 2.732)}
+.footer-col h4{font-family:var(--mono);font-weight:500;font-size:.7rem;text-transform:uppercase;letter-spacing:.16em;color:var(--teal);margin:0 0 14px}
+.footer-col li{padding:4px 0}
+.footer-col a{color:rgba(255,255,255,.78);font-size:.92rem}
+.footer-col a:hover{color:var(--neon)}
+.footer-legal{border-top:1px solid rgba(255,255,255,.12);margin-top:40px;padding-top:22px;
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  color:rgba(255,255,255,.6);font-size:.8rem;font-family:var(--mono)}
+.footer-susep{color:rgba(255,255,255,.55);font-size:.82rem;font-style:italic;margin-top:12px;max-width:82ch}
+
+/* ---------- Scroll-driven (progressive enhancement) ---------- */
+@keyframes laneIn{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:none}}
+@keyframes tagRun{from{transform:rotate(-12deg) translateX(-3%)}to{transform:rotate(-12deg) translateX(3%)}}
+@supports (animation-timeline: scroll()){
+  @media (prefers-reduced-motion:no-preference){
+    .fam-lane,.pub-lane,.cover-item{
+      animation:laneIn .7s ease-out both;
+      animation-timeline:view();
+      animation-range:entry 0% entry 55%;
+    }
+    .tagstrip .exposure-field{
+      animation:tagRun 1s linear both;
+      animation-timeline:view();
+      animation-range:entry 0% exit 100%;
+    }
+  }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width:980px){
+  .hero-grid,.instit-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr 1fr}
+  .sim-fields{grid-template-columns:1fr}
+}
+@media (max-width:860px){
+  .desktop-nav,.access{display:none}
+  .hamburger{display:inline-flex;align-items:center;justify-content:center}
+}
+@media (max-width:720px){
+  .fam-lane,.cover-grid,.publics,.planos{grid-template-columns:1fr}
+  .sim{padding:30px 20px}
+  .range-wrap{flex-wrap:wrap}
+  #lmi-val{text-align:left}
+  .cover-grid{gap:34px}
+  .startline-grid{grid-template-columns:1fr 1fr}
+  .section{padding:72px 0}
+  .hero{padding:72px 0 84px}
+}
+@media (max-width:600px){
+  .footer-top{grid-template-columns:1fr 1fr}
+  .photoband .tag{right:16px;bottom:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Pular para o conteúdo</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="lk" viewBox="0 0 1046.67 383.05" fill="currentColor"><g><path d="M131.79,23.94H20.19l169.1,335.17s31.78-20.43,42.75-54.85c10.97-34.43,10.21-60.53-8.7-97.98-18.91-37.45-91.55-182.34-91.55-182.34Z"/><circle cx="299.57" cy="79.74" r="55.61"/></g><g><polygon points="412.26 74.44 482.1 241.84 500.36 241.84 569.84 74.44 532.79 74.44 491.05 175.1 449.7 74.44 412.26 74.44"/><path d="M654.41,71.79c-47.64,0-86.25,38.62-86.25,86.25s38.62,86.25,86.25,86.25,86.25-38.62,86.25-86.25-38.62-86.25-86.25-86.25ZM654.41,210.82c-29.14,0-52.77-23.63-52.77-52.77s23.63-52.77,52.77-52.77,52.77,23.63,52.77,52.77-23.63,52.77-52.77,52.77Z"/><path d="M867.02,288.94c-19.33,0-34.99,15.67-34.99,34.99s15.67,34.99,34.99,34.99,34.99-15.67,34.99-34.99-15.67-34.99-34.99-34.99ZM867.02,345.34c-11.82,0-21.41-9.59-21.41-21.41s9.59-21.41,21.41-21.41,21.41,9.59,21.41,21.41-9.59,21.41-21.41,21.41Z"/><path d="M887.05,188.95c-9.48,13.13-24.92,21.68-42.35,21.68-28.83,0-52.21-23.38-52.21-52.21s23.38-52.21,52.21-52.21c17.52,0,33.03,8.63,42.5,21.88l24.26-23.4c-15.69-20.04-40.02-32.9-67.33-32.9-47.32,0-85.68,38.62-85.68,86.25s38.36,86.25,85.68,86.25c27.35,0,51.71-12.9,67.39-32.98l-24.48-22.36Z"/><polygon points="931.75 74.44 1025.9 74.44 1025.9 105.08 965 105.08 965 144.43 1019.01 144.43 1019.01 172.04 965 172.04 965 211.39 1025.9 211.39 1025.9 242.03 931.75 242.03 931.75 74.44"/><polygon points="465.68 289.69 504.23 289.69 504.23 302.24 479.3 302.24 479.3 318.34 501.41 318.34 501.41 329.65 479.3 329.65 479.3 345.76 504.23 345.76 504.23 358.3 465.68 358.3 465.68 289.69"/><polygon points="966.51 60.44 937.76 60.44 968.8 23.94 991.48 23.94 1022.29 60.44 993.59 60.44 980.02 47.51 966.51 60.44"/><path d="M737.45,289.88h-6.81l-28.56,68.28h14.28l5.39-13.24h24.4l5.4,13.24h14.27l-28.37-68.28ZM725.91,334.14l8.04-18.29,7.66,18.29h-15.7Z"/><path d="M998.1,289.88h-6.81l-28.56,68.28h14.28l5.39-13.24h24.4l5.4,13.24h14.27l-28.37-68.28ZM986.56,334.14l8.04-18.29,7.66,18.29h-15.7Z"/><path d="M687.52,328.47s9.08-5.3,9.08-17.78c0-19.48-18.81-20.81-18.81-20.81h-26.02v68.28h13.12l-.06-26.67h9.08l12.48,26.48h14.75l-13.62-29.51ZM677.91,318.28h-13.09v-15.15h13.05s5.63,1.13,5.63,7.58-5.59,7.58-5.59,7.58Z"/><path d="M948.16,328.47s9.08-5.3,9.08-17.78c0-19.48-18.81-20.81-18.81-20.81h-26.02v68.28h13.12l-.06-26.67h9.08l12.48,26.48h14.75l-13.62-29.51ZM938.56,318.28h-13.09v-15.15h13.05s5.63,1.13,5.63,7.58-5.59,7.58-5.59,7.58Z"/><path d="M791.84,289.88h-18.8v68.28h18.8s31.55-1.65,31.55-33.17-25.78-35.11-31.55-35.11ZM791.9,346.25h-5.27v-44.64h5.27s18.06.38,18.06,22.41-18.06,22.23-18.06,22.23Z"/><path d="M599.01,336.6s1.68,9.08,13.41,9.08,13.62-9.08,13.62-9.08v-46.72h13.55v46.72s-2.2,22.28-27.17,22.28-27.28-22.28-27.28-22.28v-46.72h13.87v46.72"/><path d="M542.82,318.44h30.47v39.53h-12.46l-.8-3.78s-4.54,4.73-17.21,4.73-32.32-11.39-32.32-34.54,19.27-35.26,35.16-35.26,24.97,11.35,24.97,11.35l-9.08,10.21s-3.78-7.57-16.27-7.57-20.91,10.78-20.91,20.9,8.43,21.09,20.53,21.09,14.75-4.54,14.75-4.54v-10.97h-16.83v-11.16Z"/><path d="M412.3,341.52l12.11-5.67s1.7,9.27,9.27,9.27c4.29,0,6.64-2.31,7.86-4.32s.92-4.64-.79-6.27c-1.36-1.3-3.63-2.79-7.45-4.17-9.46-3.4-17.4-9.84-17.4-20.05s7.57-21.18,20.43-21.18,17.59,10.4,18.91,14l-12.11,6.05s-.54-1.36-.58-1.44c-.92-1.93-2.28-3.77-4.37-4.53-3.03-1.09-6.16.36-7.71,3.08-1.21,2.13-1.54,5.18.31,7.06.66.67,1.59,1.34,2.89,1.88,4.54,1.89,21.94,6.81,21.94,22.32s-13.05,21.35-21.66,21.35-18.44-4.7-21.66-17.37Z"/></g></symbol></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="dirblur" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur stdDeviation="26 0"/>
+  </filter>
+</svg>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="logo" href="#" aria-label="Você Seguradora — página inicial"><svg class="lockup" aria-hidden="true"><use href="#lk"/></svg></a>
+    <div class="topbar-spacer"></div>
+    <nav class="access" aria-label="Acessos por público">
+      <a href="#publicos">Área do Cliente</a>
+      <a href="#publicos">Área do Corretor</a>
+      <a href="#publicos">Acesso Parceiros</a>
+    </nav>
+    <a class="btn btn-primary btn-sm" href="#simulador"><span>Cotar agora</span></a>
+    <button class="hamburger" aria-label="Abrir menu" aria-controls="mobilepanel" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="desktop-nav" aria-label="Navegação principal">
+    <div class="mainnav-inner">
+      <div class="megawrap">
+        <button class="nav-link" aria-haspopup="true" aria-expanded="false" aria-controls="mega-pv">
+          Para Você <span class="caret" aria-hidden="true">▼</span>
+        </button>
+        <div class="mega is-hidden" id="mega-pv" role="region" aria-label="Para Você — famílias de produtos">
+          <div class="mega-grid">
+            <div><h4>Moradia</h4><ul><li><a href="#residencial">Residencial</a></li></ul></div>
+            <div><h4>Vida e Acidentes</h4><ul><li><a href="#vida">Vida</a></li><li><a href="#acidentes">Acidentes Pessoais</a></li></ul></div>
+            <div><h4>Mobilidade</h4><ul><li><a href="#franquia-auto">Franquia Auto</a></li></ul></div>
+            <div><h4>RD Equipamentos</h4><ul><li><a href="#celular">Celular</a></li><li><a href="#notebook">Notebook</a></li><li><a href="#tablet">Tablet</a></li></ul></div>
+            <div><h4>RD Financeiro</h4><ul><li><a href="#pix">Pix Protegido</a></li><li><a href="#cartao">Cartão Protegido</a></li><li><a href="#bolsa">Bolsa Protegida</a></li></ul></div>
+          </div>
+        </div>
+      </div>
+      <div class="megawrap">
+        <button class="nav-link" aria-haspopup="true" aria-expanded="false" aria-controls="mega-pe">
+          Para sua Empresa <span class="caret" aria-hidden="true">▼</span>
+        </button>
+        <div class="mega is-hidden" id="mega-pe" role="region" aria-label="Para sua Empresa — famílias de produtos">
+          <div class="mega-grid">
+            <div><h4>Pessoas</h4><ul><li><a href="#vida-grupo">Vida em Grupo</a></li></ul></div>
+            <div><h4>Acidentes</h4><ul><li><a href="#ap-coletivo">Acidentes Pessoais Coletivo</a></li></ul></div>
+            <div><h4>Crédito</h4><ul><li><a href="#prestamista">Prestamista</a></li></ul></div>
+          </div>
+        </div>
+      </div>
+      <a class="nav-link" href="#institucional">A Você Seguradora</a>
+      <a class="nav-link" href="#duvidas">Dúvidas frequentes</a>
+      <div class="nav-spacer"></div>
+      <a class="nav-link" href="#duvidas">Avisar sinistro</a>
+    </div>
+  </nav>
+  <div id="mobilepanel" class="mobilepanel is-hidden">
+    <p class="mp-h">Seguros</p>
+    <a href="#catalogo">Para Você (10)</a>
+    <a href="#catalogo">Para sua Empresa (3)</a>
+    <a href="#institucional">A Você Seguradora</a>
+    <a href="#duvidas">Dúvidas frequentes · Avisar sinistro</a>
+    <p class="mp-h">Acessos</p>
+    <a href="#publicos">Área do Cliente</a>
+    <a href="#publicos">Área do Corretor</a>
+    <a href="#publicos">Acesso Parceiros</a>
+    <a class="btn btn-primary" href="#simulador"><span>Cotar agora</span></a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero" aria-label="Abertura">
+  <div class="exposure" aria-hidden="true"><div class="exposure-field"></div></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Seguradora digital brasileira</p>
+      <h1>Pra quem<br><em class="rush">não para.</em></h1>
+      <p class="sub">A solidez de uma seguradora, a fluidez de quem nasceu digital.
+      Cote em minutos, veja o preço antes de qualquer cadastro e cancele quando quiser.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#simulador"><span>Cotar Seguro Residencial</span></a>
+        <a class="btn btn-ghost" href="#catalogo"><span>Ver os 13 produtos</span></a>
+      </div>
+    </div>
+    <div class="selector" aria-label="Seletor de produtos">
+      <h2>O que você quer proteger?</h2>
+      <div class="toggle" role="group" aria-label="Público">
+        <button id="tg-pv" aria-pressed="true">Para Você <span class="mono">10</span></button>
+        <button id="tg-pe" aria-pressed="false">Para sua Empresa <span class="mono">3</span></button>
+      </div>
+      <ul id="sel-pv">
+        <li><a class="lane" href="#residencial"><span class="lane-n">01</span>Residencial <span class="flag">mais procurado</span><span class="lane-go">→</span></a></li>
+        <li><a class="lane" href="#vida"><span class="lane-n">02</span>Vida<span class="lane-go">→</span></a></li>
+        <li><a class="lane" href="#acidentes"><span class="lane-n">03</span>Acidentes Pessoais<span class="lane-go">→</span></a></li>
+        <li><a class="lane" href="#franquia-auto"><span class="lane-n">04</span>Franquia Auto<span class="lane-go">→</span></a></li>
+        <li><a class="lane" href="#celular"><span class="lane-n">05</span>Celular<span class="lane-go">→</span></a></li>
+        <li><a class="lane" href="#notebook"><span class="lane-n">06</span>Notebook<span class="lane-go">→</span></a></li>
+        <li><a class="lane" href="#tablet"><span class="lane-n">07</span>Tablet<span class="lane-go">→</span></a></li>
+        <li><a class="lane" href="#pix"><span class="lane-n">08</span>Pix Protegido<span class="lane-go">→</span></a></li>
+        <li><a class="lane" href="#cartao"><span class="lane-n">09</span>Cartão Protegido<span class="lane-go">→</span></a></li>
+        <li><a class="lane" href="#bolsa"><span class="lane-n">10</span>Bolsa Protegida<span class="lane-go">→</span></a></li>
+      </ul>
+      <ul id="sel-pe" class="is-hidden">
+        <li><a class="lane" href="#vida-grupo"><span class="lane-n">01</span>Vida em Grupo<span class="lane-go">→</span></a></li>
+        <li><a class="lane" href="#ap-coletivo"><span class="lane-n">02</span>Acidentes Pessoais Coletivo<span class="lane-go">→</span></a></li>
+        <li><a class="lane" href="#prestamista"><span class="lane-n">03</span>Prestamista<span class="lane-go">→</span></a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LINHA DE CONFIANÇA ============ -->
+<section class="startline" aria-label="Por que confiar">
+  <div class="wrap">
+    <div class="startline-grid">
+      <div><b>Regulada pela SUSEP</b><span>produto em processo de registro</span></div>
+      <div><b>Assistência 24h</b><span>chaveiro, encanador, eletricista, vidraceiro</span></div>
+      <div><b>Sem letra miúda</b><span>publicamos o que não cobrimos</span></div>
+      <div><b>Sem fidelidade</b><span>cancele quando quiser</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BANDA FOTOGRÁFICA ============ -->
+<section class="photoband" aria-hidden="true" style="background-image:url('https://images.unsplash.com/photo-1517649763962-0c623066013b?w=1600&q=70&auto=format&fit=crop')">
+  <p class="tag">você em <b>movimento</b></p>
+</section>
+
+<!-- ============ CATÁLOGO ============ -->
+<section class="section" id="catalogo" aria-labelledby="catalogo-t">
+  <div class="wrap">
+    <div class="catalog-head">
+      <div>
+        <p class="eyebrow">Catálogo de produtos</p>
+        <h2 id="catalogo-t">13 seguros. Seis famílias. Zero letra miúda.</h2>
+      </div>
+      <div class="toggle" role="group" aria-label="Filtrar catálogo">
+        <button id="ct-pv" aria-pressed="true">Para Você <span class="mono">10</span></button>
+        <button id="ct-pe" aria-pressed="false">Para sua Empresa <span class="mono">3</span></button>
+      </div>
+    </div>
+    <div id="cat-pv">
+      <div class="fam-lane">
+        <div class="fam-name"><h3>Moradia</h3><span class="mono">família 01 · 1 produto</span></div>
+        <ul>
+          <li><a class="lane" id="residencial" href="#simulador"><span class="lane-n">01</span>Seguro Residencial <span class="flag">mais procurado</span><span class="lane-go">cotar →</span></a></li>
+        </ul>
+      </div>
+      <div class="fam-lane">
+        <div class="fam-name"><h3>Vida e Acidentes</h3><span class="mono">família 02 · 2 produtos</span></div>
+        <ul>
+          <li><a class="lane" id="vida" href="#simulador"><span class="lane-n">02</span>Vida<span class="lane-go">→</span></a></li>
+          <li><a class="lane" id="acidentes" href="#simulador"><span class="lane-n">03</span>Acidentes Pessoais<span class="lane-go">→</span></a></li>
+        </ul>
+      </div>
+      <div class="fam-lane">
+        <div class="fam-name"><h3>Mobilidade</h3><span class="mono">família 03 · 1 produto</span></div>
+        <ul>
+          <li><a class="lane" id="franquia-auto" href="#simulador"><span class="lane-n">04</span>Franquia Auto<span class="lane-go">→</span></a></li>
+        </ul>
+      </div>
+      <div class="fam-lane">
+        <div class="fam-name"><h3>RD Equipamentos</h3><span class="mono">família 04 · 3 produtos</span></div>
+        <ul>
+          <li><a class="lane" id="celular" href="#simulador"><span class="lane-n">05</span>Celular<span class="lane-go">→</span></a></li>
+          <li><a class="lane" id="notebook" href="#simulador"><span class="lane-n">06</span>Notebook<span class="lane-go">→</span></a></li>
+          <li><a class="lane" id="tablet" href="#simulador"><span class="lane-n">07</span>Tablet<span class="lane-go">→</span></a></li>
+        </ul>
+      </div>
+      <div class="fam-lane">
+        <div class="fam-name"><h3>RD Financeiro</h3><span class="mono">família 05 · 3 produtos</span></div>
+        <ul>
+          <li><a class="lane" id="pix" href="#simulador"><span class="lane-n">08</span>Pix Protegido<span class="lane-go">→</span></a></li>
+          <li><a class="lane" id="cartao" href="#simulador"><span class="lane-n">09</span>Cartão Protegido<span class="lane-go">→</span></a></li>
+          <li><a class="lane" id="bolsa" href="#simulador"><span class="lane-n">10</span>Bolsa Protegida<span class="lane-go">→</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="cat-pe" class="is-hidden">
+      <div class="fam-lane">
+        <div class="fam-name"><h3>Pessoas</h3><span class="mono">família 06 · 1 produto</span></div>
+        <ul>
+          <li><a class="lane" id="vida-grupo" href="#publicos"><span class="lane-n">01</span>Vida em Grupo<span class="lane-go">→</span></a></li>
+        </ul>
+      </div>
+      <div class="fam-lane">
+        <div class="fam-name"><h3>Acidentes</h3><span class="mono">família 06 · 1 produto</span></div>
+        <ul>
+          <li><a class="lane" id="ap-coletivo" href="#publicos"><span class="lane-n">02</span>Acidentes Pessoais Coletivo<span class="lane-go">→</span></a></li>
+        </ul>
+      </div>
+      <div class="fam-lane">
+        <div class="fam-name"><h3>Crédito</h3><span class="mono">família 06 · 1 produto</span></div>
+        <ul>
+          <li><a class="lane" id="prestamista" href="#publicos"><span class="lane-n">03</span>Prestamista<span class="lane-go">→</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESPIRO CLARO: COBRE/NÃO COBRE + SIMULADOR ============ -->
+<section class="section daylight on-light" id="residencial-detalhe" aria-labelledby="cobre-t">
+  <div class="wrap">
+    <p class="eyebrow">Seguro Residencial</p>
+    <h2 id="cobre-t">O que cobre — e o que não cobre.</h2>
+    <p class="lead">Publicamos os dois com o mesmo destaque. Sem texto pequeno escondido.</p>
+
+    <div class="cover-grid">
+      <div class="cover-col yes">
+        <h3>O que cobre</h3>
+        <ul>
+          <li class="cover-item"><span class="cover-n">01</span><div><b>Incêndio, raio e explosão</b><span>cobertura básica de toda apólice</span></div></li>
+          <li class="cover-item"><span class="cover-n">02</span><div><b>Danos elétricos</b><span>geladeira, TV e ar queimados por oscilação de energia</span></div></li>
+          <li class="cover-item"><span class="cover-n">03</span><div><b>Roubo e furto qualificado</b><span>com vestígio de arrombamento</span></div></li>
+          <li class="cover-item"><span class="cover-n">04</span><div><b>Vendaval, granizo e queda de árvore</b><span>inclusive o telhado</span></div></li>
+          <li class="cover-item"><span class="cover-n">05</span><div><b>Responsabilidade civil familiar</b><span>se algo seu causar dano a um vizinho</span></div></li>
+          <li class="cover-item"><span class="cover-n">06</span><div><b>Assistência 24h</b><span>chaveiro, encanador, eletricista, vidraceiro</span></div></li>
+        </ul>
+      </div>
+      <div class="cover-col no">
+        <h3>O que NÃO cobre</h3>
+        <ul>
+          <li class="cover-item"><span class="cover-n">×01</span><div><b>Furto simples</b><span>sem vestígio de arrombamento</span></div></li>
+          <li class="cover-item"><span class="cover-n">×02</span><div><b>Desgaste natural</b><span>infiltração antiga, mofo, falta de manutenção</span></div></li>
+          <li class="cover-item"><span class="cover-n">×03</span><div><b>Joias e dinheiro em espécie</b><span>salvo cobertura contratada à parte</span></div></li>
+          <li class="cover-item"><span class="cover-n">×04</span><div><b>Imóvel desocupado</b><span>acima de 90 dias seguidos</span></div></li>
+          <li class="cover-item"><span class="cover-n">×05</span><div><b>Obras e reformas estruturais</b><span>durante a execução</span></div></li>
+          <li class="cover-item"><span class="cover-n">×06</span><div><b>Dolo</b><span>dano causado de propósito pelo segurado</span></div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sim" id="simulador">
+      <div class="exposure exposure--deep" aria-hidden="true"><div class="exposure-field"></div></div>
+      <div class="sim-inner">
+        <h3>Simule o valor do seu Seguro Residencial</h3>
+        <p class="hint">Preço na hora. Não pedimos documento pessoal, e-mail ou telefone.</p>
+        <div class="sim-fields">
+          <div class="sim-field">
+            <label for="cep">CEP do imóvel</label>
+            <input type="text" id="cep" inputmode="numeric" placeholder="00000-000" autocomplete="postal-code" maxlength="9">
+          </div>
+          <div class="sim-field">
+            <label for="lmi">Importância segurada (o valor máximo que pagamos)</label>
+            <div class="range-wrap">
+              <input type="range" id="lmi" min="50000" max="1000000" step="10000" value="300000" aria-describedby="lmi-desc">
+              <span id="lmi-val" class="mono">R$ 300.000</span>
+            </div>
+            <p id="lmi-desc">de R$ 50.000 a R$ 1.000.000, em passos de R$ 10.000</p>
+          </div>
+        </div>
+        <div class="planos" role="group" aria-label="Plano">
+          <button class="plano" data-plano="essence" aria-pressed="true"><b>Essence</b><span>custo-benefício</span></button>
+          <button class="plano" data-plano="gold" aria-pressed="false"><b>Gold</b><span>cobertura estendida</span></button>
+          <button class="plano" data-plano="prime" aria-pressed="false"><b>Prime</b><span>cobertura completa</span></button>
+        </div>
+        <div class="sim-result" aria-live="polite">
+          <span id="preco">R$ 131</span>
+          <span id="preco-extra">/mês · R$ 300.000 de importância segurada · plano Essence</span>
+        </div>
+        <p class="sim-warn">Valor estimado. O preço final é calculado na cotação.</p>
+        <a class="btn btn-primary" href="#publicos"><span>Continuar cotação</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRÊS PÚBLICOS ============ -->
+<section class="section" id="publicos" aria-labelledby="pub-t">
+  <div class="wrap">
+    <p class="eyebrow">Para quem é a Você Seguradora</p>
+    <h2 id="pub-t">Escolha seu caminho.</h2>
+    <div class="publics">
+      <article class="pub-lane" style="--accent:var(--neon)">
+        <span class="mono">raia 01</span>
+        <h3>Sou Cliente</h3>
+        <p>Cote, contrate e acompanhe suas apólices. Tire 2ª via, avise sinistro e fale com a gente a qualquer hora.</p>
+        <a class="btn btn-primary" href="#simulador"><span>Cotar agora</span></a>
+      </article>
+      <article class="pub-lane" style="--accent:var(--teal)">
+        <span class="mono">raia 02</span>
+        <h3>Sou Corretor</h3>
+        <p>Acesse o portal do corretor, cote pelos 13 produtos e emita apólices com nossa API de cotação.</p>
+        <a class="btn btn-ghost" href="#"><span>Acessar portal</span></a>
+      </article>
+      <article class="pub-lane" style="--accent:var(--blue)">
+        <span class="mono">raia 03</span>
+        <h3>Sou Parceiro</h3>
+        <p>Distribua nossos seguros pela sua plataforma ou ecossistema. Integração via API, simples e rápida.</p>
+        <a class="btn btn-ghost" href="#"><span>Acesso parceiros</span></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INSTITUCIONAL ============ -->
+<section class="section" id="institucional" aria-labelledby="inst-t" style="background:#001A24">
+  <div class="wrap">
+    <div class="instit-grid">
+      <div class="instit-text">
+        <p class="eyebrow">Quem somos</p>
+        <h2 id="inst-t">Nascemos simples por dentro.</h2>
+        <p>Juntamos o que funciona numa seguradora de verdade — regulação, resseguro, assistência 24h — com a forma direta de uma insurtech: preço antes de cadastro, texto sem letra miúda, cancelamento sem fidelidade.</p>
+        <p>Somos uma seguradora nova. Ainda não vendemos a primeira apólice — ela sai assim que o registro na SUSEP for concluído. Por isso, não exibimos notas, número de clientes ou prêmios. Quando existirem de verdade, aparecerão aqui.</p>
+      </div>
+      <aside class="behind-slot">
+        <h3>Quem está por trás</h3>
+        <ul>
+          <li>Resseguradora (a definir)</li>
+          <li>Grupo controlador / investidores (a definir)</li>
+          <li>Seguradora emissora (a definir)</li>
+          <li>Nº do processo SUSEP (em processo de registro)</li>
+        </ul>
+        <p class="note">Estes campos são preenchidos quando cada contrato for formalizado. Não vamos inventar nomes enquanto não existirem.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TAGLINE ============ -->
+<section class="tagstrip" aria-label="Tagline">
+  <div class="exposure" aria-hidden="true"><div class="exposure-field"></div></div>
+  <span>você em <b>movimento</b></span>
+</section>
+
+<!-- ============ ANTIFRAUDE ============ -->
+<section class="antifraud" aria-label="Aviso antifraude">
+  <div class="wrap">
+    <p>A Você Seguradora nunca pede dados ou pagamento por WhatsApp. Toda cobrança sai dos nossos canais oficiais.</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="logo" href="#" aria-label="Você Seguradora"><svg class="lockup" aria-hidden="true"><use href="#lk"/></svg></a>
+        <p>você em movimento. Seguradora digital brasileira, em processo de registro na SUSEP.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Para Você</h4>
+        <ul>
+          <li><a href="#residencial">Residencial</a></li>
+          <li><a href="#vida">Vida</a></li>
+          <li><a href="#acidentes">Acidentes Pessoais</a></li>
+          <li><a href="#franquia-auto">Franquia Auto</a></li>
+          <li><a href="#celular">Celular</a></li>
+          <li><a href="#pix">Pix Protegido</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Para sua Empresa</h4>
+        <ul>
+          <li><a href="#vida-grupo">Vida em Grupo</a></li>
+          <li><a href="#ap-coletivo">Acidentes Pessoais Coletivo</a></li>
+          <li><a href="#prestamista">Prestamista</a></li>
+        </ul>
+      </div>
+      <div class="footer-col" id="duvidas">
+        <h4>Canais</h4>
+        <ul>
+          <li><a href="#">Central 24h</a></li>
+          <li><a href="#">2ª via de boleto</a></li>
+          <li><a href="#">Avisar sinistro</a></li>
+          <li><a href="#">Fale com a gente</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Institucional</h4>
+        <ul>
+          <li><a href="#institucional">A Você Seguradora</a></li>
+          <li><a href="#publicos">Portal do Corretor</a></li>
+          <li><a href="#publicos">Acesso Parceiros</a></li>
+          <li><a href="#duvidas">Dúvidas frequentes</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <span>CNPJ 00.000.000/0001-00</span>
+      <span>Produto em processo de registro na SUSEP</span>
+    </div>
+    <p class="footer-susep">O registro do produto na SUSEP não implica incentivo ou recomendação à sua comercialização. Consulte as condições gerais antes de contratar.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  // ---------- Mega-menus (clique + Esc + clique fora) ----------
+  var megas = [].slice.call(document.querySelectorAll('.megawrap'));
+  function closeMegas(){
+    megas.forEach(function(w){
+      var b = w.querySelector('[aria-expanded]');
+      var p = w.querySelector('.mega');
+      b.setAttribute('aria-expanded','false');
+      p.classList.add('is-hidden');
+    });
+  }
+  megas.forEach(function(w){
+    var b = w.querySelector('[aria-expanded]');
+    var p = w.querySelector('.mega');
+    b.addEventListener('click', function(){
+      var open = b.getAttribute('aria-expanded') === 'true';
+      closeMegas();
+      if(!open){ b.setAttribute('aria-expanded','true'); p.classList.remove('is-hidden'); }
+    });
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){
+      var open = document.querySelector('.megawrap [aria-expanded="true"]');
+      closeMegas();
+      if(open) open.focus();
+    }
+  });
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.megawrap')) closeMegas();
+  });
+
+  // ---------- Hamburger ----------
+  var ham = document.querySelector('.hamburger');
+  var panel = document.getElementById('mobilepanel');
+  ham.addEventListener('click', function(){
+    var open = ham.getAttribute('aria-expanded') === 'true';
+    ham.setAttribute('aria-expanded', String(!open));
+    panel.classList.toggle('is-hidden', open);
+  });
+
+  // ---------- Toggles Para Você / Para sua Empresa ----------
+  function bindToggle(btnA, btnB, panelA, panelB){
+    function set(active){
+      btnA.setAttribute('aria-pressed', String(active));
+      btnB.setAttribute('aria-pressed', String(!active));
+      panelA.classList.toggle('is-hidden', !active);
+      panelB.classList.toggle('is-hidden', active);
+    }
+    btnA.addEventListener('click', function(){ set(true); });
+    btnB.addEventListener('click', function(){ set(false); });
+  }
+  bindToggle(document.getElementById('tg-pv'), document.getElementById('tg-pe'),
+             document.getElementById('sel-pv'), document.getElementById('sel-pe'));
+  bindToggle(document.getElementById('ct-pv'), document.getElementById('ct-pe'),
+             document.getElementById('cat-pv'), document.getElementById('cat-pe'));
+
+  // ---------- Simulador ----------
+  var IOF = 1.0738, TAXA = { essence:0.00487, gold:0.00586, prime:0.00832 }, plano = 'essence';
+  var lmi = document.getElementById('lmi'),
+      lmiVal = document.getElementById('lmi-val'),
+      preco = document.getElementById('preco'),
+      extra = document.getElementById('preco-extra');
+  function brl(n){ return 'R$ ' + n.toLocaleString('pt-BR'); }
+  function calc(){
+    var v = parseInt(lmi.value, 10);
+    lmiVal.textContent = brl(v);
+    preco.textContent = brl(Math.round(v * TAXA[plano] / 12 * IOF));
+    extra.textContent = '/mês · ' + brl(v) + ' de importância segurada · plano ' +
+      plano.charAt(0).toUpperCase() + plano.slice(1);
+  }
+  [].slice.call(document.querySelectorAll('.plano')).forEach(function(p){
+    p.addEventListener('click', function(){
+      [].slice.call(document.querySelectorAll('.plano')).forEach(function(o){ o.setAttribute('aria-pressed','false'); });
+      p.setAttribute('aria-pressed','true');
+      plano = p.dataset.plano;
+      calc();
+    });
+  });
+  lmi.addEventListener('input', calc);
+  calc();
+
+  // ---------- Máscara de CEP ----------
+  var cep = document.getElementById('cep');
+  cep.addEventListener('input', function(){
+    var d = cep.value.replace(/\D/g,'').slice(0,8);
+    cep.value = d.length > 5 ? d.slice(0,5) + '-' + d.slice(5) : d;
+  });
+})();
+</script>
+</body>
+</html>

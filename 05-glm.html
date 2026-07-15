@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Você Seguradora — você em movimento</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#002430;
+  --neon:#46EF80;
+  --teal:#279989;
+  --blue:#000060;
+  --surf:#EAF4F7;
+  --teal-text:#1B7568;
+  --ink:#0D1B21;
+  --ink2:#4A6572;
+  --font:"Outfit",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --shadow:0 8px 30px rgba(0,36,48,.12);
+  --radius:16px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  font-family:var(--font);
+  color:var(--ink);
+  background:#fff;
+  line-height:1.5;
+  font-weight:400;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:var(--teal-text);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3,h4{margin:0;line-height:1.1;font-weight:800;letter-spacing:-.025em;color:var(--navy)}
+h1{letter-spacing:-.035em}
+p{margin:0 0 1em}
+ul{margin:0;padding:0;list-style:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+:focus-visible{outline:3px solid var(--neon);outline-offset:2px;border-radius:4px}
+:focus:not(:focus-visible){outline:none}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5em;
+  padding:14px 24px;border-radius:999px;font-weight:700;letter-spacing:-.01em;
+  text-decoration:none;cursor:pointer;border:2px solid transparent;
+  transition:transform .12s ease, background .12s ease, color .12s ease;
+}
+.btn:hover{text-decoration:none}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--neon);color:var(--navy)}
+.btn-primary:hover{background:#5cff94}
+.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.45)}
+.btn-ghost:hover{border-color:#fff}
+.btn-outline{background:transparent;color:var(--navy);border-color:var(--navy)}
+.btn-outline:hover{background:var(--navy);color:#fff}
+
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+.eyebrow{
+  font-weight:700;text-transform:uppercase;letter-spacing:.14em;
+  font-size:.78rem;color:var(--teal-text);
+}
+.eyebrow-on-dark{color:var(--neon)}
+.section{padding:72px 0}
+.section h2{font-size:clamp(1.7rem,3.6vw,2.6rem)}
+.section .lead{color:var(--ink2);font-size:1.05rem;max-width:60ch}
+
+/* ---------- Skip link ---------- */
+.skip{
+  position:absolute;left:8px;top:-44px;z-index:200;
+  background:var(--neon);color:var(--navy);
+  padding:10px 16px;border-radius:8px;font-weight:700;
+}
+.skip:focus{top:8px}
+
+/* ---------- Header ---------- */
+.topbar{background:var(--navy);color:#fff;position:sticky;top:0;z-index:100}
+.topbar-inner{
+  display:flex;align-items:center;gap:14px;height:66px;
+  max-width:1200px;margin:0 auto;padding:0 20px;
+}
+.logo{display:flex;align-items:center;text-decoration:none;color:#fff}
+.lockup{height:42px;width:calc(42px * 2.732);display:block;fill:currentColor}
+.topbar-spacer{flex:1}
+.topbar-access{display:flex;gap:6px;align-items:center}
+.access-link{
+  color:#fff;font-size:.86rem;font-weight:500;padding:8px 12px;
+  border-radius:8px;border:1px solid transparent;
+}
+.access-link:hover{background:rgba(255,255,255,.08);text-decoration:none}
+.access-link .dot{color:var(--neon);margin-right:.4em}
+.btn-cotar{padding:10px 18px;font-size:.9rem}
+
+.hamburger{display:none;width:44px;height:44px;border-radius:10px;color:#fff}
+.hamburger span{display:block;height:2px;width:22px;background:#fff;margin:4px auto;border-radius:2px}
+
+/* ---------- Nav ---------- */
+.mainnav{background:var(--navy);color:#fff;border-top:1px solid rgba(255,255,255,.08)}
+.mainnav-inner{
+  display:flex;align-items:center;gap:8px;
+  max-width:1200px;margin:0 auto;padding:8px 20px;
+}
+.nav-link{
+  color:#fff;padding:12px 14px;border-radius:8px;font-weight:500;
+  font-size:.96rem;background:transparent;border:0;display:inline-flex;
+  align-items:center;gap:.4em;
+}
+.nav-link:hover{background:rgba(255,255,255,.08);text-decoration:none}
+.nav-link[aria-expanded="true"]{background:rgba(70,239,128,.14)}
+.nav-caret{font-size:.7em;transition:transform .2s}
+.nav-link[aria-expanded="true"] .nav-caret{transform:rotate(180deg)}
+.nav-spacer{flex:1}
+.nav-actions{display:flex;gap:8px;align-items:center}
+.btn-sinistro{
+  color:#fff;border:1px solid rgba(255,255,255,.4);padding:10px 16px;
+  border-radius:999px;font-weight:600;font-size:.86rem;
+}
+.btn-sinistro:hover{border-color:#fff;background:rgba(255,255,255,.06);text-decoration:none}
+
+/* ---------- Mega-menu ---------- */
+.megawrap{position:relative}
+.mega{
+  position:absolute;left:0;right:0;top:100%;
+  background:#fff;color:var(--ink);
+  box-shadow:var(--shadow);
+  border-top:4px solid var(--neon);
+  padding:28px 0;
+  display:none;
+}
+.mega[data-open="true"]{display:block}
+.mega-grid{
+  max-width:1200px;margin:0 auto;padding:0 20px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+}
+.mega-family h4{
+  font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;
+  color:var(--teal-text);font-weight:700;margin-bottom:10px;
+}
+.mega-family ul{display:flex;flex-direction:column;gap:4px}
+.mega-family a{
+  color:var(--ink);font-weight:500;padding:8px 10px;border-radius:8px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.mega-family a:hover{background:var(--surf);color:var(--navy);text-decoration:none}
+.mega-family a .tag{font-size:.7rem;color:var(--teal-text);font-weight:700}
+.mega-family a .tag-hot{color:#fff;background:var(--neon);color:var(--navy);padding:2px 8px;border-radius:999px}
+
+.mega-enterprise .mega-grid{grid-template-columns:1fr 1fr 1fr}
+.mega-foot{
+  max-width:1200px;margin:18px auto 0;padding:14px 20px;
+  border-top:1px solid var(--surf);
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+}
+.mega-foot p{margin:0;color:var(--ink2);font-size:.9rem}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;color:#fff;
+  padding:88px 0 96px;overflow:hidden;
+  background:#0a3340 url('https://images.unsplash.com/photo-1506836467174-27f1042aa48c?w=1600&q=70&auto=format&fit=crop') center/cover no-repeat;
+  background-blend-mode:multiply;
+}
+.hero-bg::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(98deg,#002430 0%,rgba(0,36,48,.96) 38%,
+             rgba(10,75,70,.82) 64%,rgba(0,0,96,.66) 100%)}
+.hero .wrap{position:relative;z-index:2;display:grid;gap:36px;grid-template-columns:1.05fr .95fr;align-items:center}
+.hero h1{color:#fff;font-size:clamp(2.1rem,4.6vw,3.5rem);max-width:14ch}
+.hero p.sub{font-size:1.1rem;color:rgba(255,255,255,.92);max-width:42ch;margin-top:14px}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.tagline{margin-top:30px;font-size:1.4rem;color:#fff;letter-spacing:-.02em}
+.tagline b{font-weight:800;color:var(--neon)}
+
+/* Selector "O que você quer proteger?" */
+.selector{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.18);
+  backdrop-filter:blur(8px);
+  border-radius:20px;padding:20px;
+}
+.selector h2{color:#fff;font-size:1.2rem;margin-bottom:14px;letter-spacing:-.02em}
+.toggle{
+  display:inline-flex;background:rgba(0,0,0,.25);border-radius:999px;padding:4px;margin-bottom:16px;
+}
+.toggle button{
+  padding:9px 16px;border-radius:999px;color:#cfe2e8;font-weight:600;font-size:.86rem;
+}
+.toggle button[aria-pressed="true"]{background:var(--neon);color:var(--navy)}
+.selector-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-height:300px;overflow:auto}
+.selector-cards a{
+  display:flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);
+  color:#fff;padding:11px 12px;border-radius:12px;font-weight:600;font-size:.92rem;
+}
+.selector-cards a:hover{background:rgba(70,239,128,.18);border-color:var(--neon);text-decoration:none}
+.selector-cards a .ico{flex:none;width:26px;height:26px;color:var(--neon)}
+.selector-cards a.hot{border-color:var(--neon)}
+.selector-cards a .badge{margin-left:auto;font-size:.66rem;background:var(--neon);color:var(--navy);padding:2px 7px;border-radius:999px;font-weight:800}
+
+/* ---------- Faixa de confiança ---------- */
+.trust{background:var(--surf);border-bottom:1px solid #d8eaef}
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:26px 0}
+.trust-item{display:flex;align-items:center;gap:12px}
+.trust-item .ico{flex:none;width:34px;height:34px;color:var(--teal-text)}
+.trust-item b{display:block;color:var(--navy);font-weight:700;font-size:.96rem}
+.trust-item span{color:var(--ink2);font-size:.84rem}
+
+/* ---------- Catálogo ---------- */
+.catalog-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:30px}
+.catalog-tabs{display:flex;background:var(--surf);border-radius:999px;padding:5px;gap:4px}
+.catalog-tabs button{padding:9px 18px;border-radius:999px;color:var(--ink2);font-weight:700;font-size:.9rem}
+.catalog-tabs button[aria-pressed="true"]{background:var(--navy);color:#fff}
+.fam-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.fam-card{
+  border:1px solid #e0eef2;border-radius:var(--radius);padding:22px;background:#fff;
+  display:flex;flex-direction:column;
+}
+.fam-card.hot{border-color:var(--neon);box-shadow:0 0 0 3px rgba(70,239,128,.18)}
+.fam-card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.fam-card-head h3{font-size:1.1rem}
+.fam-count{font-size:.74rem;color:var(--teal-text);font-weight:700;background:var(--surf);padding:4px 10px;border-radius:999px}
+.fam-flag{font-size:.68rem;font-weight:800;color:var(--navy);background:var(--neon);padding:3px 10px;border-radius:999px}
+.fam-list{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.fam-list a{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;border-radius:10px;color:var(--ink);font-weight:500}
+.fam-list a:hover{background:var(--surf);text-decoration:none}
+.fam-list a .mini{color:var(--teal-text);font-size:.8rem}
+
+/* ---------- Residencial: cobre / não cobre ---------- */
+.cover-block{background:var(--surf);border-radius:var(--radius);padding:8px}
+.cover-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.cover-col{background:#fff;border-radius:var(--radius);padding:24px}
+.cover-col h3{display:flex;align-items:center;gap:10px;margin-bottom:14px;font-size:1.15rem}
+.cover-col ul{display:grid;gap:10px}
+.cover-col li{display:flex;gap:10px;align-items:flex-start;color:var(--ink)}
+.cover-col li .ico{flex:none;width:22px;height:22px;margin-top:2px}
+.cover-col.yes .ico{color:var(--teal-text)}
+.cover-col.no  .ico{color:#c0392b}
+.cover-col li b{font-weight:600}
+.cover-col.no{border:1px dashed #e6c2bf}
+
+/* ---------- Simulador ---------- */
+.sim{
+  margin-top:30px;background:var(--navy);color:#fff;
+  border-radius:var(--radius);padding:26px;position:relative;overflow:hidden;
+}
+.sim::before{content:"";position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(70,239,128,.25),transparent 70%)}
+.sim h3{color:#fff;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.sim .hint{color:rgba(255,255,255,.75);font-size:.9rem;margin-bottom:16px}
+.sim-fields{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.sim-field label{display:block;font-weight:600;font-size:.84rem;margin-bottom:6px;color:#cfe2e8}
+.sim-field input[type="text"]{
+  width:100%;padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.25);
+  background:rgba(255,255,255,.06);color:#fff;font:inherit;
+}
+.sim-field input[type="text"]::placeholder{color:#9fb4bb}
+.range-wrap{display:flex;align-items:center;gap:12px}
+input[type="range"]{flex:1;accent-color:var(--neon);height:6px}
+.range-value{font-weight:700;min-width:90px;text-align:right;color:#fff}
+.range-desc{color:rgba(255,255,255,.7);font-size:.78rem;margin-top:6px}
+.planos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.plano{
+  border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:12px;text-align:left;
+}
+.plano[aria-pressed="true"]{border-color:var(--neon);background:rgba(70,239,128,.12)}
+.plano b{display:block;color:#fff;font-size:.92rem}
+.plano span{color:rgba(255,255,255,.7);font-size:.76rem}
+.sim-result{
+  margin-top:18px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+  background:var(--neon);color:var(--navy);border-radius:12px;padding:14px 18px;font-weight:800;
+}
+.sim-result .big{font-size:1.7rem;letter-spacing:-.03em}
+.sim-result small{font-weight:600;color:rgba(0,36,48,.75)}
+.sim-warn{margin-top:10px;color:rgba(255,255,255,.8);font-size:.82rem}
+
+/* ---------- Três públicos ---------- */
+.publics{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pub-card{
+  background:#fff;border:1px solid #e0eef2;border-radius:var(--radius);
+  padding:28px;display:flex;flex-direction:column;gap:8px;
+}
+.pub-card .ico{width:38px;height:38px;color:var(--teal-text)}
+.pub-card h3{font-size:1.25rem}
+.pub-card p{color:var(--ink2)}
+.pub-card .btn{margin-top:6px;align-self:flex-start}
+
+/* ---------- Institucional ---------- */
+.instit{background:var(--navy);color:#fff}
+.instit h2{color:#fff}
+.instit .lead{color:rgba(255,255,255,.85)}
+.instit-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+.instit-text p{color:rgba(255,255,255,.85)}
+.behind-slot{
+  border:2px dashed rgba(255,255,255,.35);border-radius:var(--radius);padding:24px;
+  color:rgba(255,255,255,.85);
+}
+.behind-slot h3{color:#fff;display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.behind-slot ul{display:grid;gap:8px}
+.behind-slot li{display:flex;gap:10px;align-items:center}
+.behind-slot li::before{content:"";width:10px;height:10px;border:2px dashed rgba(255,255,255,.5);border-radius:50%;flex:none}
+.behind-slot .note{margin-top:14px;font-size:.84rem;color:rgba(255,255,255,.6)}
+
+/* ---------- Faixa tagline ---------- */
+.tagstrip{
+  position:relative;overflow:hidden;
+  background:linear-gradient(95deg,#002430 0%,#0a4f4a 38%,#1b5a8a 70%,#000060 100%);
+  color:#fff;text-align:center;padding:64px 0;
+}
+.tagstrip::before{content:"";position:absolute;top:0;bottom:0;width:40%;left:-6%;
+  background:linear-gradient(115deg,transparent 46%,rgba(70,239,128,.18) 48%,transparent 50%);transform:skewX(-12deg)}
+.tagstrip::after{content:"";position:absolute;top:0;bottom:0;width:40%;right:-6%;
+  background:linear-gradient(115deg,transparent 46%,rgba(0,0,96,.4) 48%,transparent 50%);transform:skewX(-12deg)}
+.tagstrip span{position:relative;z-index:2;font-size:clamp(2rem,6vw,3.6rem);font-weight:300;letter-spacing:-.03em;display:block}
+.tagstrip span b{font-weight:800;color:var(--neon)}
+
+/* ---------- Antifraude ---------- */
+.antifraud{background:#fff;border-top:1px solid var(--surf);border-bottom:1px solid var(--surf)}
+.antifraud-inner{
+  display:flex;align-items:center;gap:16px;padding:18px 0;
+  background:var(--surf);border-radius:14px;padding:18px 22px;margin:24px 0;
+}
+.antifraud .ico{flex:none;width:34px;height:34px;color:var(--navy)}
+.antifraud p{margin:0;font-weight:600;color:var(--navy)}
+
+/* ---------- Footer ---------- */
+footer{background:var(--navy);color:#fff;padding:54px 0 24px}
+.footer-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:24px}
+.footer-brand p{color:rgba(255,255,255,.7);margin-top:14px;max-width:32ch}
+footer .lockup{height:46px;width:calc(46px * 2.732)}
+.footer-col h4{color:#fff;font-size:.84rem;text-transform:uppercase;letter-spacing:.12em;margin-bottom:12px}
+.footer-col ul{display:grid;gap:8px}
+.footer-col a{color:rgba(255,255,255,.78);font-size:.92rem}
+.footer-col a:hover{color:var(--neon);text-decoration:none}
+.footer-legal{
+  border-top:1px solid rgba(255,255,255,.12);margin-top:34px;padding-top:20px;
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  color:rgba(255,255,255,.6);font-size:.82rem;
+}
+.footer-legal .cnpj{font-weight:600;color:rgba(255,255,255,.85)}
+.footer-susep{font-style:italic;color:rgba(255,255,255,.7);margin-top:10px;font-size:.85rem;max-width:80ch}
+
+/* ---------- Diagonal accent ---------- */
+.diag{position:relative}
+.diag::before{content:"";position:absolute;inset:0;background:var(--neon);opacity:.06;transform:skewY(-1.5deg);transform-origin:left}
+
+/* ---------- Responsive ---------- */
+@media (max-width:980px){
+  .hero .wrap{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .fam-grid{grid-template-columns:1fr 1fr}
+  .instit-grid{grid-template-columns:1fr}
+}
+@media (max-width:720px){
+  .topbar-access{display:none}
+  .mainnav-inner .nav-actions .nav-link{display:none}
+  .hamburger{display:inline-flex;align-items:center;justify-content:center}
+  .mainnav[data-open="true"] .mobilepanel{display:block}
+  .mobilepanel{display:none;flex-direction:column;gap:6px;padding:8px 20px 22px}
+  .nav-link{width:100%;justify-content:flex-start}
+  .nav-actions{flex-direction:column;align-items:stretch;margin-top:10px}
+  .nav-actions .btn-sinistro,.nav-actions .btn-cotar{width:100%;text-align:center}
+  .mainnav-inner{flex-wrap:wrap;padding:10px 20px}
+  .mainnav-inner .desktop-nav{display:none}
+}
+@media (max-width:600px){
+  .trust-grid{grid-template-columns:1fr 1fr}
+  .fam-grid{grid-template-columns:1fr}
+  .cover-grid{grid-template-columns:1fr}
+  .publics{grid-template-columns:1fr}
+  .sim-fields{grid-template-columns:1fr}
+  .mega-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .selector-cards{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Pular para o conteúdo</a>
+
+<!-- ============ LOGO SYMBOL (17 formas) ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="lk" viewBox="0 0 1046.67 383.05" fill="currentColor"><g><path d="M131.79,23.94H20.19l169.1,335.17s31.78-20.43,42.75-54.85c10.97-34.43,10.21-60.53-8.7-97.98-18.91-37.45-91.55-182.34-91.55-182.34Z"/><circle cx="299.57" cy="79.74" r="55.61"/></g><g><polygon points="412.26 74.44 482.1 241.84 500.36 241.84 569.84 74.44 532.79 74.44 491.05 175.1 449.7 74.44 412.26 74.44"/><path d="M654.41,71.79c-47.64,0-86.25,38.62-86.25,86.25s38.62,86.25,86.25,86.25,86.25-38.62,86.25-86.25-38.62-86.25-86.25-86.25ZM654.41,210.82c-29.14,0-52.77-23.63-52.77-52.77s23.63-52.77,52.77-52.77,52.77,23.63,52.77,52.77-23.63,52.77-52.77,52.77Z"/><path d="M867.02,288.94c-19.33,0-34.99,15.67-34.99,34.99s15.67,34.99,34.99,34.99,34.99-15.67,34.99-34.99-15.67-34.99-34.99-34.99ZM867.02,345.34c-11.82,0-21.41-9.59-21.41-21.41s9.59-21.41,21.41-21.41,21.41,9.59,21.41,21.41-9.59,21.41-21.41,21.41Z"/><path d="M887.05,188.95c-9.48,13.13-24.92,21.68-42.35,21.68-28.83,0-52.21-23.38-52.21-52.21s23.38-52.21,52.21-52.21c17.52,0,33.03,8.63,42.5,21.88l24.26-23.4c-15.69-20.04-40.02-32.9-67.33-32.9-47.32,0-85.68,38.62-85.68,86.25s38.36,86.25,85.68,86.25c27.35,0,51.71-12.9,67.39-32.98l-24.48-22.36Z"/><polygon points="931.75 74.44 1025.9 74.44 1025.9 105.08 965 105.08 965 144.43 1019.01 144.43 1019.01 172.04 965 172.04 965 211.39 1025.9 211.39 1025.9 242.03 931.75 242.03 931.75 74.44"/><polygon points="465.68 289.69 504.23 289.69 504.23 302.24 479.3 302.24 479.3 318.34 501.41 318.34 501.41 329.65 479.3 329.65 479.3 345.76 504.23 345.76 504.23 358.3 465.68 358.3 465.68 289.69"/><polygon points="966.51 60.44 937.76 60.44 968.8 23.94 991.48 23.94 1022.29 60.44 993.59 60.44 980.02 47.51 966.51 60.44"/><path d="M737.45,289.88h-6.81l-28.56,68.28h14.28l5.39-13.24h24.4l5.4,13.24h14.27l-28.37-68.28ZM725.91,334.14l8.04-18.29,7.66,18.29h-15.7Z"/><path d="M998.1,289.88h-6.81l-28.56,68.28h14.28l5.39-13.24h24.4l5.4,13.24h14.27l-28.37-68.28ZM986.56,334.14l8.04-18.29,7.66,18.29h-15.7Z"/><path d="M687.52,328.47s9.08-5.3,9.08-17.78c0-19.48-18.81-20.81-18.81-20.81h-26.02v68.28h13.12l-.06-26.67h9.08l12.48,26.48h14.75l-13.62-29.51ZM677.91,318.28h-13.09v-15.15h13.05s5.63,1.13,5.63,7.58-5.59,7.58-5.59,7.58Z"/><path d="M948.16,328.47s9.08-5.3,9.08-17.78c0-19.48-18.81-20.81-18.81-20.81h-26.02v68.28h13.12l-.06-26.67h9.08l12.48,26.48h14.75l-13.62-29.51ZM938.56,318.28h-13.09v-15.15h13.05s5.63,1.13,5.63,7.58-5.59,7.58-5.59,7.58Z"/><path d="M791.84,289.88h-18.8v68.28h18.8s31.55-1.65,31.55-33.17-25.78-35.11-31.55-35.11ZM791.9,346.25h-5.27v-44.64h5.27s18.06.38,18.06,22.41-18.06,22.23-18.06,22.23Z"/><path d="M599.01,336.6s1.68,9.08,13.41,9.08,13.62-9.08,13.62-9.08v-46.72h13.55v46.72s-2.2,22.28-27.17,22.28-27.28-22.28-27.28-22.28v-46.72h13.87v46.72"/><path d="M542.82,318.44h30.47v39.53h-12.46l-.8-3.78s-4.54,4.73-17.21,4.73-32.32-11.39-32.32-34.54,19.27-35.26,35.16-35.26,24.97,11.35,24.97,11.35l-9.08,10.21s-3.78-7.57-16.27-7.57-20.91,10.78-20.91,20.9,8.43,21.09,20.53,21.09,14.75-4.54,14.75-4.54v-10.97h-16.83v-11.16Z"/><path d="M412.3,341.52l12.11-5.67s1.7,9.27,9.27,9.27c4.29,0,6.64-2.31,7.86-4.32s.92-4.64-.79-6.27c-1.36-1.3-3.63-2.79-7.45-4.17-9.46-3.4-17.4-9.84-17.4-20.05s7.57-21.18,20.43-21.18,17.59,10.4,18.91,14l-12.11,6.05s-.54-1.36-.58-1.44c-.92-1.93-2.28-3.77-4.37-4.53-3.03-1.09-6.16.36-7.71,3.08-1.21,2.13-1.54,5.18.31,7.06.66.67,1.59,1.34,2.89,1.88,4.54,1.89,21.94,6.81,21.94,22.32s-13.05,21.35-21.66,21.35-18.44-4.7-21.66-17.37Z"/></g></symbol></svg>
+
+<!-- ============ HEADER ============ -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="logo" href="#" aria-label="Você Seguradora — página inicial"><svg class="lockup" aria-hidden="true"><use href="#lk"/></svg></a>
+    <div class="topbar-spacer"></div>
+    <nav class="topbar-access" aria-label="Acessos por público">
+      <a class="access-link" href="#area-cliente"><span class="dot">●</span>Área do Cliente</a>
+      <a class="access-link" href="#area-corretor"><span class="dot">●</span>Área do Corretor</a>
+      <a class="access-link" href="#acesso-parceiros"><span class="dot">●</span>Acesso Parceiros</a>
+    </nav>
+    <a class="btn btn-primary btn-cotar" href="#simulador">Cotar agora</a>
+    <button class="hamburger" aria-label="Abrir menu" aria-controls="mainnav" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ NAV ============ -->
+<nav class="mainnav" id="mainnav" data-open="false" aria-label="Navegação principal">
+  <div class="mainnav-inner">
+    <div class="desktop-nav" style="display:flex;align-items:center;gap:8px;flex:1">
+      <div class="megawrap">
+        <button class="nav-link" id="btn-pv" aria-haspopup="true" aria-expanded="false" aria-controls="mega-pv">
+          Para Você <span class="nav-caret" aria-hidden="true">▼</span>
+        </button>
+        <div class="mega" id="mega-pv" role="region" aria-label="Para Você — famílias de produtos">
+          <div class="mega-grid">
+            <div class="mega-family">
+              <h4>Moradia</h4>
+              <ul><li><a href="#residencial">Residencial <span class="tag tag-hot">Mais procurado</span></a></li></ul>
+            </div>
+            <div class="mega-family">
+              <h4>Vida e Acidentes</h4>
+              <ul>
+                <li><a href="#vida">Vida</a></li>
+                <li><a href="#acidentes">Acidentes Pessoais</a></li>
+              </ul>
+            </div>
+            <div class="mega-family">
+              <h4>Mobilidade</h4>
+              <ul><li><a href="#franquia-auto">Franquia Auto</a></li></ul>
+            </div>
+            <div class="mega-family">
+              <h4>RD Equipamentos</h4>
+              <ul>
+                <li><a href="#celular">Celular</a></li>
+                <li><a href="#notebook">Notebook</a></li>
+                <li><a href="#tablet">Tablet</a></li>
+              </ul>
+            </div>
+            <div class="mega-family">
+              <h4>RD Financeiro</h4>
+              <ul>
+                <li><a href="#pix">Pix Protegido</a></li>
+                <li><a href="#cartao">Cartão Protegido</a></li>
+                <li><a href="#bolsa">Bolsa Protegida</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="mega-foot">
+            <p>10 produtos para você e quem você ama.</p>
+            <a class="btn btn-outline" href="#catalogo" style="border-color:var(--navy)">Ver catálogo completo</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="megawrap">
+        <button class="nav-link" id="btn-pe" aria-haspopup="true" aria-expanded="false" aria-controls="mega-pe">
+          Para sua Empresa <span class="nav-caret" aria-hidden="true">▼</span>
+        </button>
+        <div class="mega mega-enterprise" id="mega-pe" role="region" aria-label="Para sua Empresa — famílias de produtos">
+          <div class="mega-grid">
+            <div class="mega-family">
+              <h4>Pessoas</h4>
+              <ul><li><a href="#vida-grupo">Vida em Grupo</a></li></ul>
+            </div>
+            <div class="mega-family">
+              <h4>Acidentes</h4>
+              <ul><li><a href="#ap-coletivo">Acidentes Pessoais Coletivo</a></li></ul>
+            </div>
+            <div class="mega-family">
+              <h4>Crédito</h4>
+              <ul><li><a href="#prestamista">Prestamista</a></li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a class="nav-link" href="#institucional">A Você Seguradora</a>
+      <a class="nav-link" href="#duvidas">Dúvidas frequentes</a>
+    </div>
+
+    <div class="nav-actions">
+      <a class="btn-sinistro" href="#sinistro">Avisar sinistro</a>
+      <a class="btn btn-primary btn-cotar" href="#simulador">Cotar agora</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero hero-bg" aria-label="Abertura">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow eyebrow-on-dark">Seguradora digital brasileira</p>
+      <h1>Uma seguradora para quem não para.</h1>
+      <p class="sub">A solidez de uma seguradora tradicional com a fluidez de uma insurtech. Cote, contrate e fale com a gente pelo site — sem burocracia, sem surpresa no texto pequeno.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#simulador">Cotar Seguro Residencial</a>
+        <a class="btn btn-ghost" href="#catalogo">Ver todos os produtos</a>
+      </div>
+      <p class="tagline">você em <b>movimento</b></p>
+    </div>
+
+    <div class="selector" aria-label="Seletor de produtos">
+      <h2>O que você quer proteger?</h2>
+      <div class="toggle" role="group" aria-label="Público">
+        <button id="tg-pv" aria-pressed="true" data-toggle="sel">Para Você (10)</button>
+        <button id="tg-pe" aria-pressed="false" data-toggle="sel">Para sua Empresa (3)</button>
+      </div>
+      <div class="selector-cards" id="sel-pv">
+        <a href="#residencial"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Residencial <span class="badge">+</span></a>
+        <a href="#vida"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg>Vida</a>
+        <a href="#acidentes"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg>Acidentes Pessoais</a>
+        <a href="#franquia-auto"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 13l2-6h14l2 6M3 13h18v6h-2v-2H5v2H3zM7 16.5h.01M17 16.5h.01"/></svg>Franquia Auto</a>
+        <a href="#celular"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="3"/><line x1="10" y1="18" x2="14" y2="18"/></svg>Celular</a>
+        <a href="#notebook"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="5" width="16" height="10" rx="1"/><path d="M2 19h20"/></svg>Notebook</a>
+        <a href="#tablet"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg>Tablet</a>
+        <a href="#pix"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l9 9-9 9-9-9zM12 7v10M7 12h10"/></svg>Pix Protegido</a>
+        <a href="#cartao"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="12" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Cartão Protegido</a>
+        <a href="#bolsa"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 8h12l-1 12H7zM9 8a3 3 0 0 1 6 0"/></svg>Bolsa Protegida</a>
+      </div>
+      <div class="selector-cards" id="sel-pe" hidden style="grid-template-columns:1fr 1fr">
+        <a href="#vida-grupo"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3 19c0-3 3-5 6-5s6 2 6 5M14 19c0-2 2-4 4-4s4 2 4 4"/></svg>Vida em Grupo</a>
+        <a href="#ap-coletivo"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg>Acidentes Pessoais Coletivo</a>
+        <a href="#prestamista"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18v12H3zM3 11h18M7 15h4"/></svg>Prestamista</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAIXA DE CONFIANÇA ============ -->
+<section class="trust" aria-label="Por que confiar">
+  <div class="wrap">
+    <div class="trust-grid">
+      <div class="trust-item">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l9 4v6c0 5-4 8-9 10-5-2-9-5-9-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+        <div><b>Regulada pela SUSEP</b><span>Produto em processo de registro</span></div>
+      </div>
+      <div class="trust-item">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <div><b>Assistência 24h</b><span>chaveiro, encanador, eletricista, vidraceiro</span></div>
+      </div>
+      <div class="trust-item">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16v12H4zM4 10h16"/><path d="M8 14h8"/></svg>
+        <div><b>Sem letra miúda</b><span>publicamos o que não cobrimos</span></div>
+      </div>
+      <div class="trust-item">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M21 4v5h-5"/></svg>
+        <div><b>Sem fidelidade</b><span>cancele quando quiser</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CATÁLOGO ============ -->
+<section class="section" id="catalogo" aria-labelledby="catalogo-titulo">
+  <div class="wrap">
+    <div class="catalog-head">
+      <div>
+        <p class="eyebrow">Catálogo de produtos</p>
+        <h2 id="catalogo-titulo">13 seguros, organizados por família</h2>
+      </div>
+      <div class="catalog-tabs" role="group" aria-label="Filtrar catálogo">
+        <button aria-pressed="true" data-toggle="cat">Para Você</button>
+        <button aria-pressed="false" data-toggle="cat">Para sua Empresa</button>
+      </div>
+    </div>
+
+    <!-- Para Você -->
+    <div class="fam-grid" id="cat-pv">
+      <article class="fam-card hot" id="residencial">
+        <div class="fam-card-head">
+          <h3>Moradia</h3>
+          <span class="fam-flag">Mais procurado</span>
+        </div>
+        <p style="color:var(--ink2);font-size:.94rem">Proteja sua casa e o que ela abriga. Cote e contrate em minutos.</p>
+        <div class="fam-list">
+          <a href="#simulador">Seguro Residencial <span class="mini">Cotar →</span></a>
+        </div>
+      </article>
+
+      <article class="fam-card">
+        <div class="fam-card-head"><h3>Vida e Acidentes</h3><span class="fam-count">2</span></div>
+        <div class="fam-list">
+          <a id="vida" href="#">Vida <span class="mini">→</span></a>
+          <a id="acidentes" href="#">Acidentes Pessoais <span class="mini">→</span></a>
+        </div>
+      </article>
+
+      <article class="fam-card">
+        <div class="fam-card-head"><h3>Mobilidade</h3><span class="fam-count">1</span></div>
+        <div class="fam-list">
+          <a id="franquia-auto" href="#">Franquia Auto <span class="mini">→</span></a>
+        </div>
+      </article>
+
+      <article class="fam-card">
+        <div class="fam-card-head"><h3>RD Equipamentos</h3><span class="fam-count">3</span></div>
+        <div class="fam-list">
+          <a id="celular" href="#">Celular <span class="mini">→</span></a>
+          <a id="notebook" href="#">Notebook <span class="mini">→</span></a>
+          <a id="tablet" href="#">Tablet <span class="mini">→</span></a>
+        </div>
+      </article>
+
+      <article class="fam-card">
+        <div class="fam-card-head"><h3>RD Financeiro</h3><span class="fam-count">3</span></div>
+        <div class="fam-list">
+          <a id="pix" href="#">Pix Protegido <span class="mini">→</span></a>
+          <a id="cartao" href="#">Cartão Protegido <span class="mini">→</span></a>
+          <a id="bolsa" href="#">Bolsa Protegida <span class="mini">→</span></a>
+        </div>
+      </article>
+
+      <article class="fam-card" style="background:linear-gradient(135deg,#002430,#0a4f4a);color:#fff;border-color:transparent">
+        <h3 style="color:#fff;font-size:1.15rem">Residencial em destaque</h3>
+        <p style="color:rgba(255,255,255,.85);font-size:.94rem">O produto mais complexo do nosso catálogo — e o primeiro que lançamos. Veja tudo o que ele cobre e o que não cobre logo abaixo.</p>
+        <a class="btn btn-primary" href="#cobre" style="margin-top:8px;align-self:flex-start">Ver coberturas</a>
+      </article>
+    </div>
+
+    <!-- Para sua Empresa -->
+    <div class="fam-grid" id="cat-pe" hidden>
+      <article class="fam-card" id="vida-grupo">
+        <div class="fam-card-head"><h3>Pessoas</h3><span class="fam-count">1</span></div>
+        <div class="fam-list"><a href="#">Vida em Grupo <span class="mini">→</span></a></div>
+      </article>
+      <article class="fam-card" id="ap-coletivo">
+        <div class="fam-card-head"><h3>Acidentes</h3><span class="fam-count">1</span></div>
+        <div class="fam-list"><a href="#">Acidentes Pessoais Coletivo <span class="mini">→</span></a></div>
+      </article>
+      <article class="fam-card" id="prestamista">
+        <div class="fam-card-head"><h3>Crédito</h3><span class="fam-count">1</span></div>
+        <div class="fam-list"><a href="#">Prestamista <span class="mini">→</span></a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COBRE / NÃO COBRE + SIMULADOR ============ -->
+<section class="section cover-block" id="cobre" aria-labelledby="cobre-titulo" style="background:var(--surf)">
+  <div class="wrap">
+    <p class="eyebrow">Seguro Residencial</p>
+    <h2 id="cobre-titulo">O que cobre — e o que não cobre</h2>
+    <p class="lead">Publicamos os dois lado a lado, com o mesmo destaque. Sem texto pequeno escondido.</p>
+
+    <div class="cover-grid" style="margin-top:24px">
+      <div class="cover-col yes">
+        <h3><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg> O que cobre</h3>
+        <ul>
+          <li><span class="ico">✓</span><div><b>Incêndio, raio e explosão</b><br><span style="color:var(--ink2)">cobertura básica de toda apólice</span></div></li>
+          <li><span class="ico">✓</span><div><b>Danos elétricos</b><br><span style="color:var(--ink2)">geladeira, TV e ar queimados por oscilação de energia</span></div></li>
+          <li><span class="ico">✓</span><div><b>Roubo e furto qualificado</b><br><span style="color:var(--ink2)">com vestígio de arrombamento</span></div></li>
+          <li><span class="ico">✓</span><div><b>Vendaval, granizo e queda de árvore</b><br><span style="color:var(--ink2)">inclusive o telhado</span></div></li>
+          <li><span class="ico">✓</span><div><b>Responsabilidade civil familiar</b><br><span style="color:var(--ink2)">se algo seu causar dano a um vizinho</span></div></li>
+          <li><span class="ico">✓</span><div><b>Assistência 24h</b><br><span style="color:var(--ink2)">chaveiro, encanador, eletricista, vidraceiro</span></div></li>
+        </ul>
+      </div>
+      <div class="cover-col no">
+        <h3><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg> O que NÃO cobre</h3>
+        <ul>
+          <li><span class="ico">✕</span><div><b>Furto simples</b><br><span style="color:var(--ink2)">sem vestígio de arrombamento</span></div></li>
+          <li><span class="ico">✕</span><div><b>Desgaste natural</b><br><span style="color:var(--ink2)">infiltração antiga, mofo, falta de manutenção</span></div></li>
+          <li><span class="ico">✕</span><div><b>Joias e dinheiro em espécie</b><br><span style="color:var(--ink2)">salvo cobertura contratada à parte</span></div></li>
+          <li><span class="ico">✕</span><div><b>Imóvel desocupado</b><br><span style="color:var(--ink2)">acima de 90 dias seguidos</span></div></li>
+          <li><span class="ico">✕</span><div><b>Obras e reformas estruturais</b><br><span style="color:var(--ink2)">durante a execução</span></div></li>
+          <li><span class="ico">✕</span><div><b>Dolo</b><br><span style="color:var(--ink2)">dano causado de propósito pelo segurado</span></div></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SIMULADOR -->
+    <div class="sim diag" id="simulador">
+      <h3><svg class="ico" style="width:24px;height:24px;color:var(--neon)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Simule o valor do seu Seguro Residencial</h3>
+      <p class="hint">Preço que atualiza ao vivo. Não pedimos documento pessoal, e-mail ou telefone para você ver o valor.</p>
+      <div class="sim-fields">
+        <div class="sim-field">
+          <label for="cep">CEP do imóvel</label>
+          <input type="text" id="cep" inputmode="numeric" placeholder="00000-000" autocomplete="postal-code" maxlength="9">
+        </div>
+        <div class="sim-field" style="align-self:end">
+          <label for="lmi">Importância segurada (o valor máximo que pagamos)</label>
+          <div class="range-wrap" style="margin-top:4px">
+            <input type="range" id="lmi" min="50000" max="1000000" step="10000" value="300000" aria-describedby="lmi-desc">
+            <span class="range-value" id="lmi-val">R$ 300.000</span>
+          </div>
+          <p class="range-desc" id="lmi-desc">de R$ 50.000 a R$ 1.000.000, em passos de R$ 10.000</p>
+        </div>
+      </div>
+
+      <div class="planos" role="group" aria-label="Plano">
+        <button class="plano" data-plano="essence" aria-pressed="true"><b>Essence</b><span>custo-benefício</span></button>
+        <button class="plano" data-plano="gold" aria-pressed="false"><b>Gold</b><span>cobertura estendida</span></button>
+        <button class="plano" data-plano="prime" aria-pressed="false"><b>Prime</b><span>cobertura completa</span></button>
+      </div>
+
+      <div class="sim-result" aria-live="polite">
+        <span class="big" id="preco">R$ 131</span>
+        <span>/mês</span>
+        <small id="preco-extra">para R$ 300.000 de importância segurada · plano Essence</small>
+      </div>
+      <p class="sim-warn">Valor estimado. O preço final é calculado na cotação — em produção ele vem da API da seguradora, nunca do navegador.</p>
+      <a class="btn btn-primary" href="#" style="margin-top:14px">Continuar cotação</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRÊS PÚBLICOS ============ -->
+<section class="section" aria-labelledby="pub-titulo">
+  <div class="wrap">
+    <p class="eyebrow">Para quem é a Você Seguradora</p>
+    <h2 id="pub-titulo">Escolha seu caminho</h2>
+    <p class="lead">A mesma seguradora, três jeitos de se relacionar.</p>
+
+    <div class="publics" style="margin-top:28px">
+      <article class="pub-card">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+        <h3>Sou Cliente</h3>
+        <p>Cote, contrate e acompanhe suas apólices. tire 2ª via, avise sinistro e fale com a gente a qualquer hora.</p>
+        <a class="btn btn-primary" id="area-cliente" href="#simulador">Cotar agora</a>
+      </article>
+      <article class="pub-card">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3l5 5-5 5M21 8H8a4 4 0 0 0-4 4M8 21l-5-5 5-5M3 16h13a4 4 0 0 0 4-4"/></svg>
+        <h3>Sou Corretor</h3>
+        <p>Acesse o portal do corretor, cote pelos 13 produtos e emita apólices com nossa API de cotação.</p>
+        <a class="btn btn-outline" id="area-corretor" href="#">Acessar portal</a>
+      </article>
+      <article class="pub-card">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M12 12l9-5M12 12v10M12 12L3 7"/></svg>
+        <h3>Sou Parceiro</h3>
+        <p>Distribua nossos seguros pela sua plataforma ou ecossistema. Integração via API simples e rápida.</p>
+        <a class="btn btn-outline" id="acesso-parceiros" href="#">Acesso parceiros</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INSTITUCIONAL ============ -->
+<section class="section instit" id="institucional" aria-labelledby="inst-titulo">
+  <div class="wrap">
+    <div class="instit-grid">
+      <div class="instit-text">
+        <p class="eyebrow eyebrow-on-dark">Quem somos</p>
+        <h2 id="inst-titulo">A Você Seguradora nasceu para ser simples por dentro.</h2>
+        <p>Juntamos o que funciona numa seguradora de verdade — regulação, resseguro, assistência 24h — com a forma direta de uma insurtech: cotação sem cadastro antes do preço, texto sem letra miúda, cancelamento sem fidelidade.</p>
+        <p>Somos uma seguradora nova. Ainda não vendemos a primeira apólice — ela sai assim que o registro na SUSEP for concluído. Por isso, não exibimos notas, número de clientes ou prêmios. Quando existirem de verdade, aparecerão aqui.</p>
+        <p style="color:var(--neon);font-weight:700">você em movimento</p>
+      </div>
+      <div class="behind-slot">
+        <h3><svg class="ico" style="width:22px;height:22px;color:var(--neon)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg> Quem está por trás</h3>
+        <ul>
+          <li>Resseguradora (a definir)</li>
+          <li>Grupo controlador / investidores (a definir)</li>
+          <li>Seguradora emissora (a definir)</li>
+          <li>Nº do processo SUSEP (em processo de registro)</li>
+        </ul>
+        <p class="note">Estes campos são preenchidos assim que cada contrato for formalizado. Não vamos inventar nomes enquanto não existirem.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAIXA TAGLINE ============ -->
+<section class="tagstrip" aria-label="Tagline">
+  <span>você em <b>movimento</b></span>
+</section>
+
+<!-- ============ ANTIFRAUDE ============ -->
+<section class="antifraud" aria-label="Aviso antifraude">
+  <div class="wrap">
+    <div class="antifraud-inner">
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l9 4v6c0 5-4 8-9 10-5-2-9-5-9-10V6z"/><path d="M12 8v4M12 16h.01"/></svg>
+      <p>A Você Seguradora nunca pede dados ou pagamento por WhatsApp. Toda cobrança sai dos nossos canais oficiais.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="logo" href="#" aria-label="Você Seguradora"><svg class="lockup" aria-hidden="true"><use href="#lk"/></svg></a>
+        <p>você em movimento. Seguradora digital brasileira, em processo de registro na SUSEP.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Para Você</h4>
+        <ul>
+          <li><a href="#residencial">Residencial</a></li>
+          <li><a href="#vida">Vida</a></li>
+          <li><a href="#acidentes">Acidentes Pessoais</a></li>
+          <li><a href="#franquia-auto">Franquia Auto</a></li>
+          <li><a href="#celular">Celular</a></li>
+          <li><a href="#pix">Pix Protegido</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Para sua Empresa</h4>
+        <ul>
+          <li><a href="#vida-grupo">Vida em Grupo</a></li>
+          <li><a href="#ap-coletivo">Acidentes Pessoais Coletivo</a></li>
+          <li><a href="#prestamista">Prestamista</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Canais</h4>
+        <ul>
+          <li><a href="#">Central 24h</a></li>
+          <li><a href="#">2ª via de boleto</a></li>
+          <li><a href="#sinistro">Avisar sinistro</a></li>
+          <li><a href="#">Fale com a gente</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Institucional</h4>
+        <ul>
+          <li><a href="#institucional">A Você Seguradora</a></li>
+          <li><a href="#area-corretor">Portal do Corretor</a></li>
+          <li><a href="#acesso-parceiros">Acesso Parceiros</a></li>
+          <li><a href="#duvidas">Dúvidas frequentes</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <span class="cnpj">CNPJ 00.000.000/0001-00</span>
+      <span>Produto em processo de registro na SUSEP</span>
+    </div>
+    <p class="footer-susep">O registro do produto na SUSEP não implica incentivo ou recomendação à sua comercialização. Consulte as condições gerais antes de contratar.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  // ---------- Mega-menu (clique + Esc + teclado) ----------
+  var menus = document.querySelectorAll('.megawrap');
+  function closeAll(){
+    menus.forEach(function(w){
+      var btn = w.querySelector('.nav-link[aria-expanded]');
+      var pnl = w.querySelector('.mega');
+      if(btn){ btn.setAttribute('aria-expanded','false'); }
+      if(pnl){ pnl.removeAttribute('data-open'); }
+    });
+  }
+  menus.forEach(function(w){
+    var btn = w.querySelector('.nav-link[aria-expanded]');
+    var pnl = w.querySelector('.mega');
+    if(!btn || !pnl) return;
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      closeAll();
+      if(!open){ btn.setAttribute('aria-expanded','true'); pnl.setAttribute('data-open','true'); }
+    });
+    pnl.addEventListener('keydown', function(e){
+      if(e.key === 'Escape'){ closeAll(); btn.focus(); }
+    });
+  });
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.megawrap')) closeAll();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeAll();
+  });
+
+  // ---------- Hamburger (mobile) ----------
+  var ham = document.querySelector('.hamburger');
+  var mnav = document.getElementById('mainnav');
+  if(ham && mnav){
+    ham.addEventListener('click', function(){
+      var open = mnav.getAttribute('data-open') === 'true';
+      mnav.setAttribute('data-open', open ? 'false' : 'true');
+      ham.setAttribute('aria-expanded', open ? 'false' : 'true');
+    });
+  }
+
+  // ---------- Toggles (aria-pressed groups) ----------
+  function bindToggleGroup(selector, onChange){
+    var groups = {};
+    document.querySelectorAll('[data-toggle="'+selector+'"]').forEach(function(btn){
+      var g = btn.dataset.toggle;
+      (groups[g] = groups[g] || []).push(btn);
+      btn.addEventListener('click', function(){
+        groups[g].forEach(function(b){ b.setAttribute('aria-pressed','false'); });
+        btn.setAttribute('aria-pressed','true');
+        onChange && onChange(btn, groups[g].indexOf(btn));
+      });
+    });
+    return groups;
+  }
+
+  // Hero selector
+  var selPV = document.getElementById('sel-pv');
+  var selPE = document.getElementById('sel-pe');
+  bindToggleGroup('sel', function(btn){
+    var isPV = btn.id === 'tg-pv' || (btn.textContent || '').toLowerCase().indexOf('você') > -1;
+    selPV.hidden = !isPV;
+    selPE.hidden = isPV;
+  });
+
+  // Catalog tabs
+  var catPV = document.getElementById('cat-pv');
+  var catPE = document.getElementById('cat-pe');
+  bindToggleGroup('cat', function(btn){
+    var isPV = (btn.textContent || '').toLowerCase().indexOf('você') > -1;
+    catPV.hidden = !isPV;
+    catPE.hidden = isPV;
+  });
+
+  // ---------- Planos (aria-pressed) ----------
+  var planos = document.querySelectorAll('.plano');
+  planos.forEach(function(p){
+    p.addEventListener('click', function(){
+      planos.forEach(function(o){ o.setAttribute('aria-pressed','false'); });
+      p.setAttribute('aria-pressed','true');
+    });
+  });
+
+  // ---------- Simulador ----------
+  var IOF = 1.0738;
+  var TAXA = { essence: 0.00487, gold: 0.00586, prime: 0.00832 };
+  var planoAtual = 'essence';
+  var cep = document.getElementById('cep');
+  var lmi = document.getElementById('lmi');
+  var lmiVal = document.getElementById('lmi-val');
+  var preco = document.getElementById('preco');
+  var extra = document.getElementById('preco-extra');
+
+  function fmtBRL(n){ return 'R$ ' + n.toLocaleString('pt-BR'); }
+
+  planos.forEach(function(p){
+    p.addEventListener('click', function(){
+      planoAtual = p.dataset.plano;
+      calc();
+    });
+  });
+
+  function calc(){
+    var v = parseInt(lmi.value, 10);
+    lmiVal.textContent = fmtBRL(v);
+    var mensal = v * TAXA[planoAtual] / 12 * IOF;
+    var nome = planoAtual.charAt(0).toUpperCase() + planoAtual.slice(1);
+    preco.textContent = 'R$ ' + Math.round(mensal).toLocaleString('pt-BR');
+    extra.textContent = 'para ' + fmtBRL(v) + ' de importância segurada · plano ' + nome;
+  }
+  lmi.addEventListener('input', calc);
+
+  cep.addEventListener('input', function(){
+    var d = cep.value.replace(/\D/g,'').slice(0,8);
+    if(d.length > 5){ cep.value = d.slice(0,5) + '-' + d.slice(5); }
+    else { cep.value = d; }
+  });
+
+  calc();
+
+  // Reduced motion: disable any added transitions already handled in CSS via media query.
+
+})();
+</script>
+</body>
+</html>
