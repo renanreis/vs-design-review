@@ -34,6 +34,9 @@
 /* audiences */
 .audiences{padding:110px 0;background:#fff}.aud-grid{display:grid;grid-template-columns:repeat(3,1fr);margin-top:48px;border-block:1px solid var(--navy)}.aud{padding:34px;min-height:330px;display:flex;flex-direction:column;border-right:1px solid var(--navy);position:relative}.aud:last-child{border-right:0}.aud:nth-child(2){background:var(--surf)}.aud:nth-child(3){background:var(--navy);color:#fff}.aud small{font-weight:800;letter-spacing:.15em;color:var(--tealText)}.aud:nth-child(3) small{color:var(--neon)}.aud h3{font-size:2.15rem;margin:35px 0 16px}.aud p{color:var(--ink2)}.aud:nth-child(3) p{color:#bdd0d5}.aud a{margin-top:auto;font-weight:800;display:flex;justify-content:space-between;border-top:1px solid currentColor;padding-top:14px}
 
+/* área do corretor */
+.broker{padding:110px 0;background:#001a24;color:#fff;position:relative;overflow:hidden}.broker::before{content:"V";position:absolute;right:-6vw;bottom:-18vw;font-size:48vw;font-weight:900;line-height:.7;color:#46ef8009;transform:rotate(-9deg)}.broker-grid{position:relative;display:grid;grid-template-columns:.86fr 1.14fr;gap:72px;align-items:center}.broker-copy h2{font-size:clamp(3rem,5.7vw,5.8rem);max-width:8ch;margin:16px 0 24px}.broker-copy h2 span{color:var(--neon)}.broker-copy>p{color:#b9cdd2;font-size:1.06rem;max-width:42ch}.broker-tools{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#ffffff2b;margin-top:32px;border:1px solid #ffffff2b}.broker-tools li{background:#001a24;padding:14px 16px;color:#dbe8ea;font-size:.9rem}.broker-tools li::before{content:"↗";color:var(--neon);margin-right:9px}.portal-shell{background:var(--surf);color:var(--navy);box-shadow:18px 18px 0 var(--teal);border-top:7px solid var(--neon)}.portal-top{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid #c7dce1}.portal-top strong{font-size:1.08rem}.portal-top span{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--tealText)}.portal-body{display:grid;grid-template-columns:150px 1fr;min-height:410px}.portal-side{background:var(--navy);color:#fff;padding:24px 18px}.portal-side b{display:block;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--neon);margin-bottom:18px}.portal-side span{display:block;padding:9px 0;color:#b9ced3;font-size:.82rem;border-bottom:1px solid #ffffff14}.portal-login{padding:34px}.portal-login h3{font-size:2rem;margin-bottom:8px}.portal-login>p{color:var(--ink2);margin-bottom:24px}.portal-field{display:block;margin-bottom:15px}.portal-field span{display:block;font-size:.75rem;font-weight:700;margin-bottom:6px}.portal-field input{width:100%;height:50px;border:1px solid #aac5cc;background:#fff;color:var(--navy);padding:0 14px}.portal-login .btn{width:100%;margin-top:5px}.portal-help{display:flex;justify-content:space-between;gap:14px;margin-top:16px;font-size:.76rem;color:var(--tealText)}.portal-status{min-height:1.4em;margin-top:14px!important;margin-bottom:0!important;color:var(--tealText)!important;font-size:.8rem;font-weight:700}
+
 /* institutional */
 .institution{background:linear-gradient(125deg,var(--teal),var(--blue));color:#fff;padding:110px 0}.inst-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:90px}.institution h2{font-size:clamp(3rem,6vw,6rem);max-width:8ch}.institution .copy{color:#e0ecee;font-size:1.1rem}.institution .copy p+p{margin-top:18px}.behind{margin-top:34px;border:1px dashed #ffffff99;padding:22px}.behind strong{display:block;margin-bottom:12px}.behind li{padding:6px 0;color:#e1eded}.tagline{padding:80px 20px;background:var(--neon);color:var(--navy);text-align:center;font-size:clamp(3rem,8vw,8rem);font-weight:300;line-height:.85;letter-spacing:-.06em}.tagline strong{font-weight:900}
 
@@ -41,8 +44,8 @@
 .antifraud{background:#fff;color:var(--navy);padding:24px 0;border-top:6px solid var(--neon)}.antifraud p{font-weight:700}.footer{background:var(--navy);color:#fff;padding:70px 0 30px}.footer-grid{display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:36px}.footer .brand{color:#fff}.footer-brand p{color:#9fb8be;margin-top:20px;max-width:27ch}.footer h3{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--neon);margin-bottom:14px}.footer a{display:block;color:#c6d7db;padding:4px 0;font-size:.9rem}.legal{border-top:1px solid #ffffff22;margin-top:48px;padding-top:24px;color:#8faab0;font-size:.76rem;display:grid;grid-template-columns:1fr 2fr;gap:30px}
 
 /* responsive */
-@media(max-width:960px){.nav{display:none}.portal{display:none}.hamb{display:block}.hero-grid{grid-template-columns:1fr}.hero-copy{padding:74px 30px 170px}.hero-visual{min-height:420px;clip-path:polygon(0 15%,100% 0,100% 100%,0 100%);margin-top:-90px}.protection{grid-template-columns:1fr;margin-top:-55px}.quick-products{grid-template-columns:repeat(3,1fr);border-top:1px solid #d6e5e9}.res-head,.quote,.inst-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:680px){.wrap{width:min(100% - 32px,1180px)}.head{height:68px}.lockup{width:108px}.head-actions .btn{padding:0 15px;min-height:44px}.hero{min-height:0}.hero-copy{padding:64px 20px 150px}.hero h1{font-size:3.7rem}.hero-visual{min-height:360px}.visual-copy{right:20px;bottom:45px}.protection{width:calc(100% - 32px);padding:22px 18px}.quick-products{grid-template-columns:1fr 1fr}.quick-products a{min-height:70px}.facts{margin-top:38px}.residential,.catalog,.transparency,.audiences,.institution{padding:76px 0}.res-head{gap:25px}.quote-form,.price{padding:28px 20px}.field-grid{grid-template-columns:1fr}.plans{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:20px}.family{grid-template-columns:36px 1fr}.product-links{grid-column:2}.cover-board{grid-template-columns:1fr}.cover-col{padding:26px 20px}.cover-col+ .cover-col{border-left:0;border-top:1px solid #c5dbe0}.aud-grid{grid-template-columns:1fr}.aud{border-right:0;border-bottom:1px solid var(--navy)}.inst-grid{gap:44px}.footer-grid{grid-template-columns:1fr 1fr}.footer-brand{grid-column:1/-1}.legal{grid-template-columns:1fr}.tagline{padding:60px 15px}}
+@media(max-width:960px){.nav{display:none}.portal{display:none}.hamb{display:block}.hero-grid{grid-template-columns:1fr}.hero-copy{padding:74px 30px 170px}.hero-visual{min-height:420px;clip-path:polygon(0 15%,100% 0,100% 100%,0 100%);margin-top:-90px}.protection{grid-template-columns:1fr;margin-top:-55px}.quick-products{grid-template-columns:repeat(3,1fr);border-top:1px solid #d6e5e9}.res-head,.quote,.broker-grid,.inst-grid{grid-template-columns:1fr}.broker-grid{gap:48px}.footer-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:680px){.wrap{width:min(100% - 32px,1180px)}.head{height:68px}.lockup{width:108px}.head-actions .btn{padding:0 15px;min-height:44px}.hero{min-height:0}.hero-copy{padding:64px 20px 150px}.hero h1{font-size:3.7rem}.hero-visual{min-height:360px}.visual-copy{right:20px;bottom:45px}.protection{width:calc(100% - 32px);padding:22px 18px}.quick-products{grid-template-columns:1fr 1fr}.quick-products a{min-height:70px}.facts{margin-top:38px}.residential,.catalog,.transparency,.audiences,.broker,.institution{padding:76px 0}.res-head{gap:25px}.quote-form,.price{padding:28px 20px}.field-grid{grid-template-columns:1fr}.plans{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:20px}.family{grid-template-columns:36px 1fr}.product-links{grid-column:2}.cover-board{grid-template-columns:1fr}.cover-col{padding:26px 20px}.cover-col+ .cover-col{border-left:0;border-top:1px solid #c5dbe0}.aud-grid{grid-template-columns:1fr}.aud{border-right:0;border-bottom:1px solid var(--navy)}.broker-tools{grid-template-columns:1fr}.portal-shell{box-shadow:8px 8px 0 var(--teal)}.portal-body{grid-template-columns:1fr}.portal-side{display:none}.portal-login{padding:26px 20px}.portal-help{flex-direction:column}.inst-grid{gap:44px}.footer-grid{grid-template-columns:1fr 1fr}.footer-brand{grid-column:1/-1}.legal{grid-template-columns:1fr}.tagline{padding:60px 15px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -65,12 +68,12 @@
           </div>
         </div>
       </div>
-      <a href="#catalogo">Todos os produtos</a><a href="#publicos">Corretores e parceiros</a><a href="#institucional">A Você</a>
+      <a href="#catalogo">Todos os produtos</a><a href="#corretor">Para corretores</a><a href="#institucional">A Você</a>
     </nav>
-    <div class="head-actions"><a class="btn btn-line portal" href="#publicos">Área do cliente</a><a class="btn btn-dark" href="#simulador">Cotar</a></div>
+    <div class="head-actions"><a class="btn btn-line portal" href="#corretor">Área do corretor</a><a class="btn btn-dark" href="#simulador">Cotar</a></div>
     <button class="hamb" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile">☰</button>
   </div>
-  <nav id="mobile" class="mobile is-hidden" aria-label="Menu mobile"><a href="#catalogo">Seguros</a><a href="#publicos">Área do cliente</a><a href="#publicos">Corretores e parceiros</a><a href="#institucional">A Você Seguradora</a></nav>
+  <nav id="mobile" class="mobile is-hidden" aria-label="Menu mobile"><a href="#catalogo">Seguros</a><a href="#publicos">Área do cliente</a><a href="#corretor">Área do corretor</a><a href="#publicos">Parceiros</a><a href="#institucional">A Você Seguradora</a></nav>
 </header>
 
 <main id="conteudo">
@@ -146,7 +149,32 @@
 
 <section class="audiences" id="publicos">
   <div class="wrap"><div class="section-head"><div><p class="kicker">Três públicos. Uma marca.</p><h2>Qual é o seu próximo passo?</h2></div></div>
-    <div class="aud-grid"><article class="aud"><small>01 · CLIENTE</small><h3>Proteger</h3><p>Cote, contrate, consulte sua apólice, peça 2ª via e avise um sinistro.</p><a href="#simulador">Simular agora <span>↗</span></a></article><article class="aud"><small>02 · CORRETOR</small><h3>Distribuir</h3><p>Acesse o ambiente do corretor, conheça o catálogo e acompanhe sua operação.</p><a href="#rodape">Portal do corretor <span>↗</span></a></article><article class="aud"><small>03 · PARCEIRO</small><h3>Integrar</h3><p>Leve seguros ao seu ecossistema por meio de integrações e novos canais.</p><a href="#rodape">Quero ser parceiro <span>↗</span></a></article></div>
+    <div class="aud-grid"><article class="aud"><small>01 · CLIENTE</small><h3>Proteger</h3><p>Cote, contrate, consulte sua apólice, peça 2ª via e avise um sinistro.</p><a href="#simulador">Simular agora <span>↗</span></a></article><article class="aud"><small>02 · CORRETOR</small><h3>Distribuir</h3><p>Acesse o ambiente do corretor, conheça o catálogo e acompanhe sua operação.</p><a href="#corretor">Conhecer a área <span>↗</span></a></article><article class="aud"><small>03 · PARCEIRO</small><h3>Integrar</h3><p>Leve seguros ao seu ecossistema por meio de integrações e novos canais.</p><a href="#rodape">Quero ser parceiro <span>↗</span></a></article></div>
+  </div>
+</section>
+
+<section class="broker" id="corretor" aria-labelledby="broker-title">
+  <div class="wrap broker-grid">
+    <div class="broker-copy">
+      <p class="kicker" style="color:var(--neon)">Área do corretor</p>
+      <h2 id="broker-title">Mais tempo para <span>vender.</span></h2>
+      <p>Um ponto único para cotar, emitir e acompanhar sua operação. O portal será integrado aos motores da seguradora e preparado para os 13 produtos.</p>
+      <ul class="broker-tools"><li>Nova cotação</li><li>Propostas e emissões</li><li>Carteira de clientes</li><li>Comissões</li><li>Materiais comerciais</li><li>Suporte especializado</li></ul>
+    </div>
+    <div class="portal-shell" aria-label="Demonstração do acesso ao Portal do Corretor">
+      <div class="portal-top"><strong>Portal do Corretor</strong><span>ambiente demonstrativo</span></div>
+      <div class="portal-body">
+        <div class="portal-side" aria-hidden="true"><b>Você Corretor</b><span>Visão geral</span><span>Cotações</span><span>Propostas</span><span>Carteira</span><span>Comissões</span></div>
+        <form class="portal-login" id="broker-login">
+          <h3>Bem-vindo</h3><p>Use seu acesso profissional para continuar.</p>
+          <label class="portal-field"><span>E-mail profissional</span><input type="email" autocomplete="username" placeholder="nome@corretora.com.br" required></label>
+          <label class="portal-field"><span>Senha</span><input type="password" autocomplete="current-password" placeholder="Sua senha" required></label>
+          <button class="btn btn-dark" type="submit">Entrar no portal <span>→</span></button>
+          <div class="portal-help"><a href="#corretor">Esqueci minha senha</a><a href="#publicos">Solicitar cadastro</a></div>
+          <p class="portal-status" id="broker-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -161,7 +189,7 @@
   <div class="footer-brand"><a class="brand" href="#conteudo"><svg class="lockup" aria-hidden="true"><use href="#lk"/></svg></a><p>Seguro para seguir. Simples de entender, fácil de contratar.</p></div>
   <div><h3>Para Você</h3><a href="#simulador">Residencial</a><a href="#catalogo">Vida</a><a href="#catalogo">Acidentes Pessoais</a><a href="#catalogo">Franquia Auto</a></div>
   <div><h3>Para sua Empresa</h3><a href="#catalogo">Vida em Grupo</a><a href="#catalogo">AP Coletivo</a><a href="#catalogo">Prestamista</a></div>
-  <div><h3>Canais</h3><a href="#publicos">Área do cliente</a><a href="#publicos">Portal do corretor</a><a href="#publicos">Acesso parceiros</a><a href="#publicos">Avisar sinistro</a></div>
+  <div><h3>Canais</h3><a href="#publicos">Área do cliente</a><a href="#corretor">Portal do corretor</a><a href="#publicos">Acesso parceiros</a><a href="#publicos">Avisar sinistro</a></div>
   <div><h3>Institucional</h3><a href="#institucional">Quem somos</a><a href="#residencial">Produtos</a><a href="#rodape">Fale com a gente</a></div>
 </div><div class="legal"><p>CNPJ 00.000.000/0001-00<br>Produto em processo de registro na SUSEP</p><p>O registro do produto na SUSEP não implica incentivo ou recomendação à sua comercialização. Consulte as condições gerais antes de contratar.</p></div></div></footer>
 
@@ -182,6 +210,7 @@
   function money(v){return 'R$ '+v.toLocaleString('pt-BR')}function calc(){var v=parseInt(lmi.value,10);out.textContent=money(v);price.textContent=money(Math.round(v*rates[plan]/12*1.0738))}
   lmi.addEventListener('input',calc);document.querySelectorAll('.plan').forEach(function(p){p.addEventListener('click',function(){document.querySelectorAll('.plan').forEach(function(x){x.setAttribute('aria-pressed','false')});p.setAttribute('aria-pressed','true');plan=p.dataset.plan;document.querySelector('.per').textContent='por mês · plano '+p.querySelector('strong').textContent;calc()})});
   document.getElementById('cep').addEventListener('input',function(e){var d=e.target.value.replace(/\D/g,'').slice(0,8);e.target.value=d.length>5?d.slice(0,5)+'-'+d.slice(5):d});
+  document.getElementById('broker-login').addEventListener('submit',function(e){e.preventDefault();document.getElementById('broker-status').textContent='Ambiente demonstrativo — o acesso definitivo será conectado ao Portal do Corretor.'});
   calc();
 })();
 </script>
